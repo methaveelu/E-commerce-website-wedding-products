@@ -1,15 +1,18 @@
 const express = require("express");
 const cors = require("cors");
-const mongoose = require("mongoose");
 const dotenv = require("dotenv").config();
+const connectDB = require('./db');
 
 const app = express();
 app.use(cors());
+app.use(express.json());
 
-const PORT = process.env.PORT || 8000;
+app.get('/', (req, res) => {
+    res.send('Backend is working');
+})
 
-mongoose.connect(process.env.MONGODB_URL)
-.then(() => console.log("Connected to MongoDB"))
-.catch((error) => console.log(error));
+const port = process.env.PORT || 3003;
 
-app.listen(PORT, () => console.log("backend is working on port: ", PORT));
+app.listen(port, () => {
+    console.log(`server is listening on port ${port}`);
+});
