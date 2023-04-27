@@ -77,3 +77,14 @@
 ## Post-Wedding Events
 - Brunch or Breakfast for Out-of-Town Guests
 - Post-Wedding Party
+
+## Culture Specific Items
+- Engagement Ceremony (Guo Da Li)
+- Tea Service with Traditional Teapot and Cups
+- Decorations
+- Dance Performances
+- Chinese Calligraphy
+- Red and Gold Flower Arrangements
+- Henna
+- Flower Garlands, Rangoli Designs
+- Special Lighting
