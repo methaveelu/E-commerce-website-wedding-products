@@ -16,13 +16,12 @@ const productSchema = new mongoose.Schema({
   tags: {
     type: String,
   },
-  originalPrice: {
+  
+  price: {
     type: Number,
+    required: [true, "Please enter product price!"],
   },
-  discountPrice: {
-    type: Number,
-    required: [true, "Please enter your product price!"],
-  },
+
   stock: {
     type: Number,
     required: [true, "Please enter your product stock!"],
@@ -55,14 +54,7 @@ const productSchema = new mongoose.Schema({
   ratings: {
     type: Number,
   },
-  shopId: {
-    type: String,
-    required: true,
-  },
-  shop: {
-    type: Object,
-    required: true,
-  },
+
   sold_out: {
     type: Number,
     default: 0,
