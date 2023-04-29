@@ -21,6 +21,14 @@ const productSchema = new mongoose.Schema({
     type: Number,
     required: [true, "Please enter product price!"],
   },
+  shopId: {
+    type: String,
+    required: true,
+  },
+  shop: {
+    type: Object,
+    required: true,
+  },
 
   stock: {
     type: Number,
