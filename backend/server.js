@@ -10,6 +10,7 @@ process.on("uncaughtException", (err) => {
 // config
 if (process.env.NODE_ENV !== "PRODUCTION") {
   require("dotenv").config({
+
     path: "backend/.env",
   });
 };
@@ -22,6 +23,7 @@ const server = app.listen(process.env.PORT||3003, () => {
     `Server is running on http://localhost:${process.env.PORT}`
   );
 });
+
 
 // unhandled promise rejection
 process.on("unhandledRejection", (err) => {
