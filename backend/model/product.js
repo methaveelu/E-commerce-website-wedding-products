@@ -20,6 +20,14 @@ const productSchema = new mongoose.Schema({
     type: Number,
     required: [true, "Please enter product price!"],
   },
+  shopId: {
+    type: String,
+    required: true,
+  },
+  shop: {
+    type: Object,
+    required: true,
+  },
 
   stock: {
     type: Number,
@@ -53,7 +61,7 @@ const productSchema = new mongoose.Schema({
   ratings: {
     type: Number,
   },
-  
+
   sold_out: {
     type: Number,
     default: 0,
