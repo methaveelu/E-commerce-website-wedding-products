@@ -3,8 +3,8 @@ import { useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import Header from "../components/Layout/Header";
 import Loader from "../components/Layout/Loader";
-import ProductCard from "../components/Route/ProductCard/ProductCard";
-import styles from "../styles/styles";
+import ProductCard from "../components/Routes/ProductCard";
+import styles from "../styles";
 
 const BestSellingPage = () => {
   const [data, setData] = useState([]);

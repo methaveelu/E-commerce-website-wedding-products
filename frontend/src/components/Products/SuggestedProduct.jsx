@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { productData } from "../../static/data";
-import styles from "../../styles/styles";
-import ProductCard from "../Route/ProductCard/ProductCard";
+import styles from "../../styles";
+import ProductCard from "../Routes/ProductCard";
 
 const SuggestedProduct = ({ data }) => {
   const {allProducts} = useSelector((state) => state.products);

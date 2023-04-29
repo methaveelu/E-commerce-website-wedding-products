@@ -8,18 +8,18 @@ import {
   AiOutlineStar,
 } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import { backend_url } from "../../../server";
-import styles from "../../../styles/styles";
+import { backend_url } from "../../server";
+import styles from "../../styles";
 import { useDispatch, useSelector } from "react-redux";
-import ProductDetailsCard from "../ProductDetailsCard/ProductDetailsCard";
+import ProductDetailsCard from "./ProductDetailsCard";
 import {
   addToWishlist,
   removeFromWishlist,
-} from "../../../redux/actions/wishlist";
+} from "../../redux/actions/wishlist";
 import { useEffect } from "react";
-import { addTocart } from "../../../redux/actions/cart";
+import { addTocart } from "../../redux/actions/cart";
 import { toast } from "react-toastify";
-import Ratings from "../../Products/Ratings";
+import Ratings from "../Products/Ratings";
 
 const ProductCard = ({ data,isEvent }) => {
   const { wishlist } = useSelector((state) => state.wishlist);

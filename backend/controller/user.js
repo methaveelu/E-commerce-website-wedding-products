@@ -3,12 +3,12 @@ const path = require("path");
 const User = require("../model/user");
 const router = express.Router();
 const { upload } = require("../multer");
-const ErrorHandler = require("../utils/ErrorHandler");
+const ErrorHandler = require("../utilities/ErrorHandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const fs = require("fs");
 const jwt = require("jsonwebtoken");
-const sendMail = require("../utils/sendMail");
-const sendToken = require("../utils/jwtToken");
+const sendMail = require("../utilities/sendMail");
+const sendToken = require("../utilities/jwtToken");
 const { isAuthenticated } = require("../middleware/auth");
 const user = require("../model/user");
 

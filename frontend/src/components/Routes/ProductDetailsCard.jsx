@@ -7,15 +7,15 @@ import {
 } from "react-icons/ai";
 import { RxCross1 } from "react-icons/rx";
 import { Link } from "react-router-dom";
-import { backend_url } from "../../../server";
-import styles from "../../../styles/styles";
+import { backend_url } from "../../server";
+import styles from "../../styles";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { addTocart } from "../../../redux/actions/cart";
+import { addTocart } from "../../redux/actions/cart";
 import {
   addToWishlist,
   removeFromWishlist,
-} from "../../../redux/actions/wishlist";
+} from "../../redux/actions/wishlist";
 
 const ProductDetailsCard = ({ setOpen, data }) => {
   const { cart } = useSelector((state) => state.cart);

@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getAllProductsShop } from "../../redux/actions/product";
-import styles from "../../styles/styles";
-import ProductCard from "../Route/ProductCard/ProductCard";
+import styles from "../../styles";
+import ProductCard from "../Routes/ProductCard";
 import { backend_url } from "../../server";
 import Ratings from "../Products/Ratings";
-import { getAllEventsShop } from "../../redux/actions/event";
 
 const ShopProfileData = ({ isOwner }) => {
   const { products } = useSelector((state) => state.products);
@@ -17,7 +16,6 @@ const ShopProfileData = ({ isOwner }) => {
 
   useEffect(() => {
     dispatch(getAllProductsShop(id));
-    dispatch(getAllEventsShop(seller._id));
   }, [dispatch]);
 
   const [active, setActive] = useState(1);

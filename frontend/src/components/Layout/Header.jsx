@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import styles from "../../styles/styles";
+import styles from "../../styles";
 import { categoriesData, productData } from "../../static/data";
 import {
   AiOutlineHeart,
@@ -14,8 +14,8 @@ import DropDown from "./DropDown";
 import Navbar from "./Navbar";
 import { useSelector } from "react-redux";
 import { backend_url } from "../../server";
-import Cart from "../cart/Cart";
-import Wishlist from "../Wishlist/Wishlist";
+import Cart from "../Cart";
+import Wishlist from "../Wishlist";
 import { RxCross1 } from "react-icons/rx";
 
 const Header = ({ activeHeading }) => {

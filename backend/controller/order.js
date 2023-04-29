@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const ErrorHandler = require("../utils/ErrorHandler");
+const ErrorHandler = require("../utilities/errorHandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const { isAuthenticated, isSeller } = require("../middleware/auth");
 const Order = require("../model/order");

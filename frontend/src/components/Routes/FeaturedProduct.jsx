@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import styles from "../../../styles/styles";
-import ProductCard from "../ProductCard/ProductCard";
+import styles from "../../styles";
+import ProductCard from "./ProductCard";
 
 const FeaturedProduct = () => {
   const {allProducts} = useSelector((state) => state.products);
