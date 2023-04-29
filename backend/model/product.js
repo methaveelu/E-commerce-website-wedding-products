@@ -16,6 +16,7 @@ const productSchema = new mongoose.Schema({
   tags: {
     type: String,
   },
+  
   price: {
     type: Number,
     required: [true, "Please enter product price!"],
@@ -53,7 +54,7 @@ const productSchema = new mongoose.Schema({
   ratings: {
     type: Number,
   },
-  
+
   sold_out: {
     type: Number,
     default: 0,
