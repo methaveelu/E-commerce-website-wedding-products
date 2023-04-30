@@ -7,6 +7,8 @@ npm i country-state-city
 npm i react-icons
 npm i react-lottie
 npm i react-router-dom
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init
 
 ## Wedding Venue
 - Ceremony Venue
