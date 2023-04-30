@@ -2,7 +2,7 @@
 
 # General shopping list for wedding products and services
 
-# Please install the dependencies
+# Please install the frontend dependencies
 npm i country-state-city 
 npm i react-icons
 npm i react-lottie
