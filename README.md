@@ -2,6 +2,12 @@
 
 # General shopping list for wedding products and services
 
+# Please install the dependencies
+npm i country-state-city 
+npm i react-icons
+npm i react-lottie
+npm i react-router-dom
+
 ## Wedding Venue
 - Ceremony Venue
 - Reception Venue
