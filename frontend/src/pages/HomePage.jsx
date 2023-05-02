@@ -4,6 +4,7 @@ import Hero from "../components/Layout/Hero";
 import FeaturedProduct from '../components/Route/FeaturedProduct/FeaturedProduct';
 import Sponsored from "../components/Route/Sponsored.jsx";
 import Footer from '../components/Layout/Footer.jsx';
+import Categories from '../components/Route/Categories/Categories';
 
 const HomePage = () => {
   return (
@@ -13,6 +14,7 @@ const HomePage = () => {
         <FeaturedProduct />
         <Sponsored />
         <Footer />
+        <Categories/>
     </div>
   )
 }
