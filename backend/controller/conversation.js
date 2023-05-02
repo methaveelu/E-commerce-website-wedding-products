@@ -1,5 +1,5 @@
 const Conversation = require("../model/conversation");
-const ErrorHandler = require("../utilities/errorHandler");
+const ErrorHandler = require("../utilities/ErrorHandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const express = require("express");
 const { isSeller, isAuthenticated } = require("../middleware/auth");
