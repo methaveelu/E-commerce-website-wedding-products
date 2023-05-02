@@ -4,6 +4,7 @@ import Footer from "../components/Layout/Footer";
 import Header from "../components/Layout/Header";
 import ProductCard from "../components/Route/ProductCard/ProductCard";
 import styles from "../styles/styles";
+import { productData } from "../static/data";
 
 const ProductsPage = () => {
   const [searchParams] = useSearchParams();
@@ -16,10 +17,10 @@ const ProductsPage = () => {
       setData(d);
     } else {
       const d =
-      allProducts && allProducts.filter((i) => i.category === categoryData);
+      productData && productData.filter((i) => i.category === categoryData);
       setData(d);
     }
-  }, [allProducts]);
+  }, [productData]);
 
   return (
   <>
