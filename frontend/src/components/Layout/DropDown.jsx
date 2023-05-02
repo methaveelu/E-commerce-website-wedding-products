@@ -14,7 +14,7 @@ const DropDown = ({ categoriesData, setDropDown }) => {
         <div className="pb-4 w-[270px] bg-[#fff] absolute z-30 rounded-b-md shadow-sm">
             {categoriesData &&
             categoriesData.map((i, index) => (
-                <div key={index} className={`${styles.noramlFlex}`} onClick={() => submitHandle(i)}>
+                <div key={index} className={`${styles.normalFlex}`} onClick={() => submitHandle(i)}>
                     <img
                         src={i.image_Url}
                         style={{
