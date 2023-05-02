@@ -5,14 +5,20 @@ import { categoriesData, productData } from "../../static/data";
 import { AiOutlineHeart,AiOutlineSearch, AiOutlineShoppingCart,} from "react-icons/ai";
 import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 import {BiMenuAltLeft} from "react-icons/bi";
+import { CgProfile } from "react-icons/cg";
 import DropDown from "./DropDown";
+import Navbar from './Navbar';
 
 
-const Header = () => {
+
+const Header = ({activeHeading}) => {
     const [searchTerm, setSearchTerm] =useState("")
     const [searchData, setSearchData] =useState(null)
     const [active, setActive] = useState(false);
     const [dropDown, setDropDown] = useState(false);
+    const [openWishlist, setOpenWishlist] = useState(false);
+    const [openCart, setOpenCart] = useState(false);
+    // const [open, setOpen] = useState(false);
 
     const handleSearchChange = (e) => {
         const term = e.target.value;
@@ -38,13 +44,13 @@ const Header = () => {
 
     return (
         <>
-        <div className={`${styles.section}`}>  {/*create container */}
+        <div className={`${styles.section}`}>  
             <div className="hidden 800px:h-[50px] 800px:my-[20px] 800px:flex items-center justify-between">
               {/* icon links to Homepage */}
               <div>
                 <Link to="/">
                   <img
-                    src="https://shopo.quomodothemes.website/assets/images/logo.svg"
+                    src="https://img.icons8.com/?size=128&id=lnusCG1HDeb9&format=png"
                     alt=""
                   />
                 </Link>
@@ -96,8 +102,8 @@ const Header = () => {
             </div>
 
             <div className = {`${
-          active === true ? "shadow-sm fixed top-0 left-0 z-10" : null
-        } transition hidden 800px:flex items-center justify-between w-full bg-[#3321c8] h-[70px]`}>
+                active === true ? "shadow-sm fixed top-0 left-0 z-10" : null
+                } transition hidden 800px:flex items-center justify-between w-full bg-[#2b2182] h-[70px]`}>
                 <div className={`${styles.section} relative ${styles.noramlFlex} justify-between`}>
                     {/* categories */}
                     <div onClick={() => setDropDown(!dropDown)}>
@@ -118,14 +124,50 @@ const Header = () => {
                                 categoriesData={categoriesData}
                                 setDropDown={setDropDown}
                                 />
-                            ) : null}
+                            ) : null}  
                         </div>
                     </div>
-                        
+                    {/* navitems */}
+                    <div className={`${styles.noramlFlex}`}>
+                        <Navbar active={activeHeading} />
+                    </div>
+                    
+                    {/* wishlist, Cart and profile */}
+                    <div className="flex">
+                        <div className={`${styles.noramlFlex}`}>
+                            <div
+                                className="relative cursor-pointer mr-[15px]"
+                                onClick={() => setOpenWishlist(true)}>
+                                <AiOutlineHeart size={30} color="rgb(255 255 255 / 83%)" />
+                                <span className="absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
+                                    {/* {wishlist && wishlist.length} */}
+                                </span>
+                            </div>
+                        </div>
+                        <div className={`${styles.noramlFlex}`}>
+                            <div
+                                className="relative cursor-pointer mr-[15px]"
+                                onClick={() => setOpenCart(true)}>
+                                <AiOutlineShoppingCart size={30} color="rgb(255 255 255 / 83%)" />
+                                <span className="absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
+                                    {/* {cart && cart.length} */}
+                                </span>
+                            </div>
+                        </div>
+                        <div className={`${styles.noramlFlex}`}>
+                            <div className="relative cursor-pointer mr-[15px]">
+                                <Link to="/profile">
+                                    <CgProfile size={30} color="rgb(255 255 255 / 83%)" />
+                                </Link>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
         </>
+        
     )
 }
 
