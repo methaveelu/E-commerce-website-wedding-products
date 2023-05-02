@@ -1,31 +1,36 @@
-import React,{useEffect} from 'react';
-import './App.css';
-import { BrowserRouter,Route,Routes } from 'react-router-dom';
-import {LoginPage,SignupPage,HomePage} from "./Route.js";
+import React, { useEffect } from "react";
+import "./App.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { LoginPage, SignupPage, HomePage, ProductsPage, BestSellingPage, FAQPage } from "./Route.js";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Store from "./redux/store";
-import { loadSeller, loadUser } from "./redux/actions/user";
-// import { getAllProducts } from "./redux/actions/product";
 
 function App() {
-
   useEffect(() => {
-    Store.dispatch(loadUser());
-    // Store.dispatch(loadSeller());
-    // Store.dispatch(getAllProducts());
-
-
   }, []);
 
   return (
     <BrowserRouter>
-    <Routes>
-    <Route path="/" element={<HomePage />} />
-    <Route path="/login" element={<LoginPage />} />
-    <Route path="/sign-up" element={<SignupPage />} />
-    
-    </Routes>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/sign-up" element={<SignupPage />} />
+        <Route path="/products" element={<ProductsPage />} />
+        <Route path="/best-selling" element={<BestSellingPage />} />
+        <Route path="/faq" element={<FAQPage />} />
+      </Routes>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </BrowserRouter>
   );
 }

@@ -6,7 +6,7 @@ import styles from '../../styles/styles'
 //Navbar Component... if its active.. it will be highlghted in green (found in static)
 const Navbar = ({active}) => {
   return (
-    <div className={`block 800px:${styles.noramlFlex}`}>
+    <div className={`block 800px:${styles.normalFlex}`} key="navbar">
          {
             navItems && navItems.map((i,index) => (
                 <div className="flex">
@@ -22,4 +22,4 @@ const Navbar = ({active}) => {
   )
 }
 
-export default Navbar
+export default Navbar;
