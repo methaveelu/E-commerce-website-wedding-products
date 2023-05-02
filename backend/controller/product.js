@@ -6,7 +6,7 @@ const Product = require("../model/product");
 const Order = require("../model/order");
 const Shop = require("../model/shop");
 const { upload } = require("../multer");
-const ErrorHandler = require("../utilities/errorHandler");
+const ErrorHandler = require("../utilities/ErrorHandler");
 const fs = require("fs");
 
 // create product
