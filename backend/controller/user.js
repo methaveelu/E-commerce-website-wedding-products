@@ -40,7 +40,7 @@ router.post("/create-user", upload.single("file"), async (req, res, next) => {
     };
     const newUser = await User.create(user);
 
-    res.status(201).json({
+    res.status(200).json({
       success:true,
       newUser,
     })
