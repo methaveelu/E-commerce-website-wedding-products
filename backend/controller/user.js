@@ -38,6 +38,11 @@ router.post("/create-user", upload.single("file"), async (req, res, next) => {
       password: password,
       avatar: fileUrl,
     };
+    const newUser = await User.create(user);
+    res.status(201).json({
+      success:true,
+      newUser,
+    })
 
     const activationToken = createActivationToken(user);
 
@@ -68,7 +73,7 @@ const createActivationToken = (user) => {
   });
 };
 
-// activate user
+activate user
 router.post(
   "/activation",
   catchAsyncErrors(async (req, res, next) => {
