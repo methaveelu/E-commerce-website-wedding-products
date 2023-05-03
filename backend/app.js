@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 // config
 if (process.env.NODE_ENV !== "PRODUCTION") {
   require("dotenv").config({
-    path: "backend/config/.env",
+    path: "backend/.env",
   });
 }
 
@@ -33,6 +33,9 @@ const order = require("./controller/order");
 const conversation = require("./controller/conversation");
 const message = require("./controller/message");
 
+app.get('/',(req, res) => {
+  res.send('conneted')
+})
 
 app.use("/api/v2/user", user); 
 app.use("/api/v2/conversation", conversation);
