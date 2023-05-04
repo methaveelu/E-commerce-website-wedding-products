@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { useSelector} from 'react-redux';
 import {AiOutlineArrowRight,AiOutlineCamera,AiOutlineDelete,} from "react-icons/ai";
+import { DataGrid } from "@material-ui/data-grid";
+import { Button } from "@material-ui/core";
+import { Link } from "react-router-dom";
 import styles from '../../styles/styles';
 
 const ProfileContent = ({active}) => {
@@ -12,6 +15,11 @@ const ProfileContent = ({active}) => {
     const [zipCode,setZipCode] =useState();
     const [address1,setAddress1] =useState("");
     const [address2, setAddress2] =useState("");
+
+    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    };
 
     return(
         <div className="w-full">
@@ -43,7 +51,7 @@ const ProfileContent = ({active}) => {
             </div>
             
             <div className="w-full px-5">
-                <form  aria-required={true}>
+                <form onSubmit={handleSubmit} aria-required={true}>
                     {/* name and email input chnages */}
                     <div className="w-full 800px:flex block pb-3">
                         <div className=" w-[100%] 800px:w-[50%]">
@@ -139,7 +147,109 @@ const ProfileContent = ({active}) => {
             </div>
             </>
         )}
+         {/* order page */}
+        {active === 2 && (
+            <>
+            <div>
+            <AllOrders/>
+            </div>
+
+            </>
+        )}
         </div>
+    )
+}
+
+
+const AllOrders =()=>{
+    const orders=[
+        {   
+            _id:"644ccfb0a3cabe9c8223404f",
+            orderItems:[
+                {
+                    name: "man suit"
+                },
+            ],
+            totalPrice: 100,
+            orderStatus: "Processing",
+        },
+
+    ]
+
+    const columns = [
+        { field: "id", headerName: "Order ID", minWidth: 150, flex: 0.7 },
+    
+        {
+          field: "status",
+          headerName: "Status",
+          minWidth: 130,
+          flex: 0.7,
+          cellClassName: (params) => {
+            return params.getValue(params.id, "status") === "Delivered"
+              ? "greenColor"
+              : "redColor";
+          },
+        },
+        {
+          field: "itemsQty",
+          headerName: "Items Qty",
+          type: "number",
+          minWidth: 130,
+          flex: 0.7,
+        },
+    
+        {
+          field: "total",
+          headerName: "Total",
+          type: "number",
+          minWidth: 130,
+          flex: 0.8,
+        },
+    
+        {
+          field: " ",
+          flex: 1,
+          minWidth: 150,
+          headerName: "",
+          type: "number",
+          sortable: false,
+          renderCell: (params) => {
+            return (
+              <>
+                <Link to={`/user/order/${params.id}`}>
+                  <Button>
+                    <AiOutlineArrowRight size={20} />
+                  </Button>
+                </Link>
+              </>
+            );
+          },
+        },
+    ];
+    
+    const row = [];
+
+    orders &&
+    orders.forEach((item) => {
+      row.push({
+        id: item._id,
+        itemsQty: item.orderItems.length,
+        total: "SGD$ " + item.totalPrice,
+        status: item.status,
+      });
+    });
+
+    return(
+        <div className="pl-8 pt-1">
+            <DataGrid
+            rows={row}
+            columns={columns}
+            pageSize={10}
+            disableSelectionOnClick
+            autoHeight
+            />
+        </div>
+
     )
 }
 
