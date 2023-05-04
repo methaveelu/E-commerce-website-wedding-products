@@ -8,6 +8,7 @@ import FAQPage from "./pages/FAQPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import PaymentPage from "./pages/PaymentPage";
 import OrderSuccessPage from "./pages/OrderSuccessPage";
+import ProfilePage from "./pages/ProfilePage";
 
 export {
     CheckoutPage,
@@ -20,4 +21,5 @@ export {
     ProductDetailsPage,
     BestSellingPage,
     FAQPage,
+    ProfilePage,
 };
