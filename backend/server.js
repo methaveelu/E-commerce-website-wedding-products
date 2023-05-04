@@ -14,7 +14,7 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
     path: "backend/.env",
   });
 };
-
+console.log('jwt service',this.jwtService)
 connectDatabase();
 
 // create server
