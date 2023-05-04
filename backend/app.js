@@ -23,7 +23,7 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
     path: "backend/.env",
   });
 }
-console.log('jwt service',this.jwtService)
+
 // import routes
 const user = require("./controller/user");
 const shop = require("./controller/shop");
