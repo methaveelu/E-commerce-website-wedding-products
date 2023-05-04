@@ -62,7 +62,7 @@ const Header = ({ activeHeading }) => {
           <div>
             <Link to="/">
               <img
-                src="https://shopo.quomodothemes.website/assets/images/logo.svg"
+                src="https://img.icons8.com/?size=128&id=lnusCG1HDeb9&format=png"
                 alt=""
               />
             </Link>
@@ -80,6 +80,7 @@ const Header = ({ activeHeading }) => {
               size={30}
               className="absolute right-2 top-1.5 cursor-pointer"
             />
+            {/* populate drop down list of typed results */}
             {searchData && searchData.length !== 0 ? (
               <div className="absolute min-h-[30vh] bg-slate-50 shadow-sm-2 z-[9] p-4">
                 {searchData &&
@@ -88,7 +89,8 @@ const Header = ({ activeHeading }) => {
                       <Link to={`/product/${i._id}`}>
                         <div className="w-full flex items-start-py-3">
                           <img
-                            src={`${backend_url}${i.images[0]}`}
+                            // src={`${backend_url}${i.images[0]}`}
+                            src={`${i.image_Url[0].url}`}
                             alt=""
                             className="w-[40px] h-[40px] mr-[10px]"
                           />
@@ -147,7 +149,7 @@ const Header = ({ activeHeading }) => {
           <div className={`${styles.normalFlex}`}>
             <Navbar active={activeHeading} />
           </div>
-
+          {/* wishlist, Cart and profile */}      
           <div className="flex">
             <div className={`${styles.normalFlex}`}>
               <div
