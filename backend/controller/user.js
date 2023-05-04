@@ -12,7 +12,7 @@ const sendToken = require("../utilities/jwtToken");
 const { isAuthenticated } = require("../middleware/auth");
   
 
-router.post("/create-user", upload.single("file"), async (req, res, next) => {
+router.post("/create-user", async (req, res, next) => {
   try {
     const { name, email, password } = req.body;
     const userEmail = await User.findOne({ email });
@@ -39,6 +39,7 @@ router.post("/create-user", upload.single("file"), async (req, res, next) => {
       // avatar: fileUrl,
     };
     const newUser = await User.create(user);
+    console.log('newUser', newUser);
 
     res.status(200).json({
       success:true,
