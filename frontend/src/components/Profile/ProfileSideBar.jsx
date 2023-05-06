@@ -6,12 +6,28 @@ import { RiLockPasswordLine } from "react-icons/ri";
 import { HiOutlineReceiptRefund, HiOutlineShoppingBag } from "react-icons/hi";
 import { TbAddressBook } from "react-icons/tb";
 import {MdOutlineAdminPanelSettings,MdOutlinePassword, MdOutlineTrackChanges,} from "react-icons/md";
+import axios from 'axios';
+import {server} from '../../server'
+
 
 const ProfileSideBar = ({ setActive, active }) => {
     const navigate = useNavigate();
 
+    const logoutHandler = () => {
+      axios
+      .get(`${server}/user/logout`, { withCredentials: true })
+      .then((res) => {
+        toast.success(res.data.message);
+        window.location.reload(true);
+        navigate("/login");
+      })
+      .catch((error) => {
+        console.log(error.response.data.message);
+      });
+    };
+
   return (
-    <div className="w-full bg-white shadow-sm rounded-[10px] p-4 pt-8">
+    <div className="w-full bg-gray-200 shadow-sm rounded-[10px] p-4 pt-8">
         <div
         className="flex items-center cursor-pointer w-full mb-8"
         onClick={() => setActive(1)}
@@ -108,6 +124,21 @@ const ProfileSideBar = ({ setActive, active }) => {
           Address
         </span>
         </div>
+        <div
+          className="single_item flex items-center cursor-pointer w-full mb-8"
+          onClick={logoutHandler}
+        >
+        <AiOutlineLogin size={20} color={active === 8 ? "red" : ""} />
+        <span
+          className={`pl-3 ${
+            active === 8 ? "text-[red]" : ""
+          } 800px:block hidden`}
+        >
+          Log out
+        </span>
+        </div>
+        
+
 
     </div>
   )
