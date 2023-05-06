@@ -21,19 +21,19 @@ body {
 h1,
 h2,
 h3 {
-  font-family: "Great Vibes", cursive;
+  font-family: "Great Vibes", sans-serif;
   font-weight: bold;
 }
 
 h4,
 h5,
 h6 {
-  font-family: "Allura", cursive;
+  font-family: "Allura", sans-serif;
   font-weight: bold;
 }
 
 p {
-  font-family: "Quintessential", cursive;
+  font-family: "Quintessential", sans-serif;
   font-size: 1.1rem;
 }
 
