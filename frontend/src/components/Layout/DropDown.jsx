@@ -11,26 +11,22 @@ const DropDown = ({ categoriesData, setDropDown }) => {
   };
   return (
     <div>
-      <div className="pb-4 w-[270px] bg-[#F8C4D7] absolute z-30 rounded-b-md shadow-sm">
+      <div className="pb-4 w-[270px] bg-pink-200 absolute z-30 rounded-md shadow-lg">
         {categoriesData &&
           categoriesData.map((i, index) => (
             <div
               key={index}
-              className={`${styles.normalFlex}`}
+              className={`${styles.normalFlex} items-center px-4 py-2 cursor-pointer hover:bg-pink-300`}
               onClick={() => submitHandle(i)}
             >
-              <img
-                src={i.image_Url}
-                style={{
-                  width: "25px",
-                  height: "25px",
-                  objectFit: "contain",
-                  marginLeft: "10px",
-                  userSelect: "none",
-                }}
-                alt=""
-              />
-              <h3 className="m-3 cursor-pointer select-none">{i.title}</h3>
+              <div className="w-6 h-6 mr-2">
+                <img
+                  src={i.image_Url}
+                  style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                  alt=""
+                />
+              </div>
+              <h3 className="text-lg font-bold select-none">{i.title}</h3>
             </div>
           ))}
       </div>

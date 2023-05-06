@@ -10,8 +10,7 @@ import { DataGrid } from "@material-ui/data-grid";
 import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { RxCross1 } from "react-icons/rx";
-import styles from '../../styles/styles';
-
+import styles from "../../styles/styles";
 
 const ProfileContent = ({ active }) => {
   const { user } = useSelector((state) => state.user);
