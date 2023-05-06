@@ -19,5 +19,5 @@ const HomePage = () => {
     </div>
   )
 }
-
+//the pages consist of a couple of child components which make up different sect of the page 
 export default HomePage;
