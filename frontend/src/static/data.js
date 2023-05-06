@@ -187,66 +187,66 @@ export const brandingData = [
 export const categoriesData = [
   {
     id: 1,
-    title: "Computers and Laptops",
+    title: "dress",
     subTitle: "",
     image_Url:
-      "https://cdn.shopify.com/s/files/1/1706/9177/products/NEWAppleMacbookProwithM1ProChip14InchLaptop2021ModelMKGQ3LL_A_16GB_1TBSSD_custommacbd.jpg?v=1659592838",
+      "https://cdn.shopify.com/s/files/1/2334/9687/products/a0666w-2-feature_350x.jpg?v=1681429283",
   },
   {
     id: 2,
-    title: "cosmetics and body care",
+    title: "suit",
     subTitle: "",
     image_Url:
-      "https://indian-retailer.s3.ap-south-1.amazonaws.com/s3fs-public/2021-07/kosme1.png",
+      "https://cdn.suitsupply.com/image/upload/ar_10:21,b_rgb:efefef,bo_200px_solid_rgb:efefef,c_pad,g_north,w_2600/b_rgb:efefef,c_lfill,dpr_1,w_1296,h_1555,f_auto,q_auto,g_north,fl_progressive/products/suits/default/Winter/P4302E_1.jpg",
   },
   {
     id: 3,
-    title: "Accesories",
+    title: "Bride’s footwear",
     subTitle: "",
     image_Url:
-      "https://img.freepik.com/free-vector/ordering-goods-online-internet-store-online-shopping-niche-e-commerce-website-mother-buying-babies-clothes-footwear-toys-infant-accessories_335657-2345.jpg?w=2000",
+      "https://images.selfridges.com/is/image/selfridges/834-10132-J000108579_WHITEWHITE_M?$PDP_T_MAX_WIDTH$",
   },
   {
     id: 4,
-    title: "Cloths",
+    title: "Groom’s footwear",
     subTitle: "",
     image_Url:
-      "https://www.shift4shop.com/2015/images/industries/clothing/clothing-apparel.png",
+      "https://images.selfridges.com/is/image/selfridges/R04075694_HAVANE_M?$PDP_T_MAX_WIDTH$",
   },
-  {
-    id: 5,
-    title: "Shoes",
-    subTitle: "",
-    image_Url:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvBQPQMVNRd6TtDkGs2dCri0Y-rxKkFOiEWw&usqp=CAU",
-  },
-  {
-    id: 6,
-    title: "Gifts",
-    subTitle: "",
-    image_Url:
-      "https://securecdn.pymnts.com/wp-content/uploads/2014/11/Gifts-Photo-700x489.jpg",
-  },
-  {
-    id: 7,
-    title: "Pet Care",
-    subTitle: "",
-    image_Url: "https://cdn.openpr.com/T/c/Tc15444071_g.jpg",
-  },
-  {
-    id: 8,
-    title: "Mobile and Tablets",
-    subTitle: "",
-    image_Url:
-      "https://st-troy.mncdn.com/mnresize/1500/1500/Content/media/ProductImg/original/mpwp3tua-apple-iphone-14-256gb-mavi-mpwp3tua-637986832343472449.jpg",
-  },
-  {
-    id: 9,
-    title: "Music and Gaming",
-    subTitle: "",
-    image_Url:
-      "https://static.vecteezy.com/system/resources/previews/011/996/555/original/3d-black-headphone-illustration-ecommerce-icon-png.png",
-  },
+  // {
+  //   id: 5,
+  //   title: "Shoes",
+  //   subTitle: "",
+  //   image_Url:
+  //     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvBQPQMVNRd6TtDkGs2dCri0Y-rxKkFOiEWw&usqp=CAU",
+  // },
+  // {
+  //   id: 6,
+  //   title: "Gifts",
+  //   subTitle: "",
+  //   image_Url:
+  //     "https://securecdn.pymnts.com/wp-content/uploads/2014/11/Gifts-Photo-700x489.jpg",
+  // },
+  // {
+  //   id: 7,
+  //   title: "Pet Care",
+  //   subTitle: "",
+  //   image_Url: "https://cdn.openpr.com/T/c/Tc15444071_g.jpg",
+  // },
+  // {
+  //   id: 8,
+  //   title: "Mobile and Tablets",
+  //   subTitle: "",
+  //   image_Url:
+  //     "https://st-troy.mncdn.com/mnresize/1500/1500/Content/media/ProductImg/original/mpwp3tua-apple-iphone-14-256gb-mavi-mpwp3tua-637986832343472449.jpg",
+  // },
+  // {
+  //   id: 9,
+  //   title: "Music and Gaming",
+  //   subTitle: "",
+  //   image_Url:
+  //     "https://static.vecteezy.com/system/resources/previews/011/996/555/original/3d-black-headphone-illustration-ecommerce-icon-png.png",
+  // },
   // {
   //   id: 10,
   //   title: "Others",
@@ -347,7 +347,7 @@ export const productData = [
     rating: 4,
     total_sell: 75,
     stock: 10,
-    category:"GROOM ATTIRE"
+    category:"suit"
   },
   {
     id: 4,
