@@ -20,10 +20,11 @@ import { RxCross1 } from "react-icons/rx";
 
 const Header = ({ activeHeading }) => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
-  // const { isSeller } = useSelector((state) => state.seller);
+  const { isSeller , seller} = useSelector((state) => state.seller);
   // const { wishlist } = useSelector((state) => state.wishlist);
   // const { cart } = useSelector((state) => state.cart);
   // const { allProducts } = useSelector((state) => state.products);
+  
   const [searchTerm, setSearchTerm] = useState("");
   const [searchData, setSearchData] = useState(null);
   const [active, setActive] = useState(false);
@@ -31,7 +32,7 @@ const Header = ({ activeHeading }) => {
   const [openCart, setOpenCart] = useState(false);
   const [openWishlist, setOpenWishlist] = useState(false);
   const [open, setOpen] = useState(false);
-
+console.log('isauthenticated', isAuthenticated)
   const handleSearchChange = (e) => {
     const term = e.target.value;
     setSearchTerm(term);
@@ -42,7 +43,8 @@ const Header = ({ activeHeading }) => {
       //   product.name.toLowerCase().includes(term.toLowerCase())
       // );
       productData.filter((product) =>
-      product.name.toLowerCase().includes(term.toLowerCase()));
+        product.name.toLowerCase().includes(term.toLowerCase())
+      );
 
     setSearchData(filteredProducts);
   };
@@ -74,7 +76,7 @@ const Header = ({ activeHeading }) => {
               placeholder="Search Product..."
               value={searchTerm}
               onChange={handleSearchChange}
-              className="h-[40px] w-full px-2 border-[#3957db] border-[2px] rounded-md"
+              className="h-10 w-full px-2 border rounded-[5px] bg-[#ffd6db]"
             />
             <AiOutlineSearch
               size={30}
@@ -103,12 +105,11 @@ const Header = ({ activeHeading }) => {
             ) : null}
           </div>
 
-          <div className={`${styles.button}`}>
-            {/* <Link to={`${isSeller ? "/dashboard" : "/shop-create"}`}> */}
-            <Link to="/seller">
+          <div className={`${styles.button} hover:bg-teal-500`}>
+          {/* <Link to={`${isSeller ? "/dashboard" : "/shop-create"}`}> */}
+          <Link to={`${isSeller ? `/shop/${seller._id}` : "/shop-create"}`}>
               <h1 className="text-[#fff] flex items-center">
-                {/* {isSeller ? "Go Dashboard" : "Become Seller"}{" "} */}
-                Become Seller
+                {isSeller ? "Go Dashboard" : "Become Seller"}{" "}
                 <IoIosArrowForward className="ml-1" />
               </h1>
             </Link>
@@ -118,7 +119,7 @@ const Header = ({ activeHeading }) => {
       <div
         className={`${
           active === true ? "shadow-sm fixed top-0 left-0 z-10" : null
-        } transition hidden 800px:flex items-center justify-between w-full bg-[#3321c8] h-[70px]`}
+        } 800px:flex justify-between w-full bg-[#F8C4D7] h-[70px] bg-[#f8c4d7]`}
       >
         <div
           className={`${styles.section} relative ${styles.normalFlex} justify-between`}
@@ -128,19 +129,20 @@ const Header = ({ activeHeading }) => {
             <div className="relative h-[60px] mt-[10px] w-[270px] hidden 1000px:block">
               <BiMenuAltLeft size={30} className="absolute top-3 left-2" />
               <button
-                className={`h-[100%] w-full flex justify-between items-center pl-10 bg-white font-sans text-lg font-[500] select-none rounded-t-md`}
+                className={`${styles.normalFlex} justify-between items-center pl-10 bg-[#F8C4D7] text-[#333] font-Poppins font-medium text-lg select-none rounded-t-md border-none background-color-transparent`}
               >
                 All Categories
               </button>
               <IoIosArrowDown
                 size={20}
-                className="absolute right-2 top-4 cursor-pointer"
+                className="absolute right-2 top-4 cursor-pointer bg-[#F8C4D7]"
                 onClick={() => setDropDown(!dropDown)}
               />
               {dropDown ? (
                 <DropDown
                   categoriesData={categoriesData}
                   setDropDown={setDropDown}
+                  className="z-10"
                 />
               ) : null}
             </div>
@@ -149,14 +151,14 @@ const Header = ({ activeHeading }) => {
           <div className={`${styles.normalFlex}`}>
             <Navbar active={activeHeading} />
           </div>
-          {/* wishlist, Cart and profile */}      
+          {/* wishlist, Cart and profile */}
           <div className="flex">
             <div className={`${styles.normalFlex}`}>
               <div
                 className="relative cursor-pointer mr-[15px]"
                 onClick={() => setOpenWishlist(true)}
               >
-                <AiOutlineHeart size={30} color="rgb(255 255 255 / 83%)" />
+                <AiOutlineHeart size={30} color="#ff4d4d" />
                 <span className="absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
                   {/* {wishlist && wishlist.length} */}
                 </span>
@@ -168,10 +170,7 @@ const Header = ({ activeHeading }) => {
                 className="relative cursor-pointer mr-[15px]"
                 onClick={() => setOpenCart(true)}
               >
-                <AiOutlineShoppingCart
-                  size={30}
-                  color="rgb(255 255 255 / 83%)"
-                />
+                <AiOutlineShoppingCart size={30} color="#ffd700" />
                 <span className="absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
                   {/* {cart && cart.length} */}
                 </span>
@@ -210,9 +209,9 @@ const Header = ({ activeHeading }) => {
       {/* mobile header */}
       <div
         className={`${
-          active === true ? "shadow-sm fixed top-0 left-0 z-10" : null
+          active === true ? "shadow-sm fixed top-0 left-0 z-50" : null
         }
-      w-full h-[60px] bg-[#fff] z-50 top-0 left-0 shadow-sm 800px:hidden`}
+      w-full h-[60px] bg-[#F8C4D7] z-50 top-0 left-0 shadow-sm 800px:hidden`}
       >
         <div className="w-full flex items-center justify-between">
           <div>
@@ -225,7 +224,7 @@ const Header = ({ activeHeading }) => {
           <div>
             <Link to="/">
               <img
-                src="https://shopo.quomodothemes.website/assets/images/logo.svg"
+                src="https://img.icons8.com/?size=128&id=lnusCG1HDeb9&format=png"
                 alt=""
                 className="mt-3 cursor-pointer"
               />
@@ -237,7 +236,7 @@ const Header = ({ activeHeading }) => {
               onClick={() => setOpenCart(true)}
             >
               <AiOutlineShoppingCart size={30} />
-              <span className="absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px]  leading-tight text-center">
+              <span className="absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
                 {/* {cart && cart.length} */}
               </span>
             </div>
@@ -252,7 +251,7 @@ const Header = ({ activeHeading }) => {
         {/* header sidebar */}
         {open && (
           <div
-            className={`fixed w-full bg-[#0000005f] z-20 h-full top-0 left-0`}
+            className={`fixed w-full bg-[#0000005f] h-full top-0 left-0 z-30`}
           >
             <div className="fixed w-[70%] bg-[#fff] h-screen top-0 left-0 z-10 overflow-y-scroll">
               <div className="w-full justify-between flex pr-3">
@@ -263,7 +262,7 @@ const Header = ({ activeHeading }) => {
                   >
                     <AiOutlineHeart size={30} className="mt-5 ml-3" />
                     <span className="absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px]  leading-tight text-center">
-                      {wishlist && wishlist.length}
+                      {/* {wishlist && wishlist.length} */}
                     </span>
                   </div>
                 </div>
@@ -273,17 +272,17 @@ const Header = ({ activeHeading }) => {
                   onClick={() => setOpen(false)}
                 />
               </div>
-
+              {/* search bar mobile */}
               <div className="my-8 w-[92%] m-auto h-[40px relative]">
                 <input
                   type="search"
                   placeholder="Search Product..."
-                  className="h-[40px] w-full px-2 border-[#3957db] border-[2px] rounded-md"
+                  className="h-[40px] w-full px-2 border-[#cc99ff] border-[2px] rounded-md outline: none border-radius: 0"
                   value={searchTerm}
                   onChange={handleSearchChange}
                 />
                 {searchData && (
-                  <div className="absolute bg-[#fff] z-10 shadow w-full left-0 p-3">
+                  <div className="absolute bg-[#fff] shadow w-full left-0 p-3 overflow-y-scroll outline-none border-radius-0 z-20">
                     {searchData.map((i) => {
                       const d = i.name;
 
@@ -306,7 +305,9 @@ const Header = ({ activeHeading }) => {
               </div>
 
               <Navbar active={activeHeading} />
-              <div className={`${styles.button} ml-4 !rounded-[4px]`}>
+              <div
+                className={`${styles.button} ml-4 !rounded-[4px] text-decoration: none`}
+              >
                 <Link to="/shop-create">
                   <h1 className="text-[#fff] flex items-center">
                     Become Seller <IoIosArrowForward className="ml-1" />

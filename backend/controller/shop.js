@@ -18,7 +18,7 @@ router.post("/create-shop", upload.single("file"), async (req, res, next) => {
     const { email } = req.body;
     const sellerEmail = await Shop.findOne({ email });
     if (sellerEmail) {
-      const filename = req.file.filename;
+      const filename = req.file.originalname;
       const filePath = `uploads/${filename}`;
       fs.unlink(filePath, (err) => {
         if (err) {
@@ -29,7 +29,7 @@ router.post("/create-shop", upload.single("file"), async (req, res, next) => {
       return next(new ErrorHandler("User already exists", 400));
     }
 
-    const filename = req.file.filename;
+    const filename = req.file.originalname;
     const fileUrl = path.join(filename);
 
     const seller = {
@@ -150,6 +150,7 @@ router.get(
   isSeller,
   catchAsyncErrors(async (req, res, next) => {
     try {
+      console.log('seller',req.seller);
       const seller = await Shop.findById(req.seller._id);
 
       if (!seller) {

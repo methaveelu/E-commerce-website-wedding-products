@@ -34,7 +34,7 @@ const conversation = require("./controller/conversation");
 const message = require("./controller/message");
 
 app.get('/',(req, res) => {
-  res.send('conneted')
+  res.send('backend is working')
 })
 
 app.use("/api/v2/user", user); 
