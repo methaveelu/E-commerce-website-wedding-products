@@ -10,7 +10,6 @@ const jwt = require("jsonwebtoken");
 const sendMail = require("../utilities/sendMail");
 const sendToken = require("../utilities/jwtToken");
 const { isAuthenticated } = require("../middleware/auth");
-  
 
 router.post("/create-user", upload.single("file"), async (req, res, next) => {
   try {
@@ -110,7 +109,7 @@ router.post(
   catchAsyncErrors(async (req, res, next) => {
     try {
       const { email, password } = req.body;
-    
+
       if (!email || !password) {
         return next(new ErrorHandler("Please provide the all fields!", 400));
       }
@@ -128,10 +127,8 @@ router.post(
           new ErrorHandler("Please provide the correct information", 400)
         );
       }
-      
 
       sendToken(user, 201, res);
-
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));
     }
