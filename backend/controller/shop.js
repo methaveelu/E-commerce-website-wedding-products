@@ -150,7 +150,7 @@ router.get(
   isSeller,
   catchAsyncErrors(async (req, res, next) => {
     try {
-      console.log('seller',req.seller);
+      console.log("seller", req.seller);
       const seller = await Shop.findById(req.seller._id);
 
       if (!seller) {
@@ -178,7 +178,7 @@ router.get(
       });
       res.status(201).json({
         success: true,
-        message: "Log out successful!",
+        message: "Logout successful!",
       });
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));

@@ -63,7 +63,7 @@ shopSchema.methods.getJwtToken = function () {
   });
 };
 
-// comapre password
+// compare password
 shopSchema.methods.comparePassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
