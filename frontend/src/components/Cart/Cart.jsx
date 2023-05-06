@@ -12,25 +12,24 @@ import { toast } from "react-toastify";
 const Cart = ({ setOpenCart }) => {
   // const { cart } = useSelector((state) => state.cart);
 
-  const cartData =[
+  const cartData = [
     {
-      Name:"Iphone 14 pro max",
+      Name: "SHERRI HILL 51671 DRESS",
       description: "test",
-      price: 999,
+      price: 1099,
     },
     {
-      Name:"Iphone 14 pro max",
+      Name: "Mid Blue Three-Piece Lazio Suit",
       description: "test",
-      price: 999,
+      price: 1099,
     },
     {
-      Name:"Iphone 14 pro max",
+      Name: "Dandelion Tassel leather loafers",
       description: "test",
-      price: 999,
+      price: 300,
     },
-  ]
+  ];
 
-  
   // const dispatch = useDispatch();
 
   // const removeFromCartHandler = (data) => {
@@ -48,7 +47,7 @@ const Cart = ({ setOpenCart }) => {
 
   return (
     <div className="fixed top-0 left-0 w-full bg-[#0000004b] h-screen z-10">
-      <div className="fixed top-0 right-0 h-full w-[80%] 800px:w-[25%] bg-white flex flex-col overflow-y-scroll justify-between shadow-sm">
+      <div className="fixed top-0 right-0 h-full w-[80%] 800px:w-[25%] bg-gray-200 flex flex-col overflow-y-scroll justify-between shadow-sm">
         {cartData && cartData.length === 0 ? (
           <div className="w-full h-screen flex items-center justify-center">
             <div className="flex w-full justify-end pt-5 pr-5 fixed top-3 right-3">
@@ -163,7 +162,6 @@ const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
           </h4>
           <h4 className="font-[600] text-[17px] pt-[3px] text-[#d02222] font-Roboto">
             SGD${totalPrice}
-
           </h4>
         </div>
         <RxCross1

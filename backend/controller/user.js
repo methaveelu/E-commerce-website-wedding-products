@@ -104,7 +104,7 @@ router.get(
   })
 );
 
-// log out user
+// log out user (empty the cookie and expire the token)
 router.get(
   "/logout",
   catchAsyncErrors(async (req, res, next) => {
