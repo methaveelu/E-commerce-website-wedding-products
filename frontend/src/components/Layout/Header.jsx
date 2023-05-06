@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "../../styles/styles";
-import { categoriesData } from "../../static/data";
+import { categoriesData, productData } from "../../static/data";
 import {
   AiOutlineHeart,
   AiOutlineSearch,
@@ -21,9 +21,9 @@ import { RxCross1 } from "react-icons/rx";
 const Header = ({ activeHeading }) => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
   // const { isSeller } = useSelector((state) => state.seller);
-  const { wishlist } = useSelector((state) => state.wishlist);
-  const { cart } = useSelector((state) => state.cart);
-  const { allProducts } = useSelector((state) => state.products);
+  // const { wishlist } = useSelector((state) => state.wishlist);
+  // const { cart } = useSelector((state) => state.cart);
+  // const { allProducts } = useSelector((state) => state.products);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchData, setSearchData] = useState(null);
   const [active, setActive] = useState(false);
@@ -37,10 +37,13 @@ const Header = ({ activeHeading }) => {
     setSearchTerm(term);
 
     const filteredProducts =
-      allProducts &&
-      allProducts.filter((product) =>
-        product.name.toLowerCase().includes(term.toLowerCase())
-      );
+      // allProducts &&
+      // allProducts.filter((product) =>
+      //   product.name.toLowerCase().includes(term.toLowerCase())
+      // );
+      productData.filter((product) =>
+      product.name.toLowerCase().includes(term.toLowerCase()));
+
     setSearchData(filteredProducts);
   };
 
@@ -59,7 +62,7 @@ const Header = ({ activeHeading }) => {
           <div>
             <Link to="/">
               <img
-                src="https://shopo.quomodothemes.website/assets/images/logo.svg"
+                src="https://img.icons8.com/?size=128&id=lnusCG1HDeb9&format=png"
                 alt=""
               />
             </Link>
@@ -77,6 +80,7 @@ const Header = ({ activeHeading }) => {
               size={30}
               className="absolute right-2 top-1.5 cursor-pointer"
             />
+            {/* populate drop down list of typed results */}
             {searchData && searchData.length !== 0 ? (
               <div className="absolute min-h-[30vh] bg-slate-50 shadow-sm-2 z-[9] p-4">
                 {searchData &&
@@ -85,7 +89,8 @@ const Header = ({ activeHeading }) => {
                       <Link to={`/product/${i._id}`}>
                         <div className="w-full flex items-start-py-3">
                           <img
-                            src={`${backend_url}${i.images[0]}`}
+                            // src={`${backend_url}${i.images[0]}`}
+                            src={`${i.image_Url[0].url}`}
                             alt=""
                             className="w-[40px] h-[40px] mr-[10px]"
                           />
@@ -99,9 +104,11 @@ const Header = ({ activeHeading }) => {
           </div>
 
           <div className={`${styles.button}`}>
-            <Link to={`${isSeller ? "/dashboard" : "/shop-create"}`}>
+            {/* <Link to={`${isSeller ? "/dashboard" : "/shop-create"}`}> */}
+            <Link to="/seller">
               <h1 className="text-[#fff] flex items-center">
-                {isSeller ? "Go Dashboard" : "Become Seller"}{" "}
+                {/* {isSeller ? "Go Dashboard" : "Become Seller"}{" "} */}
+                Become Seller
                 <IoIosArrowForward className="ml-1" />
               </h1>
             </Link>
@@ -142,7 +149,7 @@ const Header = ({ activeHeading }) => {
           <div className={`${styles.normalFlex}`}>
             <Navbar active={activeHeading} />
           </div>
-
+          {/* wishlist, Cart and profile */}      
           <div className="flex">
             <div className={`${styles.normalFlex}`}>
               <div
@@ -151,7 +158,7 @@ const Header = ({ activeHeading }) => {
               >
                 <AiOutlineHeart size={30} color="rgb(255 255 255 / 83%)" />
                 <span className="absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
-                  {wishlist && wishlist.length}
+                  {/* {wishlist && wishlist.length} */}
                 </span>
               </div>
             </div>
@@ -166,7 +173,7 @@ const Header = ({ activeHeading }) => {
                   color="rgb(255 255 255 / 83%)"
                 />
                 <span className="absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
-                  {cart && cart.length}
+                  {/* {cart && cart.length} */}
                 </span>
               </div>
             </div>
@@ -230,8 +237,8 @@ const Header = ({ activeHeading }) => {
               onClick={() => setOpenCart(true)}
             >
               <AiOutlineShoppingCart size={30} />
-              <span class="absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px]  leading-tight text-center">
-                {cart && cart.length}
+              <span className="absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px]  leading-tight text-center">
+                {/* {cart && cart.length} */}
               </span>
             </div>
           </div>
@@ -255,7 +262,7 @@ const Header = ({ activeHeading }) => {
                     onClick={() => setOpenWishlist(true) || setOpen(false)}
                   >
                     <AiOutlineHeart size={30} className="mt-5 ml-3" />
-                    <span class="absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px]  leading-tight text-center">
+                    <span className="absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px]  leading-tight text-center">
                       {wishlist && wishlist.length}
                     </span>
                   </div>
