@@ -459,6 +459,51 @@ const TrackOrder = () => {
 
     )
 }
-
+const Address = ()=>{
+  return(
+  <div className="w-full px-5">
+    <div className="flex w-full items-center justify-between">
+      <h1 className="text-[25px] font-[600] text-[#000000ba] pb-2">
+        My Addresses
+      </h1>
+      <div
+        className={`${styles.button} !rounded-md`}
+        // onClick={() => setOpen(true)}
+      >
+        <span className="text-[#fff]">Add New</span>
+      </div>
+    </div>
+    <br />
+    <div
+      className="w-full bg-white h-min 800px:h-[70px] rounded-[4px] flex items-center px-3 shadow justify-between pr-10 mb-5"
+      // key={index}
+    >
+      <div className="flex items-center">
+        <h5 className="pl-5 font-[600]">Default</h5>
+      </div>
+      <div className="pl-8 flex items-center">
+        <h6 className="text-[12px] 800px:text-[unset]">
+          562 Choa Chu kang Street 52
+          {/* {item.address1} {item.address2} */}
+        </h6>
+      </div>
+      <div className="pl-8 flex items-center">
+        <h6 className="text-[12px] 800px:text-[unset]">
+          +65 92370317
+          {/* {user && user.phoneNumber} */}
+        </h6>
+      </div>
+      <div className="min-w-[10%] flex items-center justify-between pl-8">
+        <AiOutlineDelete
+          size={25}
+          className="cursor-pointer"
+          // onClick={() => handleDelete(item)}
+        />
+      </div>
+    </div>
+  </div>
+  )
+     
+}
 
 export default ProfileContent
