@@ -24,6 +24,7 @@ const Header = ({ activeHeading }) => {
   // const { wishlist } = useSelector((state) => state.wishlist);
   // const { cart } = useSelector((state) => state.cart);
   // const { allProducts } = useSelector((state) => state.products);
+  const productData = [];
   const [searchTerm, setSearchTerm] = useState("");
   const [searchData, setSearchData] = useState(null);
   const [active, setActive] = useState(false);
