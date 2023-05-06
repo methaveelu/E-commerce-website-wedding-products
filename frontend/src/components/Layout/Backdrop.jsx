@@ -7,7 +7,7 @@ const Backdrop = () => {
     <div
       className={`relative min-h-[70vh] 800px:min-h-[80vh] w-full bg-no-repeat ${styles.normalFlex}`}
       style={{
-        backgroundImage: "url('')",
+        backgroundImage: "url('https://www.monti.sg/wp-content/uploads/2022/11/Monti-258-1.jpg')",
         backgroundPosition: "center",
         backgroundSize: "cover",
       }}
