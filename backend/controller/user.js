@@ -39,7 +39,7 @@ router.post("/create-user", upload.single("file"),async (req, res, next) => {
       avatar: fileUrl,
     };
     const newUser = await User.create(user);
-    console.log('newUser', newUser);
+
 
     res.status(200).json({
       success:true,
@@ -56,7 +56,7 @@ router.post(
   catchAsyncErrors(async (req, res, next) => {
     try {
       const { email, password } = req.body;
-
+    
       if (!email || !password) {
         return next(new ErrorHandler("Please provide the all fields!", 400));
       }
@@ -74,8 +74,10 @@ router.post(
           new ErrorHandler("Please provide the correct information", 400)
         );
       }
+      
 
       sendToken(user, 201, res);
+
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));
     }
@@ -89,7 +91,7 @@ router.get(
   catchAsyncErrors(async (req, res, next) => {
     try {
       const user = await User.findById(req.user.id);
-
+      console.log("User", user);
       if (!user) {
         return next(new ErrorHandler("User doesn't exists", 400));
       }
