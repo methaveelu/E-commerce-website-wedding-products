@@ -32,7 +32,7 @@ const Header = ({ activeHeading }) => {
   const [openCart, setOpenCart] = useState(false);
   const [openWishlist, setOpenWishlist] = useState(false);
   const [open, setOpen] = useState(false);
-console.log('isauthenticated', isAuthenticated)
+console.log('isAuthenticated', isAuthenticated)
   const handleSearchChange = (e) => {
     const term = e.target.value;
     setSearchTerm(term);

@@ -20,15 +20,7 @@ const Navbar = ({ active }) => {
             </Link>
           </div>
         ))}
-      <div className="flex" key={navItems.length + 1}>
-        <Link
-          to="/contact"
-          className="text-blue-900 hover:text-gray-700 pb-3 800px:pb-0 font-bold text-lg px-6 cursor-pointer"
-        >
-          Contact
-        </Link>
       </div>
-    </div>
   );
 };
 
