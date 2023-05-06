@@ -6,19 +6,24 @@ const Backdrop = () => {
   return (
     <div
       className={`relative min-h-[70vh] 800px:min-h-[80vh] w-full bg-no-repeat ${styles.normalFlex}`}
+      style={{
+        backgroundImage: "url('')",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+      }}
     >
-      <div className={`${styles.section} w-[90%] 800px:w-[60%]`}>
+      <div className={`${styles.section} w-[90%] 800px:w-[60%]`} style={{ backgroundColor: "rgba(255, 255, 255, 0.8)" }}>
         <h1
-          className={`text-[35px] leading-[1.2] 800px:text-[60px] text-[#3d3a3a] font-[Great Vibes] capitalize`}
+          className={`text-[35px] leading-[1.2] 800px:text-[60px] text-[#b7410e] font-great-vibes capitalize`}
         >
-          Best Collection for <br /> wedding Essentials
+          Best Collection for <br /> Wedding Essentials
         </h1>
-        <p className="pt-5 text-[16px] font-[Parisienne] font-[400] text-[#7b7b7b]">
-          blah blah blah
+        <p className="pt-5 text-[16px] font-[Parisienne] font-[400] text-[#4b5563]">
+          Make your special day unforgettable with our wedding collection!
         </p>
         <Link to="/products" className="inline-block">
-          <div className={`${styles.button} mt-5 bg-[#e0c8c8]`}>
-            <span className="text-[#ffffff] font-[Poppins] text-[18px]">
+          <div className={`${styles.button} mt-5 bg-pink-400`}>
+            <span className="text-[#ffffff] font-Poppins text-lg">
               Shop Now
             </span>
           </div>

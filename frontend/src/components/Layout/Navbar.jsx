@@ -6,6 +6,7 @@ import styles from "../../styles/styles";
 const Navbar = ({ active }) => {
   return (
     <div className={`block lg:${styles.normalFlex} bg-pink-200`} key="navbar">
+
       {navItems &&
         navItems.map((i, index) => (
           <div className="flex" key={index}>
