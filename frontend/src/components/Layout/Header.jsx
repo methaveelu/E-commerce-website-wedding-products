@@ -76,7 +76,7 @@ const Header = ({ activeHeading }) => {
               placeholder="Search Product..."
               value={searchTerm}
               onChange={handleSearchChange}
-              className="h-10 w-full px-2 border-2 border-[#FBB6D9] rounded-md outline-none"
+              className="h-10 w-full px-2 border rounded-[5px] bg-[#ffd6db]"
             />
             <AiOutlineSearch
               size={30}
@@ -108,7 +108,7 @@ const Header = ({ activeHeading }) => {
           <div className={`${styles.button} hover:bg-teal-500`}>
             {/* <Link to={`${isSeller ? "/dashboard" : "/shop-create"}`}> */}
             <Link to="/seller">
-              <h1 className="text-[#fff] flex items-center">
+              <h1 className="text-white flex items-center">
                 {/* {isSeller ? "Go Dashboard" : "Become Seller"}{" "} */}
                 Become Seller
                 <IoIosArrowForward className="ml-1" />
@@ -120,7 +120,7 @@ const Header = ({ activeHeading }) => {
       <div
         className={`${
           active === true ? "shadow-sm fixed top-0 left-0 z-10" : null
-        } 800px:flex items-center justify-between w-full bg-[#F8C4D7] h-[70px] bg-pattern`}      
+        } 800px:flex items-center justify-between w-full bg-[#F8C4D7] h-[70px] bg-[#f8c4d7]`}
       >
         <div
           className={`${styles.section} relative ${styles.normalFlex} justify-between`}
@@ -130,13 +130,13 @@ const Header = ({ activeHeading }) => {
             <div className="relative h-[60px] mt-[10px] w-[270px] hidden 1000px:block">
               <BiMenuAltLeft size={30} className="absolute top-3 left-2" />
               <button
-                className={`h-[100%] w-full flex justify-between items-center pl-10 bg-white font-sans text-lg font-[500] select-none rounded-t-md border-none background-color-transparent`}
+                className={`${styles.normalFlex} justify-between items-center pl-10 bg-[#F8C4D7] text-[#333] font-Poppins font-medium text-lg select-none rounded-t-md border-none background-color-transparent`}
               >
                 All Categories
               </button>
               <IoIosArrowDown
                 size={20}
-                className="absolute right-2 top-4 cursor-pointer"
+                className="absolute right-2 top-4 cursor-pointer bg-[#F8C4D7]"
                 onClick={() => setDropDown(!dropDown)}
               />
               {dropDown ? (

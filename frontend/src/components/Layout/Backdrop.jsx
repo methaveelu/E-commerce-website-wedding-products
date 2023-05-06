@@ -6,11 +6,6 @@ const Backdrop = () => {
   return (
     <div
       className={`relative min-h-[70vh] 800px:min-h-[80vh] w-full bg-no-repeat ${styles.normalFlex}`}
-      style={{
-        backgroundImage:
-          "url(https://www.monti.sg/wp-content/uploads/2022/11/Monti-258-1.jpg)",
-        opacity: "0.8",
-      }}
     >
       <div className={`${styles.section} w-[90%] 800px:w-[60%]`}>
         <h1
