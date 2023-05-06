@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ShopHomePage = () => {
+const ShopAllRefunds = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const ShopHomePage = () => {
   )
 }
 
-export default ShopHomePage
+export default ShopAllRefunds
