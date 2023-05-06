@@ -11,7 +11,7 @@ const BestSellingPage = () => {
         const d = productData && productData.sort((a,b) => b.total_sell - a.total_sell);
         setData(d);
     }, []);
-  
+  //If the result of the subtraction is a positive number, it means that b has a higher total_sell value and should come before a in the sorted array. If the result is negative, a has a higher total_sell value and should come before b in the sorted array. If the result is 0, the order of a and b does not change.
   return (
    <>
       <div>
