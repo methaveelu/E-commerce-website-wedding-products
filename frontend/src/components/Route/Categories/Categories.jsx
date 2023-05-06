@@ -1,14 +1,14 @@
-import React from 'react'
-import { brandingData, categoriesData } from '../../../static/data' 
-import styles from '../../../styles/styles'
-import { useNavigate } from 'react-router-dom'
+import React from "react";
+import { brandingData, categoriesData } from "../../../static/data";
+import styles from "../../../styles/styles";
+import { useNavigate } from "react-router-dom";
 
 const Categories = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <>
-    {/* section 1 deals*/}
-    <div className={`${styles.section} hidden sm:block`}>
+      {/* section 1 deals*/}
+      <div className={`${styles.section} hidden sm:block`}>
         <div
           className={`branding my-12 flex justify-between w-full shadow-sm bg-gray-200 p-5 rounded-md`}
         >
@@ -23,13 +23,17 @@ const Categories = () => {
               </div>
             ))}
         </div>
-    </div>
-    {/* section 2 categories*/}
-    <div className={`${styles.section} bg-gray-200 p-6 rounded-lg mb-12`} id="categories">
+      </div>
+      {/* section 2 categories*/}
+      <div
+        className={`${styles.section} bg-gray-200 p-6 rounded-lg mb-12`}
+        id="categories"
+      >
         <div className="grid grid-cols-1 gap-[5px] md:grid-cols-2 md:gap-[10px] lg:grid-cols-4 lg:gap-[20px] xl:grid-cols-5 xl:gap-[30px]">
-            {categoriesData && categoriesData.map((i) => {   
-                const handleSubmit = (i) => {
-                navigate(`/products?category=${i.title}`);//navigate to category upon click
+          {categoriesData &&
+            categoriesData.map((i) => {
+              const handleSubmit = (i) => {
+                navigate(`/products?category=${i.title}`); //navigate to category upon click
               };
               return (
                 <div
@@ -45,12 +49,11 @@ const Categories = () => {
                   />
                 </div>
               );
-            })}  
+            })}
         </div>
-    </div>            
-
+      </div>
     </>
-  )
-}
+  );
+};
 
 export default Categories;

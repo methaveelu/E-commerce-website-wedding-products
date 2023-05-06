@@ -15,6 +15,7 @@ import ShopLoginPage from "./pages/ShopLoginPage";
 import ActivationPage from "./pages/ActivationPage";
 
 export {
+
     CheckoutPage,
     LoginPage,
     SignupPage,
@@ -30,4 +31,5 @@ export {
     SellerActivationPage, 
     ShopLoginPage,
     ActivationPage,
+
 };
