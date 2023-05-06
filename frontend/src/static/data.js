@@ -442,7 +442,7 @@ export const productData = [
         user: {
           // user object will be here
         },
-        comment: "IT's so cool!",
+        comment: "It's so cool!",
         rating: 5,
       },
     ],
@@ -589,39 +589,31 @@ export const productData = [
 
 export const footerProductLinks = [
   {
-    name: "About us",
-    link: "/about"
+    name: "About Us",
   },
   {
     name: "Careers",
-    link: "/carrers"
   },
   {
-    name: "Store Locations",
-  },
-  {
-    name: "Our Blog",
+    name: "Contact Us",
   },
   {
     name: "Reviews",
   },
 ];
 
-export const footercompanyLinks = [
+export const footerCompanyLinks = [
   {
-    name: "Game & Video",
+    name: "Suits",
   },
   {
-    name: "Phone &Tablets",
+    name: "Gowns",
   },
   {
-    name: "Computers & Laptop",
+    name: "Footwear",
   },
   {
-    name: "Sport Watches",
-  },
-  {
-    name: "Events",
+    name: "Accessories",
   },
 ];
 
