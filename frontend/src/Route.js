@@ -11,15 +11,15 @@ import OrderSuccessPage from "./pages/OrderSuccessPage";
 import ProfilePage from "./pages/ProfilePage";
 
 export {
-    CheckoutPage,
-    LoginPage,
-    SignupPage,
-    HomePage,
-    ProductsPage,
-    OrderSuccessPage,
-    PaymentPage,
-    ProductDetailsPage,
-    BestSellingPage,
-    FAQPage,
-    ProfilePage,
+  CheckoutPage,
+  LoginPage,
+  SignupPage,
+  HomePage,
+  ProductsPage,
+  OrderSuccessPage,
+  PaymentPage,
+  ProductDetailsPage,
+  BestSellingPage,
+  FAQPage,
+  ProfilePage,
 };

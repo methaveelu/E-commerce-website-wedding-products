@@ -5,18 +5,18 @@ import {
   AiOutlineMessage,
   AiOutlineShoppingCart,
 } from "react-icons/ai";
-// import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-// import { getAllProductsShop } from "../../redux/actions/product";
+import { getAllProductsShop } from "../../redux/actions/products";
 import { backend_url, server } from "../../server";
 import styles from "../../styles/styles";
-// import {
-//   addToWishlist,
-//   removeFromWishlist,
-// } from "../../redux/actions/wishlist";
-// import { addToCart } from "../../redux/actions/cart";
+import {
+  addToWishlist,
+  removeFromWishlist,
+} from "../../redux/actions/wishlist";
+import { addToCart } from "../../redux/actions/cart";
 import { toast } from "react-toastify";
-// import Ratings from "./Ratings";
+import Ratings from "./Ratings";
 import axios from "axios";
 
 const ProductDetails = ({ data }) => {

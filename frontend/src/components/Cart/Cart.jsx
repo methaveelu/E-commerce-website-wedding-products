@@ -6,11 +6,11 @@ import styles from "../../styles/styles";
 import { Link } from "react-router-dom";
 import { backend_url } from "../../server";
 import { useDispatch, useSelector } from "react-redux";
-// import { addToCart, removeFromCart } from "../../redux/actions/cart";
+import { addToCart, removeFromCart } from "../../redux/actions/cart";
 import { toast } from "react-toastify";
 
 const Cart = ({ setOpenCart }) => {
-  // const { cart } = useSelector((state) => state.cart);
+  const { cart } = useSelector((state) => state.cart);
 
   const cartData = [
     {
@@ -30,20 +30,20 @@ const Cart = ({ setOpenCart }) => {
     },
   ];
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // const removeFromCartHandler = (data) => {
-  //   dispatch(removeFromCart(data));
-  // };
+  const removeFromCartHandler = (data) => {
+    dispatch(removeFromCart(data));
+  };
 
-  // const totalPrice = cart.reduce(
-  //   (acc, item) => acc + item.qty * item.discountPrice,
-  //   0
-  // );
+  const totalPrice = cart.reduce(
+    (acc, item) => acc + item.qty * item.discountPrice,
+    0
+  );
 
-  // const quantityChangeHandler = (data) => {
-  //   dispatch(addToCart(data));
-  // };
+  const quantityChangeHandler = (data) => {
+    dispatch(addToCart(data));
+  };
 
   return (
     <div className="fixed top-0 left-0 w-full bg-[#0000004b] h-screen z-10">
@@ -57,7 +57,7 @@ const Cart = ({ setOpenCart }) => {
                 onClick={() => setOpenCart(false)}
               />
             </div>
-            <h5>Cart Items is empty!</h5>
+            <h5>Cart is empty!</h5>
           </div>
         ) : (
           <>
@@ -85,8 +85,8 @@ const Cart = ({ setOpenCart }) => {
                     <CartSingle
                       key={index}
                       data={i}
-                      // quantityChangeHandler={quantityChangeHandler}
-                      // removeFromCartHandler={removeFromCartHandler}
+                      quantityChangeHandler={quantityChangeHandler}
+                      removeFromCartHandler={removeFromCartHandler}
                     />
                   ))}
               </div>
@@ -115,21 +115,21 @@ const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
   const [value, setValue] = useState(data.qty);
   const totalPrice = data.discountPrice * value;
 
-  // const increment = (data) => {
-  //   if (data.stock < value) {
-  //     toast.error("Product stock limited!");
-  //   } else {
-  //     setValue(value + 1);
-  //     const updateCartData = { ...data, qty: value + 1 };
-  //     quantityChangeHandler(updateCartData);
-  //   }
-  // };
+  const increment = (data) => {
+    if (data.stock < value) {
+      toast.error("Product stock limited!");
+    } else {
+      setValue(value + 1);
+      const updateCartData = { ...data, qty: value + 1 };
+      quantityChangeHandler(updateCartData);
+    }
+  };
 
-  // const decrement = (data) => {
-  //   setValue(value === 1 ? 1 : value - 1);
-  //   const updateCartData = { ...data, qty: value === 1 ? 1 : value - 1 };
-  //   quantityChangeHandler(updateCartData);
-  // };
+  const decrement = (data) => {
+    setValue(value === 1 ? 1 : value - 1);
+    const updateCartData = { ...data, qty: value === 1 ? 1 : value - 1 };
+    quantityChangeHandler(updateCartData);
+  };
 
   return (
     <div className="border-b p-4">
@@ -150,8 +150,7 @@ const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
           </div>
         </div>
         <img
-          // src={`${backend_url}${data?.images[0]}`}
-          src= "https://cdn.shopify.com/s/files/1/2334/9687/products/a0666w-2-feature_700x.jpg?v=1681429283"
+          src={`${backend_url}${data?.images[0]}`}
           alt=""
           className="w-[130px] h-min ml-2 mr-2 rounded-[5px]"
         />

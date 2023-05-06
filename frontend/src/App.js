@@ -1,7 +1,19 @@
 import React, { useEffect } from "react";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { LoginPage, SignupPage, HomePage, ProductsPage, ProductDetailsPage, BestSellingPage, FAQPage, CheckoutPage, PaymentPage, OrderSuccessPage, ProfilePage} from "./Route.js";
+import {
+  LoginPage,
+  SignupPage,
+  HomePage,
+  ProductsPage,
+  ProductDetailsPage,
+  BestSellingPage,
+  FAQPage,
+  CheckoutPage,
+  PaymentPage,
+  OrderSuccessPage,
+  ProfilePage,
+} from "./Route.js";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ProtectedRoute from "./ProtectedRoute";
@@ -10,8 +22,7 @@ import Store from "./redux/store";
 import { loadUser } from "./redux/actions/user";
 
 function App() {
-  const {loading, isAuthenticated} =useSelector ((state) =>state.user);
-
+  const { loading, isAuthenticated } = useSelector((state) => state.user);
 
   useEffect(() => {
     Store.dispatch(loadUser());
@@ -30,7 +41,7 @@ function App() {
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/order-success" element={<OrderSuccessPage />} />
         <Route path="/faq" element={<FAQPage />} />
-        
+
         {/* <ProtectedRoute> */}
         <Route path="/profile" element={<ProfilePage />} />
         {/* </ProtectedRoute> */}
