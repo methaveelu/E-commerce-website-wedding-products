@@ -12,25 +12,24 @@ import { toast } from "react-toastify";
 const Cart = ({ setOpenCart }) => {
   // const { cart } = useSelector((state) => state.cart);
 
-  const cartData =[
+  const cartData = [
     {
-      Name:"Iphone 14 pro max",
+      Name: "SHERRI HILL 51671 DRESS",
       description: "test",
-      price: 999,
+      price: 1099,
     },
     {
-      Name:"Iphone 14 pro max",
+      Name: "Mid Blue Three-Piece Lazio Suit",
       description: "test",
-      price: 999,
+      price: 1099,
     },
     {
-      Name:"Iphone 14 pro max",
+      Name: "Dandelion Tassel leather loafers",
       description: "test",
-      price: 999,
+      price: 300,
     },
-  ]
+  ];
 
-  
   // const dispatch = useDispatch();
 
   // const removeFromCartHandler = (data) => {
@@ -163,7 +162,6 @@ const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
           </h4>
           <h4 className="font-[600] text-[17px] pt-[3px] text-[#d02222] font-Roboto">
             SGD${totalPrice}
-
           </h4>
         </div>
         <RxCross1

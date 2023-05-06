@@ -260,7 +260,7 @@ export const categoriesData = [
 export const productData = [
   {
     id: 1,
-    category:"dress",
+    category: "dress",
     name: "SHERRI HILL 51671 DRESS",
     description:
       "Strapless fitted gown with straight across neckline by Sherri Hill.",
@@ -290,7 +290,7 @@ export const productData = [
   },
   {
     id: 2,
-    category:"dress",
+    category: "dress",
     name: "ANDREA AND LEO A0666W DRESS",
     description:
       "POff the shoulder Mermaid Gown by Andrea and Leo. Gorgeous corseting on the bodice creates stunning appeal on this mermaid gown by Andrea and Leo. The off-the-shoulder bodice features a modified sweetheart neckline, lace, corset boning, and sheer panels. The lace continues on the full length mermaid skirt.",
@@ -316,11 +316,11 @@ export const productData = [
     rating: 5,
     total_sell: 80,
     stock: 10,
-    category:"dress"
+    category: "dress",
   },
   {
     id: 3,
-    category:"suit",
+    category: "suit",
     name: "Mid Blue Three-Piece Lazio Suit",
     description:
       "This blue 3-piece Lazio is tailored to a slim fit with full canvas construction, a lightly padded shoulder, and accompanying 5-button waistcoat.",
@@ -347,11 +347,11 @@ export const productData = [
     rating: 4,
     total_sell: 75,
     stock: 10,
-    category:"suit"
+    category: "suit",
   },
   {
     id: 4,
-    category:"Bride’s footwear",
+    category: "Bride’s footwear",
     name: "Sacora 100 pearl-embellished satin sandals",
     description:
       "Product details are a crucial part of any eCommerce website or online marketplace. These details help the potential customers to make an informed decision about the product they are interested in buying. A well-written product description can also be a powerful marketing tool that can help to increase sales.Product details typically include information about the product's features, specifications, dimensions, weight, materials, and other relevant information that can help customers to understand the product better. The product details section should also include high-quality images and videos of the product, as well as customer reviews and ratings.",
@@ -372,7 +372,7 @@ export const productData = [
         // url: "https://www.hatchwise.com/wp-content/uploads/2022/05/amazon-logo-1024x683.png",
       },
       ratings: 4.2,
-    category:"Bride’s footwear"
+      category: "Bride’s footwear",
     },
     price: 100,
     discount_price: 79,
@@ -382,7 +382,7 @@ export const productData = [
   },
   {
     id: 6,
-    category:"Bride’s footwear",
+    category: "Bride’s footwear",
     name: "Maysale Bride silk and leather heeled mules",
     description:
       "Product details are a crucial part of any eCommerce website or online marketplace. These details help the potential customers to make an informed decision about the product they are interested in buying. A well-written product description can also be a powerful marketing tool that can help to increase sales.Product details typically include information about the product's features, specifications, dimensions, weight, materials, and other relevant information that can help customers to understand the product better. The product details section should also include high-quality images and videos of the product, as well as customer reviews and ratings.",
@@ -409,7 +409,7 @@ export const productData = [
     rating: 5,
     total_sell: 49,
     stock: 10,
-    category:"Bride’s footwear"
+    category: "Bride’s footwear",
   },
   {
     id: 7,
@@ -448,7 +448,7 @@ export const productData = [
     ],
     total_sell: 20,
     stock: 10,
-    category:"Groom’s footwear"
+    category: "Groom’s footwear",
   },
   // {
   //   id: 8,
