@@ -152,7 +152,7 @@ const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
         </div>
         <img
           // src={`${backend_url}${data?.images[0]}`}
-          src= "https://cdn.suitsupply.com/image/upload/ar_10:21,b_rgb:efefef,bo_200px…"
+          src= "https://cdn.shopify.com/s/files/1/2334/9687/products/a0666w-2-feature_700x.jpg?v=1681429283"
           alt=""
           className="w-[130px] h-min ml-2 mr-2 rounded-[5px]"
         />

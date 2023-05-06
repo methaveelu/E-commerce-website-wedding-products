@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector} from 'react-redux';
+import { MdTrackChanges } from "react-icons/md";
 import {AiOutlineArrowRight,AiOutlineCamera,AiOutlineDelete,} from "react-icons/ai";
 import { DataGrid } from "@material-ui/data-grid";
 import { Button } from "@material-ui/core";
@@ -153,8 +154,32 @@ const ProfileContent = ({active}) => {
             <div>
             <AllOrders/>
             </div>
-
             </>
+        )}
+        {/* Refund */}
+        {active === 3 && (
+        <div>
+          <AllRefundOrders />
+        </div>
+        )}
+        {/* Track order */}
+        {active === 5 && (
+            <div>
+            <TrackOrder />
+            </div>
+        )}
+        {/* Change Password */}
+        {active === 6 && (
+            <div>
+            <ChangePassword />
+            </div>
+        )}
+
+        {/*  user Address */}
+        {active === 7 && (
+            <div>
+            <Address />
+            </div>
         )}
         </div>
     )
@@ -252,5 +277,188 @@ const AllOrders =()=>{
 
     )
 }
+const AllRefundOrders = () => {
+    const orders=[
+        {   
+            _id:"644ccfb0a3cabe9c8223404f",
+            orderItems:[
+                {
+                    name: "man suit"
+                },
+            ],
+            totalPrice: 100,
+            orderStatus: "Processing",
+        },
+
+    ]
+
+    const columns = [
+        { field: "id", headerName: "Order ID", minWidth: 150, flex: 0.7 },
+    
+        {
+          field: "status",
+          headerName: "Status",
+          minWidth: 130,
+          flex: 0.7,
+          cellClassName: (params) => {
+            return params.getValue(params.id, "status") === "Delivered"
+              ? "greenColor"
+              : "redColor";
+          },
+        },
+        {
+          field: "itemsQty",
+          headerName: "Items Qty",
+          type: "number",
+          minWidth: 130,
+          flex: 0.7,
+        },
+    
+        {
+          field: "total",
+          headerName: "Total",
+          type: "number",
+          minWidth: 130,
+          flex: 0.8,
+        },
+    
+        {
+          field: " ",
+          flex: 1,
+          minWidth: 150,
+          headerName: "",
+          type: "number",
+          sortable: false,
+          renderCell: (params) => {
+            return (
+              <>
+                <Link to={`/user/order/${params.id}`}>
+                  <Button>
+                    <AiOutlineArrowRight size={20} />
+                  </Button>
+                </Link>
+              </>
+            );
+          },
+        },
+    ];
+    
+    const row = [];
+
+    orders &&
+    orders.forEach((item) => {
+      row.push({
+        id: item._id,
+        itemsQty: item.orderItems.length,
+        total: "SGD$ " + item.totalPrice,
+        status: item.status,
+      });
+    });
+
+    return(
+        <div className="pl-8 pt-1">
+            <DataGrid
+            rows={row}
+            columns={columns}
+            pageSize={10}
+            disableSelectionOnClick
+            autoHeight
+            />
+        </div>
+
+    )
+}
+const TrackOrder = () => {
+    const orders=[
+        {   
+            _id:"644ccfb0a3cabe9c8223404f",
+            orderItems:[
+                {
+                    name: "man suit"
+                },
+            ],
+            totalPrice: 100,
+            orderStatus: "Processing",
+        },
+
+    ]
+
+    const columns = [
+        { field: "id", headerName: "Order ID", minWidth: 150, flex: 0.7 },
+    
+        {
+          field: "status",
+          headerName: "Status",
+          minWidth: 130,
+          flex: 0.7,
+          cellClassName: (params) => {
+            return params.getValue(params.id, "status") === "Delivered"
+              ? "greenColor"
+              : "redColor";
+          },
+        },
+        {
+          field: "itemsQty",
+          headerName: "Items Qty",
+          type: "number",
+          minWidth: 130,
+          flex: 0.7,
+        },
+    
+        {
+          field: "total",
+          headerName: "Total",
+          type: "number",
+          minWidth: 130,
+          flex: 0.8,
+        },
+    
+        {
+          field: " ",
+          flex: 1,
+          minWidth: 150,
+          headerName: "",
+          type: "number",
+          sortable: false,
+          renderCell: (params) => {
+            return (
+              <>
+                <Link to={`/user/track/order/${params.id}`}>
+                  <Button>
+                    <MdTrackChanges size={20} />
+                  </Button>
+                </Link>
+              </>
+            );
+          },
+        },
+    ];
+    
+    const row = [];
+
+    orders &&
+    orders.forEach((item) => {
+      row.push({
+        id: item._id,
+        itemsQty: item.orderItems.length,
+        total: "SGD$ " + item.totalPrice,
+        status: item.status,
+      });
+    });
+
+    return(
+        <div className="pl-8 pt-1">
+            <DataGrid
+            rows={row}
+            columns={columns}
+            pageSize={10}
+            disableSelectionOnClick
+            autoHeight
+            />
+        </div>
+
+    )
+}
+
 
 export default ProfileContent
