@@ -3,8 +3,8 @@ const router = express.Router();
 const ErrorHandler = require("../utilities/ErrorHandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const { isAuthenticated, isSeller } = require("../middleware/auth");
-const Order = require("../model/order");
-const Product = require("../model/product");
+const Order = require("../models/orderModel");
+const Product = require("../models/productModel");
 
 // create new order
 router.post(

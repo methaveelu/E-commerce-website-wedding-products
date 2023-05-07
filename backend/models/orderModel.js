@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const orderSchema = new mongoose.Schema({
+const orderModel = new mongoose.Schema({
   cart: {
     type: Array,
     required: true,
@@ -44,4 +44,4 @@ const orderSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Order", orderSchema);
+module.exports = mongoose.model("Order", orderModel);

@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require("path");
-const User = require("../model/user");
+const User = require("../models/userModel");
 const router = express.Router();
 const { upload } = require("../multer");
 const ErrorHandler = require("../utilities/ErrorHandler");
@@ -345,7 +345,7 @@ router.put(
   })
 );
 
-// find user infoormation with the userId
+// find user information with the userId
 router.get(
   "/user-info/:id",
   catchAsyncErrors(async (req, res, next) => {

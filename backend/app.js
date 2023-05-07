@@ -25,13 +25,13 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
 }
 
 // import routes
-const user = require("./controller/user");
-const shop = require("./controller/shop");
-const product = require("./controller/product");
-const payment = require("./controller/payment");
-const order = require("./controller/order");
-const conversation = require("./controller/conversation");
-const message = require("./controller/message");
+const user = require("./controller/userRoute");
+const shop = require("./controller/shopRoute");
+const product = require("./controller/productRoute");
+const payment = require("./controller/paymentRoute");
+const order = require("./controller/orderRoute");
+const conversation = require("./controller/conversationRoute");
+const message = require("./controller/messageRoute");
 
 app.get('/',(req, res) => {
   res.send('backend is working')
