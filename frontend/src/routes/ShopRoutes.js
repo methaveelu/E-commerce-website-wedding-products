@@ -10,6 +10,8 @@ import ShopWithdrawMoneyPage from "../pages/Shop/ShopWithdrawMoneyPage";
 import ShopInboxPage from "../pages/Shop/ShopInboxPage";
 import ShopHomePage from "../pages/Shop/ShopHomePage";
 
+
+//routes for seller's dashboard
 export {
     ShopDashboardPage,
     ShopCreateProduct,
