@@ -5,14 +5,14 @@ import styles from "../../styles/styles";
 
 const Navbar = ({ active }) => {
   return (
-    <div className={`${styles.normalFlex} bg-pink-200`} key="navbar">
+    <div className={`${styles.normalFlex} bg-[#fbe4d3]`} key="navbar">
 
       {navItems &&
         navItems.map((i, index) => (
           <div className="flex" key={index}>
             <Link
               to={i.url}
-              className={`text-blue-900 hover:text-gray-700 pb-3 lg:pb-0 font-bold text-lg px-6 cursor-pointer ${
+              className={`text-black hover:text-gray-700 pb-3 lg:pb-0 font-bold text-lg px-6 cursor-pointer ${
                 active === index + 1 ? "text-pink-500" : ""
               }`}
             >

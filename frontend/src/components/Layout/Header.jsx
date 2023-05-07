@@ -21,9 +21,9 @@ import { RxCross1 } from "react-icons/rx";
 const Header = ({ activeHeading }) => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
   const { isSeller , seller} = useSelector((state) => state.seller);
-  // const { wishlist } = useSelector((state) => state.wishlist);
-  // const { cart } = useSelector((state) => state.cart);
-  // const { allProducts } = useSelector((state) => state.products);
+  const { wishlist } = useSelector((state) => state.wishlist);
+  const { cart } = useSelector((state) => state.cart);
+  const { allProducts } = useSelector((state) => state.products);
   
   const [searchTerm, setSearchTerm] = useState("");
   const [searchData, setSearchData] = useState(null);
@@ -32,7 +32,7 @@ const Header = ({ activeHeading }) => {
   const [openCart, setOpenCart] = useState(false);
   const [openWishlist, setOpenWishlist] = useState(false);
   const [open, setOpen] = useState(false);
-console.log('isAuthenticated', isAuthenticated)
+  console.log('isAuthenticated', isAuthenticated)
   const handleSearchChange = (e) => {
     const term = e.target.value;
     setSearchTerm(term);
@@ -64,7 +64,7 @@ console.log('isAuthenticated', isAuthenticated)
           <div>
             <Link to="/">
               <img
-                src="https://img.icons8.com/?size=128&id=lnusCG1HDeb9&format=png"
+                src=""
                 alt=""
               />
             </Link>
@@ -76,7 +76,7 @@ console.log('isAuthenticated', isAuthenticated)
               placeholder="Search Product..."
               value={searchTerm}
               onChange={handleSearchChange}
-              className="h-10 w-full px-2 border rounded-[5px] bg-[#ffd6db]"
+              className="h-10 w-full px-2 border rounded-[5px] bg-[#fbe4d3] border-black"
             />
             <AiOutlineSearch
               size={30}
@@ -118,8 +118,8 @@ console.log('isAuthenticated', isAuthenticated)
       </div>
       <div
         className={`${
-          active === true ? "shadow-sm fixed top-0 left-0 z-10" : null
-        } 800px:flex justify-between w-full bg-[#F8C4D7] h-[70px] bg-[#f8c4d7]`}
+          active === true ? "fixed top-0 left-0 z-10" : null
+        } 800px:flex justify-between w-full bg-[#fbe4d3] h-[70px] bg-[#fbe4d3]`}
       >
         <div
           className={`${styles.section} relative ${styles.normalFlex} justify-between`}
@@ -129,13 +129,13 @@ console.log('isAuthenticated', isAuthenticated)
             <div className="relative h-[60px] mt-[10px] w-[270px] hidden 1000px:block">
               <BiMenuAltLeft size={30} className="absolute top-3 left-2" />
               <button
-                className={`${styles.normalFlex} justify-between items-center pl-10 bg-[#F8C4D7] text-[#333] font-Poppins font-medium text-lg select-none rounded-t-md border-none background-color-transparent`}
+                className={`${styles.normalFlex} justify-between items-center pl-10 bg-[#fbe4d3] text-[#333] font-Poppins font-medium text-lg select-none rounded-t-md border-none background-color-transparent`}
               >
                 All Categories
               </button>
               <IoIosArrowDown
                 size={20}
-                className="absolute right-2 top-4 cursor-pointer bg-[#F8C4D7]"
+                className="absolute right-2 top-4 cursor-pointer bg-[#fbe4d3] border-black"
                 onClick={() => setDropDown(!dropDown)}
               />
               {dropDown ? (
@@ -224,7 +224,7 @@ console.log('isAuthenticated', isAuthenticated)
           <div>
             <Link to="/">
               <img
-                src="https://img.icons8.com/?size=128&id=lnusCG1HDeb9&format=png"
+                src=""
                 alt=""
                 className="mt-3 cursor-pointer"
               />
