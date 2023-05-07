@@ -2,18 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Wedding themed fonts */
-@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&family=Allura&family=Quintessential&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Dancing+Script:wght@700&family=Parisienne&family=Roboto+Slab&display=swap");
 
 * {
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: "Parisienne", serif;
+  font-family: "Poppins", sans-serif;
   background-color: #fbe4d3;
   padding: 2rem;
-  color: #4a4a4a;
+  color: black;
   font-size: 1.4rem;
   font-weight: 400;
 }
@@ -21,25 +20,26 @@ body {
 h1,
 h2,
 h3 {
-  font-family: "Great Vibes", sans-serif;
+  font-family: "Lora", sans-serif;
   font-weight: bold;
 }
 
 h4,
 h5,
 h6 {
-  font-family: "Allura", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: bold;
 }
 
 p {
-  font-family: "Quintessential", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 1.1rem;
 }
 
 input,
 select {
   outline: none;
+  font-family: "Poppins", sans-serif;
 }
 
 .batch_heart {

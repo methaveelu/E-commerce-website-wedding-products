@@ -20,7 +20,7 @@ const ProductCard = ({ data }) => {
 
   return (
     <>
-      <div className="w-full h-[370px] bg-gray-200 rounded-lg shadow-sm p-3 relative cursor-pointer">
+      <div className="w-full h-[370px] bg-[#fbe4d3] rounded-lg shadow-sm p-3 relative cursor-pointer">
         <Link to={`/product/${product_name}`}>
           <img
             src={data.image_Url[0].url}
