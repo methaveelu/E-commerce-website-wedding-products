@@ -103,7 +103,7 @@ const ProfileContent = ({ active }) => {
                   />
                 </div>
               </div>
-              {/* zipcode and address1 input chnages */}
+              {/* zipcode and address1 input changes */}
               <div className="w-full 800px:flex block pb-3">
                 <div className=" w-[100%] 800px:w-[50%]">
                   <label className="block pb-2">Zip Code</label>
@@ -437,7 +437,7 @@ const TrackOrder = () => {
       row.push({
         id: item._id,
         itemsQty: item.orderItems.length,
-        total: "SGD$ " + item.totalPrice,
+        total: "S$ " + item.totalPrice,
         status: item.status,
       });
     });
@@ -478,7 +478,7 @@ const Address = () => {
         </div>
         <div className="pl-8 flex items-center">
           <h6 className="text-[12px] 800px:text-[unset]">
-            562 Choa Chu kang Street 52
+            562 Choa Chu Kang Street 52
             {/* {item.address1} {item.address2} */}
           </h6>
         </div>

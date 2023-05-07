@@ -73,7 +73,7 @@ const Header = ({ activeHeading }) => {
           <div className="w-[50%] relative">
             <input
               type="text"
-              placeholder="Search Product..."
+              placeholder="Search for a product..."
               value={searchTerm}
               onChange={handleSearchChange}
               className="h-10 w-full px-2 border rounded-[5px] bg-[#fbe4d3] border-black"

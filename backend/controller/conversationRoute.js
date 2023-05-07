@@ -1,4 +1,4 @@
-const Conversation = require("../model/conversation");
+const Conversation = require("../models/conversationModel");
 const ErrorHandler = require("../utilities/ErrorHandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const express = require("express");

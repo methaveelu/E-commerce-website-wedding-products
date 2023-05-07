@@ -1,4 +1,4 @@
-const Messages = require("../model/messages");
+const Message = require("../models/messageModel");
 const ErrorHandler = require("../utilities/ErrorHandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const express = require("express");
@@ -23,7 +23,7 @@ router.post(
       messageData.sender = req.body.sender;
       messageData.text = req.body.text;
 
-      const message = new Messages({
+      const message = new Message({
         conversationId: messageData.conversationId,
         text: messageData.text,
         sender: messageData.sender,

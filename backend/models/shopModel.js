@@ -2,14 +2,14 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const userSchema = new mongoose.Schema({
+const shopModel = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, "Please enter your name!"],
+    required: [true, "Please enter your shop name!"],
   },
   email: {
     type: String,
-    required: [true, "Please enter your email address"],
+    required: [true, "Please enter your shop email address"],
   },
   password: {
     type: String,
@@ -17,37 +17,27 @@ const userSchema = new mongoose.Schema({
     minLength: [6, "Password should be greater than 6 characters"],
     select: false,
   },
+  description: {
+    type: String,
+  },
+  address: {
+    type: String,
+    required: true,
+  },
   phoneNumber: {
     type: Number,
+    required: true,
   },
-  addresses: [
-    {
-      country: {
-        type: String,
-      },
-      city: {
-        type: String,
-      },
-      address1: {
-        type: String,
-      },
-      address2: {
-        type: String,
-      },
-      zipCode: {
-        type: Number,
-      },
-      addressType: {
-        type: String,
-      },
-    },
-  ],
   role: {
     type: String,
-    default: "user",
+    default: "Seller",
   },
   avatar: {
     type: String,
+    required: true,
+  },
+  zipCode: {
+    type: Number,
     required: true,
   },
   createdAt: {
@@ -59,7 +49,7 @@ const userSchema = new mongoose.Schema({
 });
 
 // Hash password
-userSchema.pre("save", async function (next) {
+shopModel.pre("save", async function (next) {
   if (!this.isModified("password")) {
     next();
   }
@@ -67,15 +57,15 @@ userSchema.pre("save", async function (next) {
 });
 
 // jwt token
-userSchema.methods.getJwtToken = function () {
+shopModel.methods.getJwtToken = function () {
   return jwt.sign({ id: this._id }, process.env.JWT_SECRET_KEY, {
     expiresIn: process.env.JWT_EXPIRES,
   });
 };
 
 // compare password
-userSchema.methods.comparePassword = async function (enteredPassword) {
+shopModel.methods.comparePassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("Shop", shopModel);

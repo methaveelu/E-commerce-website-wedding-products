@@ -1,11 +1,12 @@
 const ErrorHandler = require("../utilities/ErrorHandler");
 const catchAsyncErrors = require("./catchAsyncErrors");
 const jwt = require("jsonwebtoken");
-const User = require("../model/user");
-const Shop = require("../model/shop");
+const User = require("../models/userModel");
+const Shop = require("../models/shopModel");
 
 exports.isAuthenticated = catchAsyncErrors(async (req, res, next) => {
   const { token } = req.cookies;
+  console.log(req.cookies);
   console.log("token: " + token);
   if (!token) {
     return next(new ErrorHandler("Please login to continue", 401));
