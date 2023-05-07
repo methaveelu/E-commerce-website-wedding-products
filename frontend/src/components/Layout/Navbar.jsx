@@ -5,7 +5,7 @@ import styles from "../../styles/styles";
 
 const Navbar = ({ active }) => {
   return (
-    <div className={`${styles.normalFlex} bg-[#fbe4d3]`} key="navbar">
+    <div className={`${styles.normalFlex} bg-[#fbe4d3] border-black`} key="navbar">
 
       {navItems &&
         navItems.map((i, index) => (

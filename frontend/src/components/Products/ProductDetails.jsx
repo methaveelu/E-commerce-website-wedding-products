@@ -166,7 +166,7 @@ const ProductDetails = ({ data }) => {
                     >
                       -
                     </button>
-                    <span className="bg-gray-200 text-gray-800 font-medium px-4 py-[11px]">
+                    <span className="text-gray-800 font-medium px-4 py-[11px]">
                       {count}
                     </span>
                     <button
