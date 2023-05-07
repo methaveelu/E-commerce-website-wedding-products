@@ -119,7 +119,7 @@ const Header = ({ activeHeading }) => {
       <div
         className={`${
           active === true ? "fixed top-0 left-0 z-10" : null
-        } 800px:flex justify-between w-full bg-[#fbe4d3] h-[70px] bg-[#fbe4d3]`}
+        } 800px:flex justify-between w-full bg-[#fbe4d3] h-[70px]`}
       >
         <div
           className={`${styles.section} relative ${styles.normalFlex} justify-between`}
@@ -147,7 +147,7 @@ const Header = ({ activeHeading }) => {
               ) : null}
             </div>
           </div>
-          {/* navitems */}
+          {/* nav items */}
           <div className={`${styles.normalFlex}`}>
             <Navbar active={activeHeading} />
           </div>
