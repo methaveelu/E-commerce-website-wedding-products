@@ -26,7 +26,8 @@ const ShopLogin = () => {
       )
       .then((res) => {
         toast.success("Login Success!");
-        navigate("/dashboard");
+        // navigate("/dashboard");
+        navigate(`/shop/${seller._id}`);
         window.location.reload(true); 
       })
       .catch((err) => {

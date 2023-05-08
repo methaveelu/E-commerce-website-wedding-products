@@ -17,7 +17,7 @@ router.post("/create-user", upload.single("file"), async (req, res, next) => {
     const userEmail = await User.findOne({ email });
 
     if (userEmail) {
-      const filename = req.file.originalname;
+      const filename = req.file.filename;
       const filePath = `uploads/${filename}`;
       fs.unlink(filePath, (err) => {
         if (err) {
@@ -28,7 +28,7 @@ router.post("/create-user", upload.single("file"), async (req, res, next) => {
       return next(new ErrorHandler("User already exists", 400));
     }
 
-    const filename = req.file.originalname;
+    const filename = req.file.filename;
     const fileUrl = path.join(filename);
 
     const user = {
