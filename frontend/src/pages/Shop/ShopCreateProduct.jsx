@@ -11,6 +11,7 @@ const ShopCreateProduct = () => {
         <div className="w-[80px] 800px:w-[330px]">
           <DashboardSidebar active={4} />
         </div>
+        {/* crud function to create product in shop */}
         <div className="w-full justify-center flex">
           <CreateProduct />
         </div>
