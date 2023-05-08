@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { AiOutlineDelete, AiOutlineEye } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getAllProductsShop, deleteProduct } from "../../redux/actions/products";
+import { getAllProductsShop, deleteProduct } from "../../redux/actions/productActions";
 import Loader from "../Layout/Loader";
 import axios from "axios";
 import { server } from "../../server";

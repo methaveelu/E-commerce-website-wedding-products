@@ -7,14 +7,14 @@ import {
 } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { getAllProductsShop } from "../../redux/actions/products";
+import { getAllProductsShop } from "../../redux/actions/productActions";
 import { backend_url, server } from "../../server";
 import styles from "../../styles/styles";
 import {
   addToWishlist,
   removeFromWishlist,
-} from "../../redux/actions/wishlist";
-import { addToCart } from "../../redux/actions/cart";
+} from "../../redux/actions/wishlistActions";
+import { addToCart } from "../../redux/actions/cartActions";
 import { toast } from "react-toastify";
 import Ratings from "./Ratings";
 import axios from "axios";
