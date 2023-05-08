@@ -44,12 +44,12 @@ import {
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Store from "./redux/store";
-import { loadSeller, loadUser } from "./redux/actions/user";
+import { loadSeller, loadUser } from "./redux/actions/userActions";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import ProtectedAdminRoute from "./routes/ProtectedAdminRoute";
 import { ShopHomePage } from "./routes/ShopRoutes.js";
 import SellerProtectedRoute from "./routes/SellerProtectedRoute";
-import { getAllProducts } from "./redux/actions/products";
+import { getAllProducts } from "./redux/actions/productActions";
 import axios from "axios";
 import { server } from "./server";
 // import { Elements } from "@stripe/react-stripe-js";

@@ -6,9 +6,9 @@ import { Link } from "react-router-dom";
 import { DataGrid } from "@material-ui/data-grid";
 import { Button } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllOrdersOfAdmin } from "../../redux/actions/order";
+import { getAllOrdersOfAdmin } from "../../redux/actions/orderActions";
 import Loader from "../Layout/Loader";
-import { getAllSellers } from "../../redux/actions/sellers";
+import { getAllSellers } from "../../redux/actions/sellerActions";
 
 const AdminDashboardMain = () => {
   const dispatch = useDispatch();
