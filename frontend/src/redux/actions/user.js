@@ -77,7 +77,7 @@ export const updateUserInformation =
   };
 
 // update user address
-export const updatUserAddress =
+export const updateUserAddress =
   (country, city, address1, address2, zipCode, addressType) =>
   async (dispatch) => {
     try {
@@ -101,7 +101,7 @@ export const updatUserAddress =
       dispatch({
         type: "updateUserAddressSuccess",
         payload: {
-          successMessage: "User address updated succesfully!",
+          successMessage: "User address updated successfully!",
           user: data.user,
         },
       });

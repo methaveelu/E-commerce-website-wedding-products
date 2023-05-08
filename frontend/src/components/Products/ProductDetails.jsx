@@ -112,7 +112,7 @@ const ProductDetails = ({ data }) => {
   };
 
   return (
-    <div className="bg-gray-200">
+    <div className="bg-[#fbe4d3]">
       {data ? (
         <div className={`${styles.section} w-[90%] 800px:w-[80%]`}>
           <div className="w-full py-5">
@@ -166,7 +166,7 @@ const ProductDetails = ({ data }) => {
                     >
                       -
                     </button>
-                    <span className="bg-gray-200 text-gray-800 font-medium px-4 py-[11px]">
+                    <span className="text-gray-800 font-medium px-4 py-[11px]">
                       {count}
                     </span>
                     <button
