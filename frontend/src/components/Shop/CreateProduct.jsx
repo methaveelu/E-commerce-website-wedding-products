@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 
 const CreateProduct = () => {
   const { seller } = useSelector((state) => state.seller);
-  const { success, error } = useSelector((state) => state.products);
+  // const { success, error } = useSelector((state) => state.products);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -20,22 +20,23 @@ const CreateProduct = () => {
   const [originalPrice, setOriginalPrice] = useState();
   const [stock, setStock] = useState();
 
-  useEffect(() => {
-    if (error) {
-      toast.error(error);
-    }
-    if (success) {
-      toast.success("Product created successfully!");
-      navigate("/dashboard");
-      window.location.reload();
-    }
-  }, [dispatch, error, success]);
+  // useEffect(() => {
+  //   if (error) {
+  //     toast.error(error);
+  //   }
+  //   if (success) {
+  //     toast.success("Product created successfully!");
+  //     navigate("/dashboard");
+  //     window.location.reload();
+  //   }
+  // }, [dispatch, error, success]);
 
   const handleImageChange = (e) => {
     e.preventDefault();
 
     let files = Array.from(e.target.files);
-    setImages((prevImages) => [...prevImages, ...files]);
+    setImages((prevImages) => [...prevImages, ...files]);//... is spread operator
+    // preserves previous images and adds new images
   };
 
 //   console.log(images);
@@ -152,6 +153,7 @@ const CreateProduct = () => {
           />
         </div>
         <br />
+        {/* upload images of new product  */}
         <div>
           <label className="pb-2">
             Upload Images <span className="text-red-500">*</span>
@@ -179,6 +181,7 @@ const CreateProduct = () => {
               ))}
           </div>
           <br />
+          {/* create button */}
           <div>
             <input
               type="submit"
