@@ -33,11 +33,11 @@ const order = require("./controller/orderRoute");
 const conversation = require("./controller/conversationRoute");
 const message = require("./controller/messageRoute");
 
-app.get('/',(req, res) => {
-  res.send('backend is working')
-})
+app.get("/", (req, res) => {
+  res.send("backend is working");
+});
 
-app.use("/api/v2/user", user); 
+app.use("/api/v2/user", user);
 app.use("/api/v2/conversation", conversation);
 app.use("/api/v2/message", message);
 app.use("/api/v2/order", order);
@@ -45,7 +45,7 @@ app.use("/api/v2/shop", shop);
 app.use("/api/v2/product", product);
 app.use("/api/v2/payment", payment);
 
-// this is for ErrorHandling
+// this is for handling errors
 app.use(ErrorHandler);
 
 module.exports = app;

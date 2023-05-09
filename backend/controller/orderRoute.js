@@ -97,7 +97,7 @@ router.put(
       const order = await Order.findById(req.params.id);
 
       if (!order) {
-        return next(new ErrorHandler("Order not found with this id", 400));
+        return next(new ErrorHandler("Order with this ID not found", 400));
       }
       if (req.body.status === "Transferred to delivery partner") {
         order.cart.forEach(async (o) => {
@@ -109,7 +109,7 @@ router.put(
 
       if (req.body.status === "Delivered") {
         order.deliveredAt = Date.now();
-        order.paymentInfo.status = "Succeeded";
+        order.paymentInfo.status = "Payment successful";
       }
 
       await order.save({ validateBeforeSave: false });
@@ -141,7 +141,7 @@ router.put(
       const order = await Order.findById(req.params.id);
 
       if (!order) {
-        return next(new ErrorHandler("Order not found with this id", 400));
+        return next(new ErrorHandler("Order with this ID not found", 400));
       }
 
       order.status = req.body.status;
@@ -151,7 +151,7 @@ router.put(
       res.status(200).json({
         success: true,
         order,
-        message: "Order Refund Request successfully!",
+        message: "Order refund request successful!",
       });
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));
@@ -168,7 +168,7 @@ router.put(
       const order = await Order.findById(req.params.id);
 
       if (!order) {
-        return next(new ErrorHandler("Order not found with this id", 400));
+        return next(new ErrorHandler("Order with this ID not found", 400));
       }
 
       order.status = req.body.status;
@@ -177,10 +177,10 @@ router.put(
 
       res.status(200).json({
         success: true,
-        message: "Order Refund successfull!",
+        message: "Order refund successful!",
       });
 
-      if (req.body.status === "Refund Success") {
+      if (req.body.status === "Refund success") {
         order.cart.forEach(async (o) => {
           await updateOrder(o._id, o.qty);
         });
