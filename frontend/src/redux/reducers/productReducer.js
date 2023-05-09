@@ -5,8 +5,10 @@ const initialState = {
 };
 
 export const productReducer = createReducer(initialState, {
-  productCreateRequest: (state) => {
+  productCreateRequest: (state, action) => {
     state.isLoading = true;
+    state.product = action.payload;
+    state.success = true;
   },
   productCreateSuccess: (state, action) => {
     state.isLoading = false;
@@ -17,6 +19,12 @@ export const productReducer = createReducer(initialState, {
     state.isLoading = false;
     state.error = action.payload;
     state.success = false;
+  },
+  clearProduct: (state) => {
+    state.isLoading = false;
+    state.product = undefined;
+    state.success = false;
+    state.error = null;
   },
 
   // get all products of shop
