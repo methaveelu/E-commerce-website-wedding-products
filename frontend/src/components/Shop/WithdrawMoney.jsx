@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllOrdersOfShop } from "../../redux/actions/orderActions";
-import styles from "../../styles/styles";
-import { RxCross1 } from "react-icons/rx";
 import axios from "axios";
 import { server } from "../../server";
-import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllOrdersOfShop } from "../../redux/actions/orderActions";
 import { loadSeller } from "../../redux/actions/userActions";
 import { AiOutlineDelete } from "react-icons/ai";
+import { RxCross1 } from "react-icons/rx";
+import styles from "../../styles/styles";
+import { toast } from "react-toastify";
 
 const WithdrawMoney = () => {
   const [open, setOpen] = useState(false);
@@ -312,7 +312,7 @@ const WithdrawMoney = () => {
                 ) : (
                   <div>
                     <p className="text-[18px] pt-2">
-                      No Withdraw Methods available!
+                      No withdraw methods available!
                     </p>
                     <div className="w-full flex items-center">
                       <div

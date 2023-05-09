@@ -52,4 +52,3 @@ const ProductsPage = () => {
 };
 
 export default ProductsPage;
-// refactored

@@ -1,11 +1,8 @@
-import React, { useState } from "react";
-import styles from "../../styles/styles";
-import { Country, State } from "country-state-city";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
-import axios from "axios";
-import { server } from "../../server";
+import styles from "../../styles/styles";
+import { Country, State } from "country-state-city";
 import { toast } from "react-toastify";
 
 const Checkout = () => {
@@ -31,7 +28,7 @@ const Checkout = () => {
       country === "" ||
       city === ""
     ) {
-      toast.error("Please choose your delivery address!");
+      toast.error("Please choose your delivery address");
     } else {
       const shippingAddress = {
         address1,
@@ -268,12 +265,7 @@ const ShippingInfo = ({
   );
 };
 
-const CartData = ({
-  handleSubmit,
-  totalPrice,
-  shipping,
-  subTotalPrice,
-}) => {
+const CartData = ({ handleSubmit, totalPrice, shipping, subTotalPrice }) => {
   return (
     <div className="w-full bg-[#fff] rounded-md p-5 pb-8">
       <div className="flex justify-between">

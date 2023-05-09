@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { MdTrackChanges } from "react-icons/md";
 import {
@@ -8,8 +9,6 @@ import {
 } from "react-icons/ai";
 import { DataGrid } from "@material-ui/data-grid";
 import { Button } from "@material-ui/core";
-import { Link } from "react-router-dom";
-import { RxCross1 } from "react-icons/rx";
 import styles from "../../styles/styles";
 
 const ProfileContent = ({ active }) => {
@@ -103,7 +102,7 @@ const ProfileContent = ({ active }) => {
                   />
                 </div>
               </div>
-              {/* zipcode and address1 input changes */}
+              {/* zipCode and address1 input changes */}
               <div className="w-full 800px:flex block pb-3">
                 <div className=" w-[100%] 800px:w-[50%]">
                   <label className="block pb-2">Zip Code</label>

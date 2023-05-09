@@ -1,14 +1,10 @@
-import { Button } from "@material-ui/core";
-import { DataGrid } from "@material-ui/data-grid";
-import React, { useEffect } from "react";
-import { AiOutlineDelete, AiOutlineEye } from "react-icons/ai";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { getAllProductsShop, deleteProduct } from "../../redux/actions/productActions";
-import Loader from "../Layout/Loader";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { server } from "../../server";
-import { useState } from "react";
+import { Link } from "react-router-dom";
+import { AiOutlineEye } from "react-icons/ai";
+import { Button } from "@material-ui/core";
+import { DataGrid } from "@material-ui/data-grid";
 
 const AllProducts = () => {
   const [data, setData] = useState([]);

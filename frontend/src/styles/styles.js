@@ -16,7 +16,13 @@ const styles = {
   normalFlex: "flex items-center border-black",
   navbar: "flex justify-between py-4 border-black",
   navLink: "text-white font-semibold text-lg ml-6 hover:text-pink-500 border-black",
-  navLogo: "text-white font-bold text-3xl border-black"
+  navLogo: "text-white font-bold text-3xl border-black",
+  faqDiv: "border-b border-gray-200 pb-4",
+  faqButton: "flex items-center justify-between w-full",
+  faqButtonIcon: "h-6 w-6 text-gray-500",
+  faqButtonText: "text-lg font-medium text-gray-900",
+  faqAnswer: "mt-4",
+  faqText: "text-base text-gray-500"
 };
 
 export default styles;

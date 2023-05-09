@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
 import { backend_url, server } from "../../server";
+import { useDispatch, useSelector } from "react-redux";
+import { loadSeller } from "../../redux/actions/userActions";
 import { AiOutlineCamera } from "react-icons/ai";
 import styles from "../../styles/styles";
-import axios from "axios";
-import { loadSeller } from "../../redux/actions/userActions";
 import { toast } from "react-toastify";
 
 const ShopSettings = () => {
@@ -16,7 +16,7 @@ const ShopSettings = () => {
   );
   const [address, setAddress] = useState(seller && seller.address);
   const [phoneNumber, setPhoneNumber] = useState(seller && seller.phoneNumber);
-  const [zipCode, setZipcode] = useState(seller && seller.zipCode);
+  const [zipCode, setZipCode] = useState(seller && seller.zipCode);
 
   const dispatch = useDispatch();
 
@@ -168,7 +168,7 @@ const ShopSettings = () => {
               type="number"
               placeholder={seller?.zipCode}
               value={zipCode}
-              onChange={(e) => setZipcode(e.target.value)}
+              onChange={(e) => setZipCode(e.target.value)}
               className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
               required
             />
