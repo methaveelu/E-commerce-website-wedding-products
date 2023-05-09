@@ -32,6 +32,7 @@ import {
   ShopSettingsPage,
   ShopWithdrawMoneyPage,
   ShopInboxPage,
+  ShopHomePage,
 } from "./routes/ShopRoutes";
 import {
   AdminDashboardPage,
@@ -39,7 +40,7 @@ import {
   AdminDashboardSellers,
   AdminDashboardOrders,
   AdminDashboardProducts,
-  AdminDashboardWithdraw,
+  AdminDashboardWithdraw
 } from "./routes/AdminRoutes";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -47,7 +48,6 @@ import Store from "./redux/store";
 import { loadSeller, loadUser } from "./redux/actions/userActions";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import ProtectedAdminRoute from "./routes/ProtectedAdminRoute";
-import { ShopHomePage } from "./routes/ShopRoutes.js";
 import SellerProtectedRoute from "./routes/SellerProtectedRoute";
 import { getAllProducts } from "./redux/actions/productActions";
 import axios from "axios";
@@ -56,7 +56,7 @@ import { server } from "./server";
 // import { loadStripe } from "@stripe/stripe-js";
 
 const App = () => {
-  const [stripeApikey, setStripeApiKey] = useState("");
+  // const [stripeApikey, setStripeApiKey] = useState("");
 
   // async function getStripeApikey() {
   //   const { data } = await axios.get(`${server}/payment/stripeapikey`);
@@ -71,7 +71,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      {stripeApikey && (
+      {/* {stripeApikey && (
         <Elements stripe={loadStripe(stripeApikey)}>
           <Routes>
             <Route
@@ -84,7 +84,7 @@ const App = () => {
             />
           </Routes>
         </Elements>
-      )}
+      )} */}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
@@ -118,30 +118,30 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        {/* <Route
+        <Route
           path="/inbox"
           element={
             <ProtectedRoute>
               <UserInbox />
             </ProtectedRoute>
           }
-        /> */}
-        {/* <Route
+        />
+        <Route
           path="/user/order/:id"
           element={
             <ProtectedRoute>
               <OrderDetailsPage />
             </ProtectedRoute>
           }
-        /> */}
-        {/* <Route
+        />
+        <Route
           path="/user/track/order/:id"
           element={
             <ProtectedRoute>
               <TrackOrderPage />
             </ProtectedRoute>
           }
-        /> */}
+        />
         <Route path="/shop/preview/:id" element={<ShopPreviewPage />} />
         {/* shop Routes */}
         <Route path="/shop-create" element={<ShopCreatePage />} />
@@ -228,54 +228,54 @@ const App = () => {
           }
         />
         {/* Admin Routes */}
-        {/* <Route
+        <Route
           path="/admin/dashboard"
           element={
             <ProtectedAdminRoute>
               <AdminDashboardPage />
             </ProtectedAdminRoute>
           }
-        /> */}
-        {/* <Route
+        />
+        <Route
           path="/admin-users"
           element={
             <ProtectedAdminRoute>
               <AdminDashboardUsers />
             </ProtectedAdminRoute>
           }
-        /> */}
-        {/* <Route
+        />
+        <Route
           path="/admin-sellers"
           element={
             <ProtectedAdminRoute>
               <AdminDashboardSellers />
             </ProtectedAdminRoute>
           }
-        /> */}
-        {/* <Route
+        />
+        <Route
           path="/admin-orders"
           element={
             <ProtectedAdminRoute>
               <AdminDashboardOrders />
             </ProtectedAdminRoute>
           }
-        /> */}
-        {/* <Route
+        />
+         <Route
           path="/admin-products"
           element={
             <ProtectedAdminRoute>
               <AdminDashboardProducts />
             </ProtectedAdminRoute>
           }
-        /> */}
-        {/* <Route
+        />
+         <Route
           path="/admin-withdraw-request"
           element={
             <ProtectedAdminRoute>
               <AdminDashboardWithdraw />
             </ProtectedAdminRoute>
           }
-        /> */}
+        />
       </Routes>
       <ToastContainer
         position="bottom-center"

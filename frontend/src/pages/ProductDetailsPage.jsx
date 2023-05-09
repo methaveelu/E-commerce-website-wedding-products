@@ -28,3 +28,4 @@ const ProductDetailsPage = () => {
 };
 
 export default ProductDetailsPage;
+// refactored

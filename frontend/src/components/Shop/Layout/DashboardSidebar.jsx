@@ -9,10 +9,10 @@ import { Link } from "react-router-dom";
 import { BiMessageSquareDetail } from "react-icons/bi";
 import { HiOutlineReceiptRefund } from "react-icons/hi";
 
-const DashboardSideBar = ({ active }) => {
+const DashboardSidebar = ({ active }) => {
   return (
     <div className="w-full h-[90vh] bg-white shadow-sm overflow-y-scroll sticky top-0 left-0 z-10">
-      {/* single item on side bar*/}
+      {/* single item */}
       <div className="w-full flex items-center p-4">
         <Link to="/dashboard" className="w-full flex items-center">
           <RxDashboard
@@ -77,7 +77,7 @@ const DashboardSideBar = ({ active }) => {
         </Link>
       </div>
 
-      {/* <div className="w-full flex items-center p-4">
+      <div className="w-full flex items-center p-4">
         <Link to="/dashboard-events" className="w-full flex items-center">
           <MdOutlineLocalOffer
             size={30}
@@ -91,9 +91,9 @@ const DashboardSideBar = ({ active }) => {
             All Events
           </h5>
         </Link>
-      </div> */}
+      </div>
 
-      {/* <div className="w-full flex items-center p-4">
+      <div className="w-full flex items-center p-4">
         <Link to="/dashboard-create-event" className="w-full flex items-center">
           <VscNewFile
             size={30}
@@ -107,7 +107,7 @@ const DashboardSideBar = ({ active }) => {
             Create Event
           </h5>
         </Link>
-      </div> */}
+      </div>
 
       <div className="w-full flex items-center p-4">
         <Link
@@ -195,4 +195,4 @@ const DashboardSideBar = ({ active }) => {
   );
 };
 
-export default DashboardSideBar;
+export default DashboardSidebar;

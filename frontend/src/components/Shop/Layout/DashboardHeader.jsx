@@ -11,19 +11,16 @@ const DashboardHeader = () => {
   const { seller } = useSelector((state) => state.seller);
   return (
     <div className="w-full h-[80px] bg-white shadow sticky top-0 left-0 z-30 flex items-center justify-between px-4">
-      {/* logo */}
       <div>
         <Link to="/dashboard">
           <img
-            src=""
+            src="https://shopo.quomodothemes.website/assets/images/logo.svg"
             alt=""
           />
         </Link>
       </div>
-     
       <div className="flex items-center">
         <div className="flex items-center mr-4">
-         {/* gift/coupons */}
           <Link to="/dashboard/cupouns" className="800px:block hidden">
             <AiOutlineGift
               color="#555"
@@ -31,14 +28,13 @@ const DashboardHeader = () => {
               className="mx-5 cursor-pointer"
             />
           </Link>
-          {/* <Link to="/dashboard-events" className="800px:block hidden">
+          <Link to="/dashboard-events" className="800px:block hidden">
             <MdOutlineLocalOffer
               color="#555"
               size={30}
               className="mx-5 cursor-pointer"
             />
-          </Link> */}
-          {/* allProducts */}
+          </Link>
           <Link to="/dashboard-products" className="800px:block hidden">
             <FiShoppingBag
               color="#555"
@@ -46,11 +42,9 @@ const DashboardHeader = () => {
               className="mx-5 cursor-pointer"
             />
           </Link>
-          {/* customer orders */}
           <Link to="/dashboard-orders" className="800px:block hidden">
             <FiPackage color="#555" size={30} className="mx-5 cursor-pointer" />
           </Link>
-          {/* dashboard msg */}
           <Link to="/dashboard-messages" className="800px:block hidden">
             <BiMessageSquareDetail
               color="#555"
