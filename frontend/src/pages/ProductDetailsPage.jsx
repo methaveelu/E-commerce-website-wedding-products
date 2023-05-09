@@ -7,15 +7,15 @@ import SuggestedProduct from "../components/Products/SuggestedProduct";
 import { useSelector } from "react-redux";
 
 const ProductDetailsPage = () => {
-  const { getAllProducts } = useSelector((state) => state.products);
+  const { allProducts } = useSelector((state) => state.products);
   const { id } = useParams();
   const [data, setData] = useState(null);
   const [searchParams] = useSearchParams();
 
   useEffect(() => {
-    const data = getAllProducts && getAllProducts.find((i) => i._id === id);
+    const data = allProducts && allProducts.find((i) => i._id === id);
     setData(data);
-  }, [getAllProducts]);
+  }, [allProducts]);
 
   return (
     <div>

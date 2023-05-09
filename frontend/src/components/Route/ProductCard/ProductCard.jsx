@@ -58,7 +58,7 @@ const ProductCard = ({ data }) => {
       }
     }
   };
-console.log("data",data._id);
+console.log("data",data);
   return (
     <>
       <div className="w-full h-[370px] bg-white rounded-lg shadow-sm p-3 relative cursor-pointer">
@@ -71,9 +71,9 @@ console.log("data",data._id);
             className="w-full h-[170px] object-contain"
           />
         </Link>
-        {/* <Link to={`/shop/preview/${data?.shop._id}`}> */}
-          {/* <h5 className={`${styles.shop_name}`}>{data.shop.name}</h5>
-        </Link> */}
+        <Link to={`/shop/preview/${data?.shop._id}`}>
+          <h5 className={`${styles.shop_name}`}>{data.shop.name}</h5>
+        </Link>
         <Link
           to={`${`/product/${data._id}`}`}>
           <h4 className="pb-3 font-[500]">
