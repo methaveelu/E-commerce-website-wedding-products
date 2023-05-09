@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../components/Layout/Header";
-import Backdrop from "../components/Layout/Backdrop";
+import Backdrop from "../components/Route/Backdrop/Backdrop";
 import FeaturedProduct from "../components/Route/FeaturedProduct/FeaturedProduct";
 import Sponsored from "../components/Route/Sponsored.jsx";
 import Footer from "../components/Layout/Footer.jsx";

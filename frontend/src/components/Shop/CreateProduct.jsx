@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 
 const CreateProduct = () => {
   const { seller } = useSelector((state) => state.seller);
-  // const { success, error } = useSelector((state) => state.products);
+  const { success, error } = useSelector((state) => state.products);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -18,28 +18,28 @@ const CreateProduct = () => {
   const [category, setCategory] = useState("");
   const [tags, setTags] = useState("");
   const [originalPrice, setOriginalPrice] = useState();
+  const [discountPrice, setDiscountPrice] = useState();
   const [stock, setStock] = useState();
 
-  // useEffect(() => {
-  //   if (error) {
-  //     toast.error(error);
-  //   }
-  //   if (success) {
-  //     toast.success("Product created successfully!");
-  //     navigate("/dashboard");
-  //     window.location.reload();
-  //   }
-  // }, [dispatch, error, success]);
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+    }
+    if (success) {
+      toast.success("Product created successfully!");
+      navigate("/dashboard");
+      window.location.reload();
+    }
+  }, [dispatch, error, success]);
 
   const handleImageChange = (e) => {
     e.preventDefault();
 
     let files = Array.from(e.target.files);
-    setImages((prevImages) => [...prevImages, ...files]);//... is spread operator
-    // preserves previous images and adds new images
+    setImages((prevImages) => [...prevImages, ...files]);
   };
 
-//   console.log(images);
+  console.log(images);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -54,6 +54,7 @@ const CreateProduct = () => {
     newForm.append("category", category);
     newForm.append("tags", tags);
     newForm.append("originalPrice", originalPrice);
+    newForm.append("discountPrice", discountPrice);
     newForm.append("stock", stock);
     newForm.append("shopId", seller._id);
     dispatch(createProduct(newForm));
@@ -141,6 +142,20 @@ const CreateProduct = () => {
         <br />
         <div>
           <label className="pb-2">
+            Price (With Discount) <span className="text-red-500">*</span>
+          </label>
+          <input
+            type="number"
+            name="price"
+            value={discountPrice}
+            className="mt-2 appearance-none block w-full px-3 h-[35px] border border-gray-300 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+            onChange={(e) => setDiscountPrice(e.target.value)}
+            placeholder="Enter your product price with discount..."
+          />
+        </div>
+        <br />
+        <div>
+          <label className="pb-2">
             Product Stock <span className="text-red-500">*</span>
           </label>
           <input
@@ -153,7 +168,6 @@ const CreateProduct = () => {
           />
         </div>
         <br />
-        {/* upload images of new product  */}
         <div>
           <label className="pb-2">
             Upload Images <span className="text-red-500">*</span>
@@ -181,7 +195,6 @@ const CreateProduct = () => {
               ))}
           </div>
           <br />
-          {/* create button */}
           <div>
             <input
               type="submit"

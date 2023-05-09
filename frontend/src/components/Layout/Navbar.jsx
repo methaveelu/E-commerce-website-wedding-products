@@ -5,22 +5,23 @@ import styles from "../../styles/styles";
 
 const Navbar = ({ active }) => {
   return (
-    <div className={`${styles.normalFlex} bg-[#fbe4d3] border-black`} key="navbar">
-
+    <div className={`block 800px:${styles.noramlFlex}`}>
       {navItems &&
         navItems.map((i, index) => (
-          <div className="flex" key={index}>
+          <div className="flex">
             <Link
               to={i.url}
-              className={`text-black hover:text-gray-700 pb-3 lg:pb-0 font-bold text-lg px-6 cursor-pointer ${
-                active === index + 1 ? "text-pink-500" : ""
-              }`}
+              className={`${
+                active === index + 1
+                  ? "text-[#17dd1f]"
+                  : "text-black 800px:text-[#fff]"
+              } pb-[30px] 800px:pb-0 font-[500] px-6 cursor-pointer}`}
             >
               {i.title}
             </Link>
           </div>
         ))}
-      </div>
+    </div>
   );
 };
 

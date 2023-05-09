@@ -11,7 +11,6 @@ import { toast } from "react-toastify";
 
 const Cart = ({ setOpenCart }) => {
   const { cart } = useSelector((state) => state.cart);
-
   const dispatch = useDispatch();
 
   const removeFromCartHandler = (data) => {
