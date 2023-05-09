@@ -13,7 +13,7 @@ import {
 import axios from "axios";
 import { server } from "../../server";
 
-const ProfileSideBar = ({ setActive, active }) => {
+const ProfileSidebar = ({ setActive, active }) => {
   const navigate = useNavigate();
 
   const logoutHandler = () => {
@@ -144,4 +144,4 @@ const ProfileSideBar = ({ setActive, active }) => {
   );
 };
 
-export default ProfileSideBar;
+export default ProfileSidebar;
