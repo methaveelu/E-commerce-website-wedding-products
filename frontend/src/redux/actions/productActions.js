@@ -9,6 +9,7 @@ export const createProduct = (newForm) => async (dispatch) => {
     });
 
     const config = { headers: { "Content-Type": "multipart/form-data" } };
+    //Content-Type header is used to specify the type of content being sent in an HTTP request. In this case, the Content-Type is set to multipart/form-data, which is used when submitting forms that contain files, such as images or documents.
 
     const { data } = await axios.post(
       `${server}/product/create-product`,
@@ -17,7 +18,7 @@ export const createProduct = (newForm) => async (dispatch) => {
     );
     dispatch({
       type: "productCreateSuccess",
-      payload: data.product,
+      payload: data.product,////product come from productroutes.js (controller)
     });
   } catch (error) {
     dispatch({

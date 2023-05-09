@@ -1,8 +1,9 @@
 const express = require("express");
-const { isSeller, isAuthenticated } = require("../middleware/auth");
-const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const router = express.Router();
 const Product = require("../models/productModel");
+
+const { isSeller, isAuthenticated } = require("../middleware/auth");
+const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const Order = require("../models/orderModel");
 const Shop = require("../models/shopModel");
 const { upload } = require("../multer");
@@ -16,19 +17,20 @@ router.post(
   catchAsyncErrors(async (req, res, next) => {
     try {
       const shopId = req.body.shopId;
-      const shop = await Shop.findById(shopId);
+      const shop = await Shop.findById(shopId);//check if shopid is in database or not
       if (!shop) {
         return next(new ErrorHandler("Shop ID is invalid!", 400));
       } else {
-        const files = req.files;
+        const files = req.files; //files is an array (multiple images)
         const imageUrls = files.map((file) => `${file.filename}`);
 
         const productData = req.body;
         productData.images = imageUrls;
         productData.shop = shop;
 
-        const product = await Product.create(productData);
+        const product = await Product.create(productData);//called in product actions data.product
 
+        //once successful send it front end
         res.status(201).json({
           success: true,
           product,
