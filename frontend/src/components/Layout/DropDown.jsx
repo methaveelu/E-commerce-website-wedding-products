@@ -22,7 +22,11 @@ const DropDown = ({ categoriesData, setDropDown }) => {
               <div className="w-6 h-6 mr-2">
                 <img
                   src={i.image_Url}
-                  style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain",
+                  }}
                   alt=""
                 />
               </div>

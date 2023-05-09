@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 const userModel = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, "Please enter your name!"],
+    required: [true, "Please enter your name"],
   },
   email: {
     type: String,
@@ -14,7 +14,7 @@ const userModel = new mongoose.Schema({
   password: {
     type: String,
     required: [true, "Please enter your password"],
-    minLength: [6, "Password should be greater than 6 characters"],
+    minLength: [6, "Password should be at least 6 characters long"],
     select: false,
   },
   phoneNumber: {
@@ -73,7 +73,7 @@ userModel.methods.getJwtToken = function () {
   });
 };
 
-// compare password
+// compare passwords
 userModel.methods.comparePassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };

@@ -4,17 +4,18 @@ import Footer from "../components/Layout/Footer";
 import Header from "../components/Layout/Header";
 import ProductDetails from "../components/Products/ProductDetails";
 import SuggestedProduct from "../components/Products/SuggestedProduct";
+import { useSelector } from "react-redux";
 
 const ProductDetailsPage = () => {
-  let productData = [];
+  const { getAllProducts } = useSelector((state) => state.products);
   const { id } = useParams();
   const [data, setData] = useState(null);
   const [searchParams] = useSearchParams();
 
   useEffect(() => {
-    const data = productData && productData.find((i) => i._id === id);
+    const data = getAllProducts && getAllProducts.find((i) => i._id === id);
     setData(data);
-  }, [productData]);
+  }, [getAllProducts]);
 
   return (
     <div>
@@ -27,3 +28,4 @@ const ProductDetailsPage = () => {
 };
 
 export default ProductDetailsPage;
+// refactored

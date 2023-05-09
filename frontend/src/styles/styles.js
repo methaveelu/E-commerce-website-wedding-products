@@ -4,7 +4,7 @@ const styles = {
   section: "w-11/12 mx-auto rounded-lg py-10 px-8 bg-fbe4d3 border-black",
   sectionHeading: "font-bold text-35 text-center mb-6 border-black",
   productTitle: "text-25 font-medium text-333 mb-4 border-black",
-  price: "font-500 text-16 text-d55b45 pl-3 mt--4px line-through",
+  price: "font-500 text-16 text-d55b45 pl-3 mt--4px",
   shop_name: "text-25 text-red-700 font-bold pb-4",
   active_indicator: "absolute bottom--27% left-0 h-3 w-full bg-f6dfeb",
   button: "w-150 bg-f6dfeb h-50 my-3 flex items-center justify-center rounded-xl cursor-pointer text-white font-medium text-lg",

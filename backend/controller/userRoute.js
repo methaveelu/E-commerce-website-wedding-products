@@ -50,7 +50,7 @@ router.post("/create-user", upload.single("file"), async (req, res, next) => {
       });
       res.status(201).json({
         success: true,
-        message: `please check your email:- ${user.email} to activate your account!`,
+        message: `please check your email:- ${user.email} to activate your account`,
       });
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));
@@ -111,20 +111,20 @@ router.post(
       const { email, password } = req.body;
 
       if (!email || !password) {
-        return next(new ErrorHandler("Please provide the all fields!", 400));
+        return next(new ErrorHandler("Please fill in all the required fields", 400));
       }
 
       const user = await User.findOne({ email }).select("+password");
 
       if (!user) {
-        return next(new ErrorHandler("User doesn't exists!", 400));
+        return next(new ErrorHandler("User does not exist", 400));
       }
 
       const isPasswordValid = await user.comparePassword(password);
 
       if (!isPasswordValid) {
         return next(
-          new ErrorHandler("Please provide the correct information", 400)
+          new ErrorHandler("Please provide the correct username or password", 400)
         );
       }
 
@@ -143,7 +143,7 @@ router.get(
     try {
       const user = await User.findById(req.user.id);
       if (!user) {
-        return next(new ErrorHandler("User doesn't exists", 400));
+        return next(new ErrorHandler("User does not exist", 400));
       }
 
       res.status(200).json({
@@ -156,7 +156,7 @@ router.get(
   })
 );
 
-// log out user (empty the cookie and expire the token)
+// logout user (empty the cookie and expire the token)
 router.get(
   "/logout",
   catchAsyncErrors(async (req, res, next) => {
@@ -167,7 +167,7 @@ router.get(
       });
       res.status(201).json({
         success: true,
-        message: "Log out successful!",
+        message: "Logout successful",
       });
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));
@@ -193,7 +193,7 @@ router.put(
 
       if (!isPasswordValid) {
         return next(
-          new ErrorHandler("Please provide the correct information", 400)
+          new ErrorHandler("Please provide the correct username or password", 400)
         );
       }
 
@@ -322,12 +322,12 @@ router.put(
       );
 
       if (!isPasswordMatched) {
-        return next(new ErrorHandler("Old password is incorrect!", 400));
+        return next(new ErrorHandler("Old password is incorrect", 400));
       }
 
       if (req.body.newPassword !== req.body.confirmPassword) {
         return next(
-          new ErrorHandler("Password doesn't matched with each other!", 400)
+          new ErrorHandler("Passwords do not match", 400)
         );
       }
       user.password = req.body.newPassword;
@@ -336,7 +336,7 @@ router.put(
 
       res.status(200).json({
         success: true,
-        message: "Password updated successfully!",
+        message: "Password updated successfully",
       });
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));

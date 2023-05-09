@@ -2,11 +2,11 @@ const ErrorHandler = require("../utilities/ErrorHandler");
 
 module.exports = (err, req, res, next) => {
   err.statusCode = err.statusCode || 500;
-  err.message = err.message || "Internal server Error";
+  err.message = err.message || "Internal server error";
 
-  // wrong mongodb id error
+  // MongoDB ID error
   if (err.name === "CastError") {
-    const message = `Resources not found with this id.. Invalid ${err.path}`;
+    const message = `Resources with this ID not found. Invalid ${err.path}`;
     err = new ErrorHandler(message, 400);
   }
 
@@ -18,13 +18,13 @@ module.exports = (err, req, res, next) => {
 
   // wrong jwt error
   if (err.name === "JsonWebTokenError") {
-    const message = `Your url is invalid please try again letter`;
+    const message = `Your token is invalid`;
     err = new ErrorHandler(message, 400);
   }
 
   // jwt expired
   if (err.name === "TokenExpiredError") {
-    const message = `Your Url is expired please try again letter!`;
+    const message = `Your token has expired`;
     err = new ErrorHandler(message, 400);
   }
 
