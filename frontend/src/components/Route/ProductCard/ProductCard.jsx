@@ -1,23 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import ProductDetailsCard from "../ProductDetailsCard/ProductDetailsCard";
+import Ratings from "../../Products/Ratings";
+import { Link } from "react-router-dom";
+import { backend_url } from "../../../server";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../../../redux/actions/cartActions";
+import {
+  addToWishlist,
+  removeFromWishlist,
+} from "../../../redux/actions/wishlistActions";
 import {
   AiFillHeart,
   AiOutlineEye,
   AiOutlineHeart,
   AiOutlineShoppingCart,
 } from "react-icons/ai";
-import { Link } from "react-router-dom";
-import { backend_url } from "../../../server";
-import styles from "../../../styles/styles";
-import { useDispatch, useSelector } from "react-redux";
-import ProductDetailsCard from "../ProductDetailsCard/ProductDetailsCard";
-import {
-  addToWishlist,
-  removeFromWishlist,
-} from "../../../redux/actions/wishlistActions";
-import { useEffect } from "react";
-import { addToCart } from "../../../redux/actions/cartActions";
 import { toast } from "react-toastify";
-import Ratings from "../../Products/Ratings";
+import styles from "../../../styles/styles";
 
 const ProductCard = ({ data }) => {
   const { wishlist } = useSelector((state) => state.wishlist);
@@ -25,7 +24,7 @@ const ProductCard = ({ data }) => {
   const [click, setClick] = useState(false);
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
-  console.log(data);
+  // console.log(data);
 
   useEffect(() => {
     if (wishlist && wishlist.find((i) => i._id === data._id)) {
@@ -59,7 +58,6 @@ const ProductCard = ({ data }) => {
       }
     }
   };
-console.log("data",data);
   return (
     <>
       <div className="w-full h-[370px] bg-white rounded-lg shadow-sm p-3 relative cursor-pointer">
@@ -76,7 +74,6 @@ console.log("data",data);
           <h5 className={`${styles.shop_name}`}>{data.shop.name}</h5>
         </Link>
         <Link to={`${`/product/${data._id}`}`}>
-
           <h4 className="pb-3 font-[500]">
             {data.name.length > 40 ? data.name.slice(0, 40) + "..." : data.name}
           </h4>
@@ -87,14 +84,8 @@ console.log("data",data);
 
           <div className="py-2 flex items-center justify-between">
             <div className="flex">
-              <h5 className={`${styles.productDiscountPrice}`}>
-                {data.originalPrice === 0
-                  ? data.originalPrice
-                  : data.discountPrice}
-                $
-              </h5>
               <h4 className={`${styles.price}`}>
-                {data.originalPrice ? data.originalPrice + " $" : null}
+                {data.price ? "$" + data.price : null}
               </h4>
             </div>
             <span className="font-[400] text-[17px] text-[#68d284]">
@@ -144,4 +135,3 @@ console.log("data",data);
 };
 
 export default ProductCard;
-// refactored

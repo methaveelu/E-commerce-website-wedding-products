@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { AiOutlinePlusCircle } from "react-icons/ai";
-import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { createProduct } from "../../redux/actions/productActions";
 import { categoriesData } from "../../static/data";
+import { AiOutlinePlusCircle } from "react-icons/ai";
 import { toast } from "react-toastify";
 
 const CreateProduct = () => {

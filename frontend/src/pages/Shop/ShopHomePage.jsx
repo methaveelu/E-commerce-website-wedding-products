@@ -3,7 +3,7 @@ import styles from "../../styles/styles";
 import ShopInfo from "../../components/Shop/ShopInfo";
 import ShopProfileData from "../../components/Shop/ShopProfileData";
 
-//only render whe seller/shop owner logs in
+//only render the seller/shop owner logs in
 const ShopHomePage = () => {
   return (
     <div className={`${styles.section} bg-[#f5f5f5]`}>

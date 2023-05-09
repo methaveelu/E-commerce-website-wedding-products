@@ -1,11 +1,11 @@
-import { React, useState } from "react";
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import styles from "../../styles/styles";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { server } from "../../server";
-import { toast } from "react-toastify";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { RxAvatar } from "react-icons/rx";
+import styles from "../../styles/styles";
+import { toast } from "react-toastify";
 
 const ShopCreate = () => {
   const navigate = useNavigate();
@@ -234,7 +234,7 @@ const ShopCreate = () => {
                 Submit
               </button>
             </div>
-            <div className={`${styles.noramlFlex} w-full`}>
+            <div className={`${styles.normalFlex} w-full`}>
               <h4>Already have an account?</h4>
               <Link to="/shop-login" className="text-blue-600 pl-2">
                 Sign in

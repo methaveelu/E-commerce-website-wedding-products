@@ -1,4 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { backend_url } from "../../../server";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../../../redux/actions/cartActions";
+import {
+  addToWishlist,
+  removeFromWishlist,
+} from "../../../redux/actions/wishlistActions";
 import {
   AiFillHeart,
   AiOutlineHeart,
@@ -6,16 +14,8 @@ import {
   AiOutlineShoppingCart,
 } from "react-icons/ai";
 import { RxCross1 } from "react-icons/rx";
-import { Link } from "react-router-dom";
-import { backend_url } from "../../../server";
-import styles from "../../../styles/styles";
-import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { addToCart } from "../../../redux/actions/cartActions";
-import {
-  addToWishlist,
-  removeFromWishlist,
-} from "../../../redux/actions/wishlistActions";
+import styles from "../../../styles/styles";
 
 const ProductDetailsCard = ({ setOpen, data }) => {
   const { cart } = useSelector((state) => state.cart);
@@ -119,11 +119,8 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                 <p>{data.description}</p>
 
                 <div className="flex pt-3">
-                  <h4 className={`${styles.productDiscountPrice}`}>
-                    {data.discountPrice}$
-                  </h4>
                   <h3 className={`${styles.price}`}>
-                    {data.originalPrice ? data.originalPrice + "$" : null}
+                    {data.price ? "$" + data.price: null}
                   </h3>
                 </div>
                 <div className="flex items-center mt-12 justify-between pr-3">
@@ -181,4 +178,3 @@ const ProductDetailsCard = ({ setOpen, data }) => {
 };
 
 export default ProductDetailsCard;
-// refactored

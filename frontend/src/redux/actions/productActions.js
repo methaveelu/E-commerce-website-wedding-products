@@ -5,7 +5,7 @@ import { server } from "../../server";
 export const createProduct = (newForm) => async (dispatch) => {
   try {
     dispatch({
-      type: "product/createRequest",
+      type: "productCreateRequest",
     });
 
     const config = { headers: { "Content-Type": "multipart/form-data" } };
@@ -16,12 +16,12 @@ export const createProduct = (newForm) => async (dispatch) => {
       config
     );
     dispatch({
-      type: "product/createSuccess",
+      type: "productCreateSuccess",
       payload: data.product,
     });
   } catch (error) {
     dispatch({
-      type: "product/createFail",
+      type: "productCreateFail",
       payload: error.response.data.message,
     });
   }
@@ -31,19 +31,19 @@ export const createProduct = (newForm) => async (dispatch) => {
 export const getAllProductsShop = (id) => async (dispatch) => {
   try {
     dispatch({
-      type: "product/getAllShopProductsRequest",
+      type: "getAllShopProductsRequest",
     });
 
     const { data } = await axios.get(
       `${server}/product/get-all-products-shop/${id}`
     );
     dispatch({
-      type: "product/getAllShopProductsSuccess",
+      type: "getAllShopProductsSuccess",
       payload: data.products,
     });
   } catch (error) {
     dispatch({
-      type: "product/getAllShopProductsFailed",
+      type: "getAllShopProductsFailed",
       payload: error.response.data.message,
     });
   }
@@ -53,7 +53,7 @@ export const getAllProductsShop = (id) => async (dispatch) => {
 export const deleteProduct = (id) => async (dispatch) => {
   try {
     dispatch({
-      type: "product/deleteRequest",
+      type: "deleteProductRequest",
     });
 
     const { data } = await axios.delete(
@@ -64,12 +64,12 @@ export const deleteProduct = (id) => async (dispatch) => {
     );
 
     dispatch({
-      type: "product/deleteSuccess",
+      type: "deleteProductSuccess",
       payload: data.message,
     });
   } catch (error) {
     dispatch({
-      type: "product/deleteFailed",
+      type: "deleteProductFailed",
       payload: error.response.data.message,
     });
   }
@@ -79,17 +79,17 @@ export const deleteProduct = (id) => async (dispatch) => {
 export const getAllProducts = () => async (dispatch) => {
   try {
     dispatch({
-      type: "product/getAllProductsRequest",
+      type: "getAllProductsRequest",
     });
 
     const { data } = await axios.get(`${server}/product/get-all-products`);
     dispatch({
-      type: "product/getAllProductsSuccess",
+      type: "getAllProductsSuccess",
       payload: data.products,
     });
   } catch (error) {
     dispatch({
-      type: "product/getAllProductsFailed",
+      type: "getAllProductsFailed",
       payload: error.response.data.message,
     });
   }

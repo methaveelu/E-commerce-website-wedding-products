@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import styles from "../../styles/styles";
-import { BsFillBagFill } from "react-icons/bs";
+import axios from "axios";
+import { backend_url, server } from "../../server";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllOrdersOfShop } from "../../redux/actions/orderActions";
-import { backend_url, server } from "../../server";
-import axios from "axios";
+import { BsFillBagFill } from "react-icons/bs";
+import styles from "../../styles/styles";
 import { toast } from "react-toastify";
 
 const OrderDetails = () => {

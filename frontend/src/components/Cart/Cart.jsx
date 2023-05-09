@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { RxCross1 } from "react-icons/rx";
-import { IoBagHandleOutline } from "react-icons/io5";
-import { HiOutlineMinus, HiPlus } from "react-icons/hi";
-import styles from "../../styles/styles";
 import { Link } from "react-router-dom";
 import { backend_url } from "../../server";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../../redux/actions/cartActions";
+import { HiOutlineMinus, HiPlus } from "react-icons/hi";
+import { IoBagHandleOutline } from "react-icons/io5";
+import { RxCross1 } from "react-icons/rx";
 import { toast } from "react-toastify";
+import styles from "../../styles/styles";
 
 const Cart = ({ setOpenCart }) => {
   const { cart } = useSelector((state) => state.cart);
@@ -17,10 +17,7 @@ const Cart = ({ setOpenCart }) => {
     dispatch(removeFromCart(data));
   };
 
-  const totalPrice = cart.reduce(
-    (acc, item) => acc + item.qty * item.discountPrice,
-    0
-  );
+  const totalPrice = cart.reduce((acc, item) => acc + item.qty * item.price, 0);
 
   const quantityChangeHandler = (data) => {
     dispatch(addToCart(data));
@@ -94,7 +91,7 @@ const Cart = ({ setOpenCart }) => {
 
 const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
   const [value, setValue] = useState(data.qty);
-  const totalPrice = data.discountPrice * value;
+  const totalPrice = data.price * value;
 
   const increment = (data) => {
     if (data.stock < value) {
@@ -141,7 +138,7 @@ const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
             ${data.discountPrice} * {value}
           </h4>
           <h4 className="font-[600] text-[17px] pt-[3px] text-[#d02222] font-Roboto">
-            SGD${totalPrice}
+            S${totalPrice}
           </h4>
         </div>
         <RxCross1

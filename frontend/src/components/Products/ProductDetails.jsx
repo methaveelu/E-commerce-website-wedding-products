@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from "react";
+import Ratings from "./Ratings";
+import axios from "axios";
+import { backend_url, server } from "../../server";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../../redux/actions/cartActions";
+import { getAllProductsShop } from "../../redux/actions/productActions";
+import {
+  addToWishlist,
+  removeFromWishlist,
+} from "../../redux/actions/wishlistActions";
+import styles from "../../styles/styles";
 import {
   AiFillHeart,
   AiOutlineHeart,
   AiOutlineMessage,
   AiOutlineShoppingCart,
 } from "react-icons/ai";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { getAllProductsShop } from "../../redux/actions/productActions";
-import { backend_url, server } from "../../server";
-import styles from "../../styles/styles";
-import {
-  addToWishlist,
-  removeFromWishlist,
-} from "../../redux/actions/wishlistActions";
-import { addToCart } from "../../redux/actions/cartActions";
 import { toast } from "react-toastify";
-import Ratings from "./Ratings";
-import axios from "axios";
 
 const ProductDetails = ({ data }) => {
   const { wishlist } = useSelector((state) => state.wishlist);

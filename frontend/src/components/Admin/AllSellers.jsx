@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { DataGrid } from "@material-ui/data-grid";
-import { AiOutlineDelete, AiOutlineEye } from "react-icons/ai";
-import { Button } from "@material-ui/core";
-import styles from "../../styles/styles";
-import { RxCross1 } from "react-icons/rx";
+import { Link } from "react-router-dom";
+import { getAllSellers } from "../../redux/actions/sellerActions";
 import axios from "axios";
 import { server } from "../../server";
+import { useDispatch, useSelector } from "react-redux";
+import { Button } from "@material-ui/core";
+import { DataGrid } from "@material-ui/data-grid";
+import { AiOutlineDelete, AiOutlineEye } from "react-icons/ai";
+import { RxCross1 } from "react-icons/rx";
 import { toast } from "react-toastify";
-import { getAllSellers } from "../../redux/actions/sellerActions";
-import { Link } from "react-router-dom";
+import styles from "../../styles/styles";
 
 const AllSellers = () => {
   const dispatch = useDispatch();

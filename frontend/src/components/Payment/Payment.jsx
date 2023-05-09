@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { server } from "../../server";
 import styles from "../../styles/styles";
-import { useEffect } from "react";
+import { toast } from "react-toastify";
+import { RxCross1 } from "react-icons/rx";
 // import {
 //   CardNumberElement,
 //   CardCvcElement,
@@ -10,11 +14,6 @@ import { useEffect } from "react";
 //   useElements,
 // } from "@stripe/react-stripe-js";
 // import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-import { useSelector } from "react-redux";
-import axios from "axios";
-import { server } from "../../server";
-import { toast } from "react-toastify";
-import { RxCross1 } from "react-icons/rx";
 
 const Payment = () => {
   const [orderData, setOrderData] = useState([]);
@@ -36,7 +35,7 @@ const Payment = () => {
           {
             description: "Sunflower",
             amount: {
-              currency_code: "USD",
+              currency_code: "SGD",
               value: orderData?.totalPrice,
             },
           },
@@ -321,7 +320,7 @@ const PaymentInfo = ({
       </div>
 
       <br />
-      {/* paypal payment */}
+      {/* pay with PayPal */}
       <div>
         <div className="flex w-full pb-5 border-b mb-2">
           <div
@@ -337,7 +336,7 @@ const PaymentInfo = ({
           </h4>
         </div>
 
-        {/* pay with payement */}
+        {/* pay with PayNow */}
         {select === 2 ? (
           <div className="w-full flex border-b">
             <div
@@ -425,9 +424,6 @@ const CartData = ({ orderData }) => {
       <br />
       <div className="flex justify-between border-b pb-3">
         <h3 className="text-[16px] font-[400] text-[#000000a4]">Discount:</h3>
-        <h5 className="text-[18px] font-[600]">
-          {orderData?.discountPrice ? "$" + orderData.discountPrice : "-"}
-        </h5>
       </div>
       <h5 className="text-[18px] font-[600] text-end pt-3">
         ${orderData?.totalPrice}

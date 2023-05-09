@@ -1,12 +1,14 @@
+import React, { useEffect } from "react";
+import Loader from "../Layout/Loader";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  deleteProduct,
+  getAllProductsShop,
+} from "../../redux/actions/productActions";
 import { Button } from "@material-ui/core";
 import { DataGrid } from "@material-ui/data-grid";
-import React, { useEffect } from "react";
 import { AiOutlineDelete, AiOutlineEye } from "react-icons/ai";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { getAllProductsShop } from "../../redux/actions/productActions";
-import { deleteProduct } from "../../redux/actions/productActions";
-import Loader from "../Layout/Loader";
 
 const AllProducts = () => {
   const { products, isLoading } = useSelector((state) => state.products);
