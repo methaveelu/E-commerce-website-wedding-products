@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
-import Loader from "../Layout/Loader";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllOrdersOfShop } from "../../redux/actions/orderActions";
-import { AiOutlineArrowRight } from "react-icons/ai";
 import { Button } from "@material-ui/core";
 import { DataGrid } from "@material-ui/data-grid";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import Loader from "../Layout/Loader";
+import { getAllOrdersOfShop } from "../../redux/actions/orderActions";
+import { AiOutlineArrowRight } from "react-icons/ai";
 
 const AllRefundOrders = () => {
   const { orders, isLoading } = useSelector((state) => state.order);
@@ -17,12 +17,7 @@ const AllRefundOrders = () => {
     dispatch(getAllOrdersOfShop(seller._id));
   }, [dispatch]);
 
-  const refundOrders =
-    orders &&
-    orders.filter(
-      (item) =>
-        item.status === "Processing refund" || item.status === "Refund Success"
-    );
+  const refundOrders = orders && orders.filter((item) => item.status === "Processing refund"  || item.status === "Refund Success");
 
   const columns = [
     { field: "id", headerName: "Order ID", minWidth: 150, flex: 0.7 },
@@ -78,7 +73,7 @@ const AllRefundOrders = () => {
   const row = [];
 
   refundOrders &&
-    refundOrders.forEach((item) => {
+  refundOrders.forEach((item) => {
       row.push({
         id: item._id,
         itemsQty: item.cart.length,

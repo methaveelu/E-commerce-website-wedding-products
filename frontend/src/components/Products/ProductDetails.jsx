@@ -1,26 +1,25 @@
 import React, { useEffect, useState } from "react";
-import Ratings from "./Ratings";
-import axios from "axios";
-import { backend_url, server } from "../../server";
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../../redux/actions/cartActions";
-import { getAllProductsShop } from "../../redux/actions/productActions";
-import {
-  addToWishlist,
-  removeFromWishlist,
-} from "../../redux/actions/wishlistActions";
-import styles from "../../styles/styles";
 import {
   AiFillHeart,
   AiOutlineHeart,
   AiOutlineMessage,
   AiOutlineShoppingCart,
 } from "react-icons/ai";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { getAllProductsShop } from "../../redux/actions/productActions";
+import { backend_url, server } from "../../server";
+import styles from "../../styles/styles";
+import {
+  addToWishlist,
+  removeFromWishlist,
+} from "../../redux/actions/wishlistActions";
+import { addToCart } from "../../redux/actions/cartActions";
 import { toast } from "react-toastify";
+import Ratings from "./Ratings";
+import axios from "axios";
 
 const ProductDetails = ({ data }) => {
-  console.log(data);
   const { wishlist } = useSelector((state) => state.wishlist);
   const { cart } = useSelector((state) => state.cart);
   const { user, isAuthenticated } = useSelector((state) => state.user);
@@ -39,11 +38,11 @@ const ProductDetails = ({ data }) => {
     }
   }, [data, wishlist]);
 
-  const increaseCount = () => {
+  const incrementCount = () => {
     setCount(count + 1);
   };
 
-  const decreaseCount = () => {
+  const decrementCount = () => {
     if (count > 1) {
       setCount(count - 1);
     }
@@ -86,9 +85,10 @@ const ProductDetails = ({ data }) => {
       0
     );
 
-  const avg = totalRatings / totalReviewsLength || 0;
+  const avg =  totalRatings / totalReviewsLength || 0;
 
   const averageRating = avg.toFixed(2);
+
 
   const handleMessageSubmit = async () => {
     if (isAuthenticated) {
@@ -113,7 +113,7 @@ const ProductDetails = ({ data }) => {
   };
 
   return (
-    <div className="bg-[#fbe4d3]">
+    <div className="bg-white">
       {data ? (
         <div className={`${styles.section} w-[90%] 800px:w-[80%]`}>
           <div className="w-full py-5">
@@ -127,7 +127,7 @@ const ProductDetails = ({ data }) => {
                 <div className="w-full flex">
                   {data &&
                     data.images.map((i, index) => (
-                      <div key={index}
+                      <div
                         className={`${
                           select === 0 ? "border" : "null"
                         } cursor-pointer`}
@@ -151,8 +151,11 @@ const ProductDetails = ({ data }) => {
                 <h1 className={`${styles.productTitle}`}>{data.name}</h1>
                 <p>{data.description}</p>
                 <div className="flex pt-3">
-                  <h3 className={`$ ${styles.price}`}>
-                    {data.originalPrice ? "$" + data.originalPrice : null}
+                  <h4 className={`${styles.productDiscountPrice}`}>
+                    {data.discountPrice}$
+                  </h4>
+                  <h3 className={`${styles.price}`}>
+                    {data.originalPrice ? data.originalPrice + "$" : null}
                   </h3>
                 </div>
 
@@ -160,16 +163,16 @@ const ProductDetails = ({ data }) => {
                   <div>
                     <button
                       className="bg-gradient-to-r from-teal-400 to-teal-500 text-white font-bold rounded-l px-4 py-2 shadow-lg hover:opacity-75 transition duration-300 ease-in-out"
-                      onClick={decreaseCount}
+                      onClick={decrementCount}
                     >
                       -
                     </button>
-                    <span className="text-gray-800 font-medium px-4 py-[11px]">
+                    <span className="bg-gray-200 text-gray-800 font-medium px-4 py-[11px]">
                       {count}
                     </span>
                     <button
                       className="bg-gradient-to-r from-teal-400 to-teal-500 text-white font-bold rounded-l px-4 py-2 shadow-lg hover:opacity-75 transition duration-300 ease-in-out"
-                      onClick={increaseCount}
+                      onClick={incrementCount}
                     >
                       +
                     </button>

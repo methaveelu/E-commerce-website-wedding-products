@@ -17,7 +17,10 @@ const Cart = ({ setOpenCart }) => {
     dispatch(removeFromCart(data));
   };
 
-  const totalPrice = cart.reduce((acc, item) => acc + item.qty * item.price, 0);
+  const totalPrice = cart.reduce(
+    (acc, item) => acc + item.qty * item.discountPrice,
+    0
+  );
 
   const quantityChangeHandler = (data) => {
     dispatch(addToCart(data));
@@ -25,7 +28,7 @@ const Cart = ({ setOpenCart }) => {
 
   return (
     <div className="fixed top-0 left-0 w-full bg-[#0000004b] h-screen z-10">
-      <div className="fixed top-0 right-0 h-full w-[80%] 800px:w-[25%] bg-[#fbe4d3] flex flex-col overflow-y-scroll justify-between shadow-sm">
+      <div className="fixed top-0 right-0 h-full w-[80%] 800px:w-[25%] bg-white flex flex-col overflow-y-scroll justify-between shadow-sm">
         {cart && cart.length === 0 ? (
           <div className="w-full h-screen flex items-center justify-center">
             <div className="flex w-full justify-end pt-5 pr-5 fixed top-3 right-3">
@@ -35,7 +38,7 @@ const Cart = ({ setOpenCart }) => {
                 onClick={() => setOpenCart(false)}
               />
             </div>
-            <h5>Cart is empty!</h5>
+            <h5>Cart Items is empty!</h5>
           </div>
         ) : (
           <>
@@ -47,7 +50,7 @@ const Cart = ({ setOpenCart }) => {
                   onClick={() => setOpenCart(false)}
                 />
               </div>
-              {/* item length */}
+              {/* Item length */}
               <div className={`${styles.normalFlex} p-4`}>
                 <IoBagHandleOutline size={25} />
                 <h5 className="pl-2 text-[20px] font-[500]">
@@ -55,7 +58,7 @@ const Cart = ({ setOpenCart }) => {
                 </h5>
               </div>
 
-              {/* CartSingle items */}
+              {/* cart Single Items */}
               <br />
               <div className="w-full border-t">
                 {cart &&
@@ -71,13 +74,13 @@ const Cart = ({ setOpenCart }) => {
             </div>
 
             <div className="px-5 mb-3">
-              {/* checkout buttons with total price*/}
+              {/* checkout buttons */}
               <Link to="/checkout">
                 <div
                   className={`h-[45px] flex items-center justify-center w-[100%] bg-[#e44343] rounded-[5px]`}
                 >
                   <h1 className="text-[#fff] text-[18px] font-[600]">
-                    Checkout Now
+                    Checkout Now (USD${totalPrice})
                   </h1>
                 </div>
               </Link>
@@ -91,7 +94,7 @@ const Cart = ({ setOpenCart }) => {
 
 const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
   const [value, setValue] = useState(data.qty);
-  const totalPrice = data.price * value;
+  const totalPrice = data.discountPrice * value;
 
   const increment = (data) => {
     if (data.stock < value) {
@@ -138,7 +141,7 @@ const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
             ${data.discountPrice} * {value}
           </h4>
           <h4 className="font-[600] text-[17px] pt-[3px] text-[#d02222] font-Roboto">
-            S${totalPrice}
+            US${totalPrice}
           </h4>
         </div>
         <RxCross1
