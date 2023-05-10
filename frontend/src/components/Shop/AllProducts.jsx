@@ -13,6 +13,7 @@ import { AiOutlineDelete, AiOutlineEye } from "react-icons/ai";
 const AllProducts = () => {
   const { products, isLoading } = useSelector((state) => state.products);
   const { seller } = useSelector((state) => state.seller);
+  console.log(products,"allproducts")
 
   const dispatch = useDispatch();
 
