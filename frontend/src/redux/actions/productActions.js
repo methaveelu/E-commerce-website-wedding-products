@@ -4,7 +4,7 @@ import { server } from "../../server";
 // create product
 export const createProduct = (newForm) => async (dispatch) => {
   try {
-    dispatch({
+    dispatch({com
       type: "productCreateRequest",
     });
 
