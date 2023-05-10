@@ -17,7 +17,7 @@ router.post(
       const shopId = req.body.shopId;
       const shop = await Shop.findById(shopId);
       if (!shop) {
-        return next(new ErrorHandler("Shop Id is invalid!", 400));
+        return next(new ErrorHandler("Shop ID is invalid!", 400));
       } else {
         const files = req.files;
         const imageUrls = files.map((file) => `${file.filename}`);
@@ -92,12 +92,12 @@ router.delete(
       const event = await Event.findByIdAndDelete(productId);
 
       if (!event) {
-        return next(new ErrorHandler("Event not found with this id!", 500));
+        return next(new ErrorHandler("Event with this ID not found!", 500));
       }
 
       res.status(201).json({
         success: true,
-        message: "Event Deleted successfully!",
+        message: "Event deleted successfully!",
       });
     } catch (error) {
       return next(new ErrorHandler(error, 400));
@@ -105,24 +105,24 @@ router.delete(
   })
 );
 
-// // all events --- for admin
-// router.get(
-//   "/admin-all-events",
-//   isAuthenticated,
-//   isAdmin("Admin"),
-//   catchAsyncErrors(async (req, res, next) => {
-//     try {
-//       const events = await Event.find().sort({
-//         createdAt: -1,
-//       });
-//       res.status(201).json({
-//         success: true,
-//         events,
-//       });
-//     } catch (error) {
-//       return next(new ErrorHandler(error.message, 500));
-//     }
-//   })
-// );
+// all events --- for admin
+router.get(
+  "/admin-all-events",
+  isAuthenticated,
+  isAdmin("Admin"),
+  catchAsyncErrors(async (req, res, next) => {
+    try {
+      const events = await Event.find().sort({
+        createdAt: -1,
+      });
+      res.status(201).json({
+        success: true,
+        events,
+      });
+    } catch (error) {
+      return next(new ErrorHandler(error.message, 500));
+    }
+  })
+);
 
 module.exports = router;

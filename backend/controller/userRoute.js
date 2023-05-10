@@ -22,10 +22,10 @@ router.post("/create-user", upload.single("file"), async (req, res, next) => {
       fs.unlink(filePath, (err) => {
         if (err) {
           console.log(err);
-          res.status(500).json({ message: "Error deleting file" });
+          res.status(500).json({ message: "Error deleting file!" });
         }
       });
-      return next(new ErrorHandler("User already exists", 400));
+      return next(new ErrorHandler("User already exists!", 400));
     }
 
     const filename = req.file.filename;
@@ -40,17 +40,17 @@ router.post("/create-user", upload.single("file"), async (req, res, next) => {
 
     const activationToken = createActivationToken(user);
 
-    const activationUrl = `https://eshop-tutorial-cefl.vercel.app/activation/${activationToken}`;
+    const activationUrl = `http://localhost:3000/user/activation/${activationToken}`;
 
     try {
       await sendMail({
         email: user.email,
-        subject: "Activate your account",
+        subject: "Activate Your Account",
         message: `Hello ${user.name}, please click on the link to activate your account: ${activationUrl}`,
       });
       res.status(201).json({
         success: true,
-        message: `please check your email:- ${user.email} to activate your account!`,
+        message: `Please check your email:- ${user.email} to activate your account!`,
       });
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));
@@ -80,14 +80,14 @@ router.post(
       );
 
       if (!newUser) {
-        return next(new ErrorHandler("Invalid token", 400));
+        return next(new ErrorHandler("Invalid token!", 400));
       }
       const { name, email, password, avatar } = newUser;
 
       let user = await User.findOne({ email });
 
       if (user) {
-        return next(new ErrorHandler("User already exists", 400));
+        return next(new ErrorHandler("User already exists!", 400));
       }
       user = await User.create({
         name,
@@ -111,7 +111,7 @@ router.post(
       const { email, password } = req.body;
 
       if (!email || !password) {
-        return next(new ErrorHandler("Please provide all the fields!", 400));
+        return next(new ErrorHandler("Please fill in all the required fields!", 400));
       }
 
       const user = await User.findOne({ email }).select("+password");
@@ -124,7 +124,7 @@ router.post(
 
       if (!isPasswordValid) {
         return next(
-          new ErrorHandler("Please provide the correct information", 400)
+          new ErrorHandler("Please key in the correct password!", 400)
         );
       }
 
@@ -144,7 +144,7 @@ router.get(
       const user = await User.findById(req.user.id);
 
       if (!user) {
-        return next(new ErrorHandler("User does not exist", 400));
+        return next(new ErrorHandler("User does not exist!", 400));
       }
 
       res.status(200).json({
@@ -157,7 +157,7 @@ router.get(
   })
 );
 
-// log out user
+// logout user
 router.get(
   "/logout",
   catchAsyncErrors(async (req, res, next) => {
@@ -256,7 +256,7 @@ router.put(
       );
       if (sameTypeAddress) {
         return next(
-          new ErrorHandler(`${req.body.addressType} address already exists`)
+          new ErrorHandler(`${req.body.addressType} address already exists!`)
         );
       }
 
@@ -362,51 +362,51 @@ router.get(
   })
 );
 
-// // all users --- for admin
-// router.get(
-//   "/admin-all-users",
-//   isAuthenticated,
-//   isAdmin("Admin"),
-//   catchAsyncErrors(async (req, res, next) => {
-//     try {
-//       const users = await User.find().sort({
-//         createdAt: -1,
-//       });
-//       res.status(201).json({
-//         success: true,
-//         users,
-//       });
-//     } catch (error) {
-//       return next(new ErrorHandler(error.message, 500));
-//     }
-//   })
-// );
+// all users --- for admin
+router.get(
+  "/admin-all-users",
+  isAuthenticated,
+  isAdmin("Admin"),
+  catchAsyncErrors(async (req, res, next) => {
+    try {
+      const users = await User.find().sort({
+        createdAt: -1,
+      });
+      res.status(201).json({
+        success: true,
+        users,
+      });
+    } catch (error) {
+      return next(new ErrorHandler(error.message, 500));
+    }
+  })
+);
 
-// // delete users --- admin
-// router.delete(
-//   "/delete-user/:id",
-//   isAuthenticated,
-//   isAdmin("Admin"),
-//   catchAsyncErrors(async (req, res, next) => {
-//     try {
-//       const user = await User.findById(req.params.id);
+// delete users --- admin
+router.delete(
+  "/delete-user/:id",
+  isAuthenticated,
+  isAdmin("Admin"),
+  catchAsyncErrors(async (req, res, next) => {
+    try {
+      const user = await User.findById(req.params.id);
 
-//       if (!user) {
-//         return next(
-//           new ErrorHandler("User with this ID is not available", 400)
-//         );
-//       }
+      if (!user) {
+        return next(
+          new ErrorHandler("User with this ID not found!", 400)
+        );
+      }
 
-//       await User.findByIdAndDelete(req.params.id);
+      await User.findByIdAndDelete(req.params.id);
 
-//       res.status(201).json({
-//         success: true,
-//         message: "User deleted successfully!",
-//       });
-//     } catch (error) {
-//       return next(new ErrorHandler(error.message, 500));
-//     }
-//   })
-// );
+      res.status(201).json({
+        success: true,
+        message: "User deleted successfully!",
+      });
+    } catch (error) {
+      return next(new ErrorHandler(error.message, 500));
+    }
+  })
+);
 
 module.exports = router;
