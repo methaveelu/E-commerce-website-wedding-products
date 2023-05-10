@@ -1,9 +1,9 @@
-const express = require("express");
-const router = express.Router();
-const catchAsyncErrors = require("../middleware/catchAsyncErrors");
-const { isSeller, isAuthenticated } = require("../middleware/auth");
 const Conversation = require("../models/conversationModel");
 const ErrorHandler = require("../utilities/ErrorHandler");
+const catchAsyncErrors = require("../middleware/catchAsyncErrors");
+const express = require("express");
+const { isSeller, isAuthenticated } = require("../middleware/auth");
+const router = express.Router();
 
 // create a new conversation
 router.post(

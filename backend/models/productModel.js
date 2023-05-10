@@ -16,7 +16,10 @@ const productModel = new mongoose.Schema({
   tags: {
     type: String,
   },
-  price: {
+  originalPrice: {
+    type: Number,
+  },
+  discountPrice: {
     type: Number,
     required: [true, "Please enter your product price!"],
   },
