@@ -1,10 +1,10 @@
 const express = require("express");
-const ErrorHandler = require("./middleware/error");
 const app = express();
-const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const path = require("path");
+const ErrorHandler = require("./middleware/error");
 
 app.use(express.json());
 app.use(cookieParser());
@@ -26,30 +26,30 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
 }
 
 // import routes
-const user = require("./controller/userRoute");
-const shop = require("./controller/shopRoute");
-const product = require("./controller/productRoute");
-const event = require("./controller/eventRoute");
-const coupon = require("./controller/couponCodeRoute");
-const payment = require("./controller/paymentRoute");
-const order = require("./controller/orderRoute");
 const conversation = require("./controller/conversationRoute");
+const coupon = require("./controller/couponCodeRoute");
+const event = require("./controller/eventRoute");
 const message = require("./controller/messageRoute");
+const order = require("./controller/orderRoute");
+const payment = require("./controller/paymentRoute");
+const product = require("./controller/productRoute");
+const shop = require("./controller/shopRoute");
+const user = require("./controller/userRoute");
 const withdraw = require("./controller/withdrawRoute");
 
 app.get("/", (req, res) => {
   res.send("backend is working");
 });
 
-app.use("/api/v2/user", user);
 app.use("/api/v2/conversation", conversation);
+app.use("/api/v2/coupon", coupon);
+app.use("/api/v2/event", event);
 app.use("/api/v2/message", message);
 app.use("/api/v2/order", order);
-app.use("/api/v2/shop", shop);
-app.use("/api/v2/product", product);
-app.use("/api/v2/event", event);
-app.use("/api/v2/coupon", coupon);
 app.use("/api/v2/payment", payment);
+app.use("/api/v2/product", product);
+app.use("/api/v2/shop", shop);
+app.use("/api/v2/user", user);
 app.use("/api/v2/withdraw", withdraw);
 
 // this is for handling errors

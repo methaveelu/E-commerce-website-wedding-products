@@ -24,7 +24,7 @@ router.post(
         await sendMail({
           email: req.seller.email,
           subject: "Withdraw Request",
-          message: `Hello ${req.seller.name}, Your withdraw request of ${amount}$ is being processed.`,
+          message: `Hello ${req.seller.name}, Your withdraw request of ${amount}$ has been received.`,
         });
         res.status(201).json({
           success: true,
@@ -51,74 +51,74 @@ router.post(
   })
 );
 
-// // get all withdraws --- admin
+// get all withdraws --- admin
 
-// router.get(
-//   "/get-all-withdraw-request",
-//   isAuthenticated,
-//   isAdmin("Admin"),
-//   catchAsyncErrors(async (req, res, next) => {
-//     try {
-//       const withdraws = await Withdraw.find().sort({ createdAt: -1 });
+router.get(
+  "/get-all-withdraw-request",
+  isAuthenticated,
+  isAdmin("Admin"),
+  catchAsyncErrors(async (req, res, next) => {
+    try {
+      const withdraws = await Withdraw.find().sort({ createdAt: -1 });
 
-//       res.status(201).json({
-//         success: true,
-//         withdraws,
-//       });
-//     } catch (error) {
-//       return next(new ErrorHandler(error.message, 500));
-//     }
-//   })
-// );
+      res.status(201).json({
+        success: true,
+        withdraws,
+      });
+    } catch (error) {
+      return next(new ErrorHandler(error.message, 500));
+    }
+  })
+);
 
-// // update withdraw request ---- admin
-// router.put(
-//   "/update-withdraw-request/:id",
-//   isAuthenticated,
-//   isAdmin("Admin"),
-//   catchAsyncErrors(async (req, res, next) => {
-//     try {
-//       const { sellerId } = req.body;
+// update withdraw request ---- admin
+router.put(
+  "/update-withdraw-request/:id",
+  isAuthenticated,
+  isAdmin("Admin"),
+  catchAsyncErrors(async (req, res, next) => {
+    try {
+      const { sellerId } = req.body;
 
-//       const withdraw = await Withdraw.findByIdAndUpdate(
-//         req.params.id,
-//         {
-//           status: "succeed",
-//           updatedAt: Date.now(),
-//         },
-//         { new: true }
-//       );
+      const withdraw = await Withdraw.findByIdAndUpdate(
+        req.params.id,
+        {
+          status: "successful",
+          updatedAt: Date.now(),
+        },
+        { new: true }
+      );
 
-//       const seller = await Shop.findById(sellerId);
+      const seller = await Shop.findById(sellerId);
 
-//       const transaction = {
-//         _id: withdraw._id,
-//         amount: withdraw.amount,
-//         updatedAt: withdraw.updatedAt,
-//         status: withdraw.status,
-//       };
+      const transaction = {
+        _id: withdraw._id,
+        amount: withdraw.amount,
+        updatedAt: withdraw.updatedAt,
+        status: withdraw.status,
+      };
 
-//       seller.transactions = [...seller.transactions, transaction];
+      seller.transactions = [...seller.transactions, transaction];
 
-//       await seller.save();
+      await seller.save();
 
-//       try {
-//         await sendMail({
-//           email: seller.email,
-//           subject: "Payment confirmation",
-//           message: `Hello ${seller.name}, Your withdraw request of ${withdraw.amount}$ is on the way. Delivery time can vary from 3 to 7 days.`,
-//         });
-//       } catch (error) {
-//         return next(new ErrorHandler(error.message, 500));
-//       }
-//       res.status(201).json({
-//         success: true,
-//         withdraw,
-//       });
-//     } catch (error) {
-//       return next(new ErrorHandler(error.message, 500));
-//     }
-//   })
-// );
+      try {
+        await sendMail({
+          email: seller.email,
+          subject: "Payment Confirmation",
+          message: `Hello ${seller.name}, your withdraw request of ${withdraw.amount}$ has been received. It will be processed in 3 to 7 days.`,
+        });
+      } catch (error) {
+        return next(new ErrorHandler(error.message, 500));
+      }
+      res.status(201).json({
+        success: true,
+        withdraw,
+      });
+    } catch (error) {
+      return next(new ErrorHandler(error.message, 500));
+    }
+  })
+);
 
 module.exports = router;

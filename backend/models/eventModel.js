@@ -3,15 +3,15 @@ const mongoose = require("mongoose");
 const eventModel = new mongoose.Schema({
     name:{
         type: String,
-        required:[true,"Please enter your event product name!"],
+        required: true,
     },
     description:{
         type: String,
-        required:[true,"Please enter your event product description!"],
+        required: [true, "Please enter your event product description"],
     },
     category:{
         type: String,
-        required:[true,"Please enter your event product category!"],
+        required: [true, "Please enter your event product category"],
     },
     start_Date: {
         type: Date,
@@ -33,11 +33,11 @@ const eventModel = new mongoose.Schema({
     },
     discountPrice:{
         type: Number,
-        required: [true,"Please enter your event product price!"],
+        required: [true, "Please enter your event product price"],
     },
     stock:{
         type: Number,
-        required: [true,"Please enter your event product stock!"],
+        required: [true, "Please enter your event product stock"],
     },
     images:[
         {
