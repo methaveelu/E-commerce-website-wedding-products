@@ -1,4 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { backend_url } from "../../../server";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../../../redux/actions/cartActions";
+import {
+  addToWishlist,
+  removeFromWishlist,
+} from "../../../redux/actions/wishlistActions";
 import {
   AiFillHeart,
   AiOutlineHeart,
@@ -6,16 +14,8 @@ import {
   AiOutlineShoppingCart,
 } from "react-icons/ai";
 import { RxCross1 } from "react-icons/rx";
-import { Link } from "react-router-dom";
-import { backend_url } from "../../../server";
-import styles from "../../../styles/styles";
-import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { addToCart } from "../../../redux/actions/cartActions";
-import {
-  addToWishlist,
-  removeFromWishlist,
-} from "../../../redux/actions/wishlistActions";
+import styles from "../../../styles/styles";
 
 const ProductDetailsCard = ({ setOpen, data }) => {
   const { cart } = useSelector((state) => state.cart);
@@ -23,17 +23,17 @@ const ProductDetailsCard = ({ setOpen, data }) => {
   const dispatch = useDispatch();
   const [count, setCount] = useState(1);
   const [click, setClick] = useState(false);
-  //   const [select, setSelect] = useState(false);
+  const [select, setSelect] = useState(false);
 
   const handleMessageSubmit = () => {};
 
-  const decrementCount = () => {
+  const decreaseCount = () => {
     if (count > 1) {
       setCount(count - 1);
     }
   };
 
-  const incrementCount = () => {
+  const increaseCount = () => {
     setCount(count + 1);
   };
 
@@ -121,17 +121,17 @@ const ProductDetailsCard = ({ setOpen, data }) => {
 
                 <div className="flex pt-3">
                   <h4 className={`${styles.productDiscountPrice}`}>
-                    {data.discountPrice}$
+                    ${data.discountPrice}
                   </h4>
                   <h3 className={`${styles.price}`}>
-                    {data.originalPrice ? data.originalPrice + "$" : null}
+                    ${data.originalPrice ? data.originalPrice : null}
                   </h3>
                 </div>
                 <div className="flex items-center mt-12 justify-between pr-3">
                   <div>
                     <button
                       className="bg-gradient-to-r from-teal-400 to-teal-500 text-white font-bold rounded-l px-4 py-2 shadow-lg hover:opacity-75 transition duration-300 ease-in-out"
-                      onClick={decrementCount}
+                      onClick={decreaseCount}
                     >
                       -
                     </button>
@@ -140,7 +140,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                     </span>
                     <button
                       className="bg-gradient-to-r from-teal-400 to-teal-500 text-white font-bold rounded-l px-4 py-2 shadow-lg hover:opacity-75 transition duration-300 ease-in-out"
-                      onClick={incrementCount}
+                      onClick={increaseCount}
                     >
                       +
                     </button>

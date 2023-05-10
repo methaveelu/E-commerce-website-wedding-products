@@ -1,15 +1,15 @@
 import React from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { server } from "../../../server.js";
 import { AiOutlineFolderAdd, AiOutlineGift } from "react-icons/ai";
+import { BiMessageSquareDetail } from "react-icons/bi";
+import { CiMoneyBill, CiSettings } from "react-icons/ci";
 import { FiPackage, FiShoppingBag, FiLogOut } from "react-icons/fi";
+import { HiOutlineReceiptRefund } from "react-icons/hi";
 import { MdOutlineLocalOffer } from "react-icons/md";
 import { RxDashboard } from "react-icons/rx";
 import { VscNewFile } from "react-icons/vsc";
-import { CiMoneyBill, CiSettings } from "react-icons/ci";
-import { Link } from "react-router-dom";
-import { BiMessageSquareDetail } from "react-icons/bi";
-import { HiOutlineReceiptRefund } from "react-icons/hi";
 
 const DashboardSidebar = ({ active }) => {
   const logoutHandler = () => {
@@ -207,14 +207,8 @@ const DashboardSidebar = ({ active }) => {
       </div>
 
       <div className="w-full flex items-center p-4">
-        <button
-          onClick={logoutHandler}
-          className="w-full flex items-center"
-        >
-          <FiLogOut
-            size={30}
-            color={`${active === 12 ? "crimson" : "#555"}`}
-          />
+        <button onClick={logoutHandler} className="w-full flex items-center">
+          <FiLogOut size={30} color={`${active === 12 ? "crimson" : "#555"}`} />
           <h5
             className={`hidden 800px:block pl-2 text-[18px] font-[400] ${
               active === 12 ? "text-[crimson]" : "text-[#555]"
