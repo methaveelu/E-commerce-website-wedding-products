@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { getAllSellers } from "../../redux/actions/sellerActions";
-import axios from "axios";
-import { server } from "../../server";
 import { useDispatch, useSelector } from "react-redux";
-import { Button } from "@material-ui/core";
 import { DataGrid } from "@material-ui/data-grid";
 import { AiOutlineDelete, AiOutlineEye } from "react-icons/ai";
-import { RxCross1 } from "react-icons/rx";
-import { toast } from "react-toastify";
+import { Button } from "@material-ui/core";
 import styles from "../../styles/styles";
+import { RxCross1 } from "react-icons/rx";
+import axios from "axios";
+import { server } from "../../server";
+import { toast } from "react-toastify";
+import { getAllSellers } from "../../redux/actions/sellerActions";
+import { Link } from "react-router-dom";
 
 const AllSellers = () => {
   const dispatch = useDispatch();
@@ -23,12 +23,12 @@ const AllSellers = () => {
 
   const handleDelete = async (id) => {
     await axios
-      .delete(`${server}/shop/delete-seller/${id}`, { withCredentials: true })
-      .then((res) => {
-        toast.success(res.data.message);
-      });
+    .delete(`${server}/shop/delete-seller/${id}`, { withCredentials: true })
+    .then((res) => {
+      toast.success(res.data.message);
+    });
 
-    dispatch(getAllSellers());
+  dispatch(getAllSellers());
   };
 
   const columns = [
@@ -63,24 +63,24 @@ const AllSellers = () => {
       flex: 0.8,
     },
     {
-      field: "  ",
-      flex: 1,
-      minWidth: 150,
-      headerName: "Preview Shop",
-      type: "number",
-      sortable: false,
-      renderCell: (params) => {
-        return (
-          <>
+        field: "  ",
+        flex: 1,
+        minWidth: 150,
+        headerName: "Preview Shop",
+        type: "number",
+        sortable: false,
+        renderCell: (params) => {
+          return (
+            <>
             <Link to={`/shop/preview/${params.id}`}>
-              <Button>
+            <Button>
                 <AiOutlineEye size={20} />
               </Button>
             </Link>
-          </>
-        );
+            </>
+          );
+        },
       },
-    },
     {
       field: " ",
       flex: 1,
@@ -102,7 +102,7 @@ const AllSellers = () => {
 
   const row = [];
   sellers &&
-    sellers.forEach((item) => {
+  sellers.forEach((item) => {
       row.push({
         id: item._id,
         name: item?.name,
@@ -143,7 +143,7 @@ const AllSellers = () => {
                 </div>
                 <div
                   className={`${styles.button} text-white text-[18px] !h-[42px] ml-4`}
-                  onClick={() => setOpen(false) || handleDelete(userId)}
+                  onClick={() =>  setOpen(false) || handleDelete(userId)}
                 >
                   confirm
                 </div>

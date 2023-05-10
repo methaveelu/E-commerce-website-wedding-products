@@ -1,21 +1,21 @@
 import React, { useState } from "react";
-import Cart from "../Cart/Cart.jsx";
-import DropDown from "./DropDown";
-import Navbar from "./Navbar";
-import Wishlist from "../Wishlist/Wishlist";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { backend_url } from "../../server";
-import { categoriesData } from "../../static/data";
 import styles from "../../styles/styles";
+import { categoriesData, productData } from "../../static/data";
 import {
   AiOutlineHeart,
   AiOutlineSearch,
   AiOutlineShoppingCart,
 } from "react-icons/ai";
+import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 import { BiMenuAltLeft } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
-import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
+import DropDown from "./DropDown";
+import Navbar from "./Navbar";
+import { useSelector } from "react-redux";
+import { backend_url } from "../../server";
+import Cart from "../Cart/Cart";
+import Wishlist from "../Wishlist/Wishlist";
 import { RxCross1 } from "react-icons/rx";
 
 const Header = ({ activeHeading }) => {

@@ -1,13 +1,13 @@
 import { React, useState } from "react";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import styles from "../../styles/styles";
+import { Link } from "react-router-dom";
+import { RxAvatar } from "react-icons/rx";
 import axios from "axios";
 import { server } from "../../server";
-import { Link } from "react-router-dom";
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { RxAvatar } from "react-icons/rx";
-import styles from "../../styles/styles";
 import { toast } from "react-toastify";
 
-const Signup = () => {
+const Singup = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -182,4 +182,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Singup;
