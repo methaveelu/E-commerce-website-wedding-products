@@ -1,15 +1,15 @@
 const express = require("express");
-const path = require("path");
-const User = require("../models/userModel");
 const router = express.Router();
-const { upload } = require("../multer");
-const ErrorHandler = require("../utilities/ErrorHandler");
-const catchAsyncErrors = require("../middleware/catchAsyncErrors");
+const path = require("path");
 const fs = require("fs");
 const jwt = require("jsonwebtoken");
-const sendMail = require("../utilities/sendMail");
-const sendToken = require("../utilities/jwtToken");
+const { upload } = require("../multer");
+const User = require("../models/userModel");
+const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const { isAuthenticated, isAdmin } = require("../middleware/auth");
+const ErrorHandler = require("../utilities/ErrorHandler");
+const sendToken = require("../utilities/jwtToken");
+const sendMail = require("../utilities/sendMail");
 
 router.post("/create-user", upload.single("file"), async (req, res, next) => {
   try {
@@ -111,13 +111,13 @@ router.post(
       const { email, password } = req.body;
 
       if (!email || !password) {
-        return next(new ErrorHandler("Please provide the all fields!", 400));
+        return next(new ErrorHandler("Please provide all the fields!", 400));
       }
 
       const user = await User.findOne({ email }).select("+password");
 
       if (!user) {
-        return next(new ErrorHandler("User doesn't exists!", 400));
+        return next(new ErrorHandler("User does not exist!", 400));
       }
 
       const isPasswordValid = await user.comparePassword(password);
@@ -144,7 +144,7 @@ router.get(
       const user = await User.findById(req.user.id);
 
       if (!user) {
-        return next(new ErrorHandler("User doesn't exists", 400));
+        return next(new ErrorHandler("User does not exist", 400));
       }
 
       res.status(200).json({
@@ -168,7 +168,7 @@ router.get(
       });
       res.status(201).json({
         success: true,
-        message: "Log out successful!",
+        message: "Logout successful!",
       });
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));
@@ -328,7 +328,7 @@ router.put(
 
       if (req.body.newPassword !== req.body.confirmPassword) {
         return next(
-          new ErrorHandler("Password doesn't matched with each other!", 400)
+          new ErrorHandler("Passwords do not match!", 400)
         );
       }
       user.password = req.body.newPassword;
@@ -345,7 +345,7 @@ router.put(
   })
 );
 
-// find user infoormation with the userId
+// find user information with the userId
 router.get(
   "/user-info/:id",
   catchAsyncErrors(async (req, res, next) => {
@@ -362,51 +362,51 @@ router.get(
   })
 );
 
-// all users --- for admin
-router.get(
-  "/admin-all-users",
-  isAuthenticated,
-  isAdmin("Admin"),
-  catchAsyncErrors(async (req, res, next) => {
-    try {
-      const users = await User.find().sort({
-        createdAt: -1,
-      });
-      res.status(201).json({
-        success: true,
-        users,
-      });
-    } catch (error) {
-      return next(new ErrorHandler(error.message, 500));
-    }
-  })
-);
+// // all users --- for admin
+// router.get(
+//   "/admin-all-users",
+//   isAuthenticated,
+//   isAdmin("Admin"),
+//   catchAsyncErrors(async (req, res, next) => {
+//     try {
+//       const users = await User.find().sort({
+//         createdAt: -1,
+//       });
+//       res.status(201).json({
+//         success: true,
+//         users,
+//       });
+//     } catch (error) {
+//       return next(new ErrorHandler(error.message, 500));
+//     }
+//   })
+// );
 
-// delete users --- admin
-router.delete(
-  "/delete-user/:id",
-  isAuthenticated,
-  isAdmin("Admin"),
-  catchAsyncErrors(async (req, res, next) => {
-    try {
-      const user = await User.findById(req.params.id);
+// // delete users --- admin
+// router.delete(
+//   "/delete-user/:id",
+//   isAuthenticated,
+//   isAdmin("Admin"),
+//   catchAsyncErrors(async (req, res, next) => {
+//     try {
+//       const user = await User.findById(req.params.id);
 
-      if (!user) {
-        return next(
-          new ErrorHandler("User is not available with this id", 400)
-        );
-      }
+//       if (!user) {
+//         return next(
+//           new ErrorHandler("User with this ID is not available", 400)
+//         );
+//       }
 
-      await User.findByIdAndDelete(req.params.id);
+//       await User.findByIdAndDelete(req.params.id);
 
-      res.status(201).json({
-        success: true,
-        message: "User deleted successfully!",
-      });
-    } catch (error) {
-      return next(new ErrorHandler(error.message, 500));
-    }
-  })
-);
+//       res.status(201).json({
+//         success: true,
+//         message: "User deleted successfully!",
+//       });
+//     } catch (error) {
+//       return next(new ErrorHandler(error.message, 500));
+//     }
+//   })
+// );
 
 module.exports = router;

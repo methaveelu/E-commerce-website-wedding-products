@@ -1,14 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const Product = require("../models/productModel");
-
+const fs = require("fs");
 const { isSeller, isAuthenticated, isAdmin } = require("../middleware/auth");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const Order = require("../models/orderModel");
+const Product = require("../models/productModel");
 const Shop = require("../models/shopModel");
 const { upload } = require("../multer");
 const ErrorHandler = require("../utilities/ErrorHandler");
-const fs = require("fs");
 
 // create product
 router.post(
@@ -19,7 +18,7 @@ router.post(
       const shopId = req.body.shopId;
       const shop = await Shop.findById(shopId);
       if (!shop) {
-        return next(new ErrorHandler("Shop Id is invalid!", 400));
+        return next(new ErrorHandler("Shop ID is invalid!", 400));
       } else {
         const files = req.files;
         const imageUrls = files.map((file) => `${file.filename}`);
@@ -169,23 +168,24 @@ router.put(
   })
 );
 
-// all products --- for admin
-router.get(
-  "/admin-all-products",
-  isAuthenticated,
-  isAdmin("Admin"),
-  catchAsyncErrors(async (req, res, next) => {
-    try {
-      const products = await Product.find().sort({
-        createdAt: -1,
-      });
-      res.status(201).json({
-        success: true,
-        products,
-      });
-    } catch (error) {
-      return next(new ErrorHandler(error.message, 500));
-    }
-  })
-);
+// // all products --- for admin
+// router.get(
+//   "/admin-all-products",
+//   isAuthenticated,
+//   isAdmin("Admin"),
+//   catchAsyncErrors(async (req, res, next) => {
+//     try {
+//       const products = await Product.find().sort({
+//         createdAt: -1,
+//       });
+//       res.status(201).json({
+//         success: true,
+//         products,
+//       });
+//     } catch (error) {
+//       return next(new ErrorHandler(error.message, 500));
+//     }
+//   })
+// );
+
 module.exports = router;

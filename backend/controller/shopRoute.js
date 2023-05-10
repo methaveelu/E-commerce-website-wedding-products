@@ -1,15 +1,15 @@
 const express = require("express");
-const path = require("path");
 const router = express.Router();
 const fs = require("fs");
+const path = require("path");
 const jwt = require("jsonwebtoken");
-const sendMail = require("../utilities/sendMail");
-const sendToken = require("../utilities/jwtToken");
 const Shop = require("../models/shopModel");
-const { isAuthenticated, isSeller, isAdmin } = require("../middleware/auth");
 const { upload } = require("../multer");
+const { isAuthenticated, isSeller, isAdmin } = require("../middleware/auth");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const ErrorHandler = require("../utilities/ErrorHandler");
+const sendToken = require("../utilities/jwtToken");
+const sendMail = require("../utilities/sendMail");
 const sendShopToken = require("../utilities/shopToken");
 
 // create shop
@@ -44,7 +44,7 @@ router.post("/create-shop", upload.single("file"), async (req, res, next) => {
 
     const activationToken = createActivationToken(seller);
 
-    const activationUrl = `http://localhost:3000/seller/activation/${activationToken}`
+    const activationUrl = `http://localhost:3000/seller/activation/${activationToken}`;
 
     try {
       await sendMail({
@@ -120,7 +120,7 @@ router.post(
       const { email, password } = req.body;
 
       if (!email || !password) {
-        return next(new ErrorHandler("Please provide the all fields!", 400));
+        return next(new ErrorHandler("Please provide all the fields!", 400));
       }
 
       const user = await Shop.findOne({ email }).select("+password");
@@ -177,7 +177,7 @@ router.get(
       });
       res.status(201).json({
         success: true,
-        message: "Log out successful!",
+        message: "Logout successful!",
       });
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));
@@ -262,52 +262,52 @@ router.put(
   })
 );
 
-// all sellers --- for admin
-router.get(
-  "/admin-all-sellers",
-  isAuthenticated,
-  isAdmin("Admin"),
-  catchAsyncErrors(async (req, res, next) => {
-    try {
-      const sellers = await Shop.find().sort({
-        createdAt: -1,
-      });
-      res.status(201).json({
-        success: true,
-        sellers,
-      });
-    } catch (error) {
-      return next(new ErrorHandler(error.message, 500));
-    }
-  })
-);
+// // all sellers --- for admin
+// router.get(
+//   "/admin-all-sellers",
+//   isAuthenticated,
+//   isAdmin("Admin"),
+//   catchAsyncErrors(async (req, res, next) => {
+//     try {
+//       const sellers = await Shop.find().sort({
+//         createdAt: -1,
+//       });
+//       res.status(201).json({
+//         success: true,
+//         sellers,
+//       });
+//     } catch (error) {
+//       return next(new ErrorHandler(error.message, 500));
+//     }
+//   })
+// );
 
-// delete seller ---admin
-router.delete(
-  "/delete-seller/:id",
-  isAuthenticated,
-  isAdmin("Admin"),
-  catchAsyncErrors(async (req, res, next) => {
-    try {
-      const seller = await Shop.findById(req.params.id);
+// // delete seller ---admin
+// router.delete(
+//   "/delete-seller/:id",
+//   isAuthenticated,
+//   isAdmin("Admin"),
+//   catchAsyncErrors(async (req, res, next) => {
+//     try {
+//       const seller = await Shop.findById(req.params.id);
 
-      if (!seller) {
-        return next(
-          new ErrorHandler("Seller is not available with this id", 400)
-        );
-      }
+//       if (!seller) {
+//         return next(
+//           new ErrorHandler("Seller with this ID is not available", 400)
+//         );
+//       }
 
-      await Shop.findByIdAndDelete(req.params.id);
+//       await Shop.findByIdAndDelete(req.params.id);
 
-      res.status(201).json({
-        success: true,
-        message: "Seller deleted successfully!",
-      });
-    } catch (error) {
-      return next(new ErrorHandler(error.message, 500));
-    }
-  })
-);
+//       res.status(201).json({
+//         success: true,
+//         message: "Seller deleted successfully!",
+//       });
+//     } catch (error) {
+//       return next(new ErrorHandler(error.message, 500));
+//     }
+//   })
+// );
 
 // update seller withdraw methods --- sellers
 router.put(
@@ -331,7 +331,7 @@ router.put(
   })
 );
 
-// delete seller withdraw merthods --- only seller
+// delete seller withdraw methods --- only seller
 router.delete(
   "/delete-withdraw-method/",
   isSeller,
@@ -340,7 +340,7 @@ router.delete(
       const seller = await Shop.findById(req.seller._id);
 
       if (!seller) {
-        return next(new ErrorHandler("Seller not found with this id", 400));
+        return next(new ErrorHandler("Seller with this ID not found", 400));
       }
 
       seller.withdrawMethod = null;
