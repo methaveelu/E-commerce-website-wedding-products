@@ -1,12 +1,12 @@
 const express = require("express");
-const catchAsyncErrors = require("../middleware/catchAsyncErrors");
-const { upload } = require("../multer");
-const Shop = require("../models/shopModel");
-const Event = require("../models/eventModel");
-const ErrorHandler = require("../utilities/ErrorHandler");
-const { isSeller, isAdmin, isAuthenticated } = require("../middleware/auth");
 const router = express.Router();
 const fs = require("fs");
+const { isAuthenticated, isAdmin } = require("../middleware/auth");
+const catchAsyncErrors = require("../middleware/catchAsyncErrors");
+const { upload } = require("../multer");
+const Event = require("../models/eventModel");
+const Shop = require("../models/shopModel");
+const ErrorHandler = require("../utilities/ErrorHandler");
 
 // create event
 router.post(
@@ -105,24 +105,24 @@ router.delete(
   })
 );
 
-// all events --- for admin
-router.get(
-  "/admin-all-events",
-  isAuthenticated,
-  isAdmin("Admin"),
-  catchAsyncErrors(async (req, res, next) => {
-    try {
-      const events = await Event.find().sort({
-        createdAt: -1,
-      });
-      res.status(201).json({
-        success: true,
-        events,
-      });
-    } catch (error) {
-      return next(new ErrorHandler(error.message, 500));
-    }
-  })
-);
+// // all events --- for admin
+// router.get(
+//   "/admin-all-events",
+//   isAuthenticated,
+//   isAdmin("Admin"),
+//   catchAsyncErrors(async (req, res, next) => {
+//     try {
+//       const events = await Event.find().sort({
+//         createdAt: -1,
+//       });
+//       res.status(201).json({
+//         success: true,
+//         events,
+//       });
+//     } catch (error) {
+//       return next(new ErrorHandler(error.message, 500));
+//     }
+//   })
+// );
 
 module.exports = router;

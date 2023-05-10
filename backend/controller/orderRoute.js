@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const ErrorHandler = require("../utilities/ErrorHandler");
-const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const { isAuthenticated, isSeller, isAdmin } = require("../middleware/auth");
-const Shop = require("../models/shopModel");
+const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const Order = require("../models/orderModel");
 const Product = require("../models/productModel");
+const Shop = require("../models/shopModel");
+const ErrorHandler = require("../utilities/ErrorHandler");
 
 // create new order
 router.post(
@@ -111,7 +111,7 @@ router.put(
       if (req.body.status === "Delivered") {
         order.deliveredAt = Date.now();
         order.paymentInfo.status = "Succeeded";
-        const serviceCharge = order.totalPrice * .10;
+        const serviceCharge = order.totalPrice * 0.1;
         await updateSellerInfo(order.totalPrice - serviceCharge);
       }
 
@@ -133,7 +133,7 @@ router.put(
 
       async function updateSellerInfo(amount) {
         const seller = await Shop.findById(req.seller.id);
-        
+
         seller.availableBalance = amount;
 
         await seller.save();
@@ -211,25 +211,25 @@ router.put(
   })
 );
 
-// all orders --- for admin
-router.get(
-  "/admin-all-orders",
-  isAuthenticated,
-  isAdmin("Admin"),
-  catchAsyncErrors(async (req, res, next) => {
-    try {
-      const orders = await Order.find().sort({
-        deliveredAt: -1,
-        createdAt: -1,
-      });
-      res.status(201).json({
-        success: true,
-        orders,
-      });
-    } catch (error) {
-      return next(new ErrorHandler(error.message, 500));
-    }
-  })
-);
+// // all orders --- for admin
+// router.get(
+//   "/admin-all-orders",
+//   isAuthenticated,
+//   isAdmin("Admin"),
+//   catchAsyncErrors(async (req, res, next) => {
+//     try {
+//       const orders = await Order.find().sort({
+//         deliveredAt: -1,
+//         createdAt: -1,
+//       });
+//       res.status(201).json({
+//         success: true,
+//         orders,
+//       });
+//     } catch (error) {
+//       return next(new ErrorHandler(error.message, 500));
+//     }
+//   })
+// );
 
 module.exports = router;

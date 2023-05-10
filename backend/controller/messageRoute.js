@@ -1,9 +1,9 @@
-const Message = require("../models/messageModel");
-const ErrorHandler = require("../utilities/ErrorHandler");
-const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const express = require("express");
-const { upload } = require("../multer");
 const router = express.Router();
+const catchAsyncErrors = require("../middleware/catchAsyncErrors");
+const Message = require("../models/messageModel");
+const { upload } = require("../multer");
+const ErrorHandler = require("../utilities/ErrorHandler");
 
 // create new message
 router.post(

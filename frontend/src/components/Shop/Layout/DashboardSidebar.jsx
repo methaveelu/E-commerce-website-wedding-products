@@ -1,6 +1,8 @@
 import React from "react";
+import axios from "axios";
+import { server } from "../../../server.js";
 import { AiOutlineFolderAdd, AiOutlineGift } from "react-icons/ai";
-import { FiPackage, FiShoppingBag } from "react-icons/fi";
+import { FiPackage, FiShoppingBag, FiLogOut } from "react-icons/fi";
 import { MdOutlineLocalOffer } from "react-icons/md";
 import { RxDashboard } from "react-icons/rx";
 import { VscNewFile } from "react-icons/vsc";
@@ -10,6 +12,18 @@ import { BiMessageSquareDetail } from "react-icons/bi";
 import { HiOutlineReceiptRefund } from "react-icons/hi";
 
 const DashboardSidebar = ({ active }) => {
+  const logoutHandler = () => {
+    axios
+      .get(`${server}/shop/logout`, { withCredentials: true })
+      .then((res) => {
+        toast.success(res.data.message);
+        window.location.reload(true);
+        navigate("/shop-login");
+      })
+      .catch((error) => {
+        console.log(error.response.data.message);
+      });
+  };
   return (
     <div className="w-full h-[90vh] bg-white shadow-sm overflow-y-scroll sticky top-0 left-0 z-10">
       {/* single item */}
@@ -190,6 +204,25 @@ const DashboardSidebar = ({ active }) => {
             Settings
           </h5>
         </Link>
+      </div>
+
+      <div className="w-full flex items-center p-4">
+        <button
+          onClick={logoutHandler}
+          className="w-full flex items-center"
+        >
+          <FiLogOut
+            size={30}
+            color={`${active === 12 ? "crimson" : "#555"}`}
+          />
+          <h5
+            className={`hidden 800px:block pl-2 text-[18px] font-[400] ${
+              active === 12 ? "text-[crimson]" : "text-[#555]"
+            }`}
+          >
+            Logout
+          </h5>
+        </button>
       </div>
     </div>
   );

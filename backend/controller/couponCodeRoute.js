@@ -1,10 +1,10 @@
 const express = require("express");
+const router = express.Router();
+const { isSeller } = require("../middleware/auth");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
+const CouponCode = require("../models/couponCodeModel");
 const Shop = require("../models/shopModel");
 const ErrorHandler = require("../utilities/ErrorHandler");
-const { isSeller } = require("../middleware/auth");
-const CouponCode = require("../models/couponCodeModel");
-const router = express.Router();
 
 // create coupon code
 router.post(
