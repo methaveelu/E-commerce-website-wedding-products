@@ -5,16 +5,16 @@ const jwt = require("jsonwebtoken");
 const shopModel = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, "Please enter shop name"],
+    required: [true, "Please enter your shop name!"],
   },
   email: {
     type: String,
-    required: [true, "Please enter shop email address"],
+    required: [true, "Please enter your shop email address"],
   },
   password: {
     type: String,
     required: [true, "Please enter your password"],
-    minLength: [6, "Password should be at least 6 characters long"],
+    minLength: [6, "Password should be greater than 6 characters"],
     select: false,
   },
   description: {
@@ -40,6 +40,32 @@ const shopModel = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  withdrawMethod: {
+    type: Object,
+  },
+  availableBalance: {
+    type: Number,
+    default: 0,
+  },
+  transactions: [
+    {
+      amount: {
+        type: Number,
+        required: true,
+      },
+      status: {
+        type: String,
+        default: "Processing",
+      },
+      createdAt: {
+        type: Date,
+        default: Date.now(),
+      },
+      updatedAt: {
+        type: Date,
+      },
+    },
+  ],
   createdAt: {
     type: Date,
     default: Date.now(),

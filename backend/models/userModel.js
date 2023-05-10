@@ -3,77 +3,79 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 const userModel = new mongoose.Schema({
-  name: {
+  name:{
     type: String,
-    required: [true, "Please enter your name"],
+    required: [true, "Please enter your name!"],
   },
-  email: {
+  email:{
     type: String,
-    required: [true, "Please enter your email address"],
+    required: [true, "Please enter your email!"],
   },
-  password: {
+  password:{
     type: String,
     required: [true, "Please enter your password"],
-    minLength: [6, "Password should be at least 6 characters long"],
+    minLength: [4, "Password should be greater than 4 characters"],
     select: false,
   },
-  phoneNumber: {
+  phoneNumber:{
     type: Number,
   },
-  addresses: [
+  addresses:[
     {
       country: {
         type: String,
       },
-      city: {
+      city:{
         type: String,
       },
-      address1: {
+      address1:{
         type: String,
       },
-      address2: {
+      address2:{
         type: String,
       },
-      zipCode: {
+      zipCode:{
         type: Number,
       },
-      addressType: {
+      addressType:{
         type: String,
       },
-    },
+    }
   ],
-  role: {
+  role:{
     type: String,
     default: "user",
   },
-  avatar: {
+  avatar:{
     type: String,
     required: true,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now(),
-  },
-  resetPasswordToken: String,
-  resetPasswordTime: Date,
+ },
+ createdAt:{
+  type: Date,
+  default: Date.now(),
+ },
+ resetPasswordToken: String,
+ resetPasswordTime: Date,
 });
 
-// Hash password
-userModel.pre("save", async function (next) {
-  if (!this.isModified("password")) {
+
+//  Hash password
+userModel.pre("save", async function (next){
+  if(!this.isModified("password")){
     next();
   }
+
   this.password = await bcrypt.hash(this.password, 10);
 });
 
 // jwt token
 userModel.methods.getJwtToken = function () {
-  return jwt.sign({ id: this._id }, process.env.JWT_SECRET_KEY, {
+  return jwt.sign({ id: this._id}, process.env.JWT_SECRET_KEY,{
     expiresIn: process.env.JWT_EXPIRES,
   });
 };
 
-// compare passwords
+// compare password
 userModel.methods.comparePassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };

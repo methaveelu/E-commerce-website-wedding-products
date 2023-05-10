@@ -9,7 +9,7 @@ const fs = require("fs");
 const jwt = require("jsonwebtoken");
 const sendMail = require("../utilities/sendMail");
 const sendToken = require("../utilities/jwtToken");
-const { isAuthenticated } = require("../middleware/auth");
+const { isAuthenticated, isAdmin } = require("../middleware/auth");
 
 router.post("/create-user", upload.single("file"), async (req, res, next) => {
   try {
@@ -40,7 +40,7 @@ router.post("/create-user", upload.single("file"), async (req, res, next) => {
 
     const activationToken = createActivationToken(user);
 
-    const activationUrl = `http://localhost:3000/activation/${activationToken}`;
+    const activationUrl = `https://eshop-tutorial-cefl.vercel.app/activation/${activationToken}`;
 
     try {
       await sendMail({
@@ -50,7 +50,7 @@ router.post("/create-user", upload.single("file"), async (req, res, next) => {
       });
       res.status(201).json({
         success: true,
-        message: `please check your email:- ${user.email} to activate your account`,
+        message: `please check your email:- ${user.email} to activate your account!`,
       });
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));
@@ -111,20 +111,20 @@ router.post(
       const { email, password } = req.body;
 
       if (!email || !password) {
-        return next(new ErrorHandler("Please fill in all the required fields", 400));
+        return next(new ErrorHandler("Please provide the all fields!", 400));
       }
 
       const user = await User.findOne({ email }).select("+password");
 
       if (!user) {
-        return next(new ErrorHandler("User does not exist", 400));
+        return next(new ErrorHandler("User doesn't exists!", 400));
       }
 
       const isPasswordValid = await user.comparePassword(password);
 
       if (!isPasswordValid) {
         return next(
-          new ErrorHandler("Please provide the correct username or password", 400)
+          new ErrorHandler("Please provide the correct information", 400)
         );
       }
 
@@ -142,8 +142,9 @@ router.get(
   catchAsyncErrors(async (req, res, next) => {
     try {
       const user = await User.findById(req.user.id);
+
       if (!user) {
-        return next(new ErrorHandler("User does not exist", 400));
+        return next(new ErrorHandler("User doesn't exists", 400));
       }
 
       res.status(200).json({
@@ -156,7 +157,7 @@ router.get(
   })
 );
 
-// logout user (empty the cookie and expire the token)
+// log out user
 router.get(
   "/logout",
   catchAsyncErrors(async (req, res, next) => {
@@ -167,7 +168,7 @@ router.get(
       });
       res.status(201).json({
         success: true,
-        message: "Logout successful",
+        message: "Log out successful!",
       });
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));
@@ -193,7 +194,7 @@ router.put(
 
       if (!isPasswordValid) {
         return next(
-          new ErrorHandler("Please provide the correct username or password", 400)
+          new ErrorHandler("Please provide the correct information", 400)
         );
       }
 
@@ -322,12 +323,12 @@ router.put(
       );
 
       if (!isPasswordMatched) {
-        return next(new ErrorHandler("Old password is incorrect", 400));
+        return next(new ErrorHandler("Old password is incorrect!", 400));
       }
 
       if (req.body.newPassword !== req.body.confirmPassword) {
         return next(
-          new ErrorHandler("Passwords do not match", 400)
+          new ErrorHandler("Password doesn't matched with each other!", 400)
         );
       }
       user.password = req.body.newPassword;
@@ -336,7 +337,7 @@ router.put(
 
       res.status(200).json({
         success: true,
-        message: "Password updated successfully",
+        message: "Password updated successfully!",
       });
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));
@@ -344,7 +345,7 @@ router.put(
   })
 );
 
-// find user information with the userId
+// find user infoormation with the userId
 router.get(
   "/user-info/:id",
   catchAsyncErrors(async (req, res, next) => {
@@ -354,6 +355,53 @@ router.get(
       res.status(201).json({
         success: true,
         user,
+      });
+    } catch (error) {
+      return next(new ErrorHandler(error.message, 500));
+    }
+  })
+);
+
+// all users --- for admin
+router.get(
+  "/admin-all-users",
+  isAuthenticated,
+  isAdmin("Admin"),
+  catchAsyncErrors(async (req, res, next) => {
+    try {
+      const users = await User.find().sort({
+        createdAt: -1,
+      });
+      res.status(201).json({
+        success: true,
+        users,
+      });
+    } catch (error) {
+      return next(new ErrorHandler(error.message, 500));
+    }
+  })
+);
+
+// delete users --- admin
+router.delete(
+  "/delete-user/:id",
+  isAuthenticated,
+  isAdmin("Admin"),
+  catchAsyncErrors(async (req, res, next) => {
+    try {
+      const user = await User.findById(req.params.id);
+
+      if (!user) {
+        return next(
+          new ErrorHandler("User is not available with this id", 400)
+        );
+      }
+
+      await User.findByIdAndDelete(req.params.id);
+
+      res.status(201).json({
+        success: true,
+        message: "User deleted successfully!",
       });
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));

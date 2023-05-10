@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Product = require("../models/productModel");
 
-const { isSeller, isAuthenticated } = require("../middleware/auth");
+const { isSeller, isAuthenticated, isAdmin } = require("../middleware/auth");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const Order = require("../models/orderModel");
 const Shop = require("../models/shopModel");
@@ -17,20 +17,19 @@ router.post(
   catchAsyncErrors(async (req, res, next) => {
     try {
       const shopId = req.body.shopId;
-      const shop = await Shop.findById(shopId); //check if shop id is in database or not
+      const shop = await Shop.findById(shopId);
       if (!shop) {
-        return next(new ErrorHandler("Shop ID is invalid!", 400));
+        return next(new ErrorHandler("Shop Id is invalid!", 400));
       } else {
-        const files = req.files; // files is an array (multiple images)
+        const files = req.files;
         const imageUrls = files.map((file) => `${file.filename}`);
 
         const productData = req.body;
         productData.images = imageUrls;
         productData.shop = shop;
 
-        const product = await Product.create(productData); // called in product actions data.product
+        const product = await Product.create(productData);
 
-        // once successful send it to the frontend
         res.status(201).json({
           success: true,
           product,
@@ -83,12 +82,12 @@ router.delete(
       const product = await Product.findByIdAndDelete(productId);
 
       if (!product) {
-        return next(new ErrorHandler("Product with this id not found!", 500));
+        return next(new ErrorHandler("Product not found with this id!", 500));
       }
 
       res.status(201).json({
         success: true,
-        message: "Product deleted successfully!",
+        message: "Product Deleted successfully!",
       });
     } catch (error) {
       return next(new ErrorHandler(error, 400));
@@ -166,6 +165,26 @@ router.put(
       });
     } catch (error) {
       return next(new ErrorHandler(error, 400));
+    }
+  })
+);
+
+// all products --- for admin
+router.get(
+  "/admin-all-products",
+  isAuthenticated,
+  isAdmin("Admin"),
+  catchAsyncErrors(async (req, res, next) => {
+    try {
+      const products = await Product.find().sort({
+        createdAt: -1,
+      });
+      res.status(201).json({
+        success: true,
+        products,
+      });
+    } catch (error) {
+      return next(new ErrorHandler(error.message, 500));
     }
   })
 );

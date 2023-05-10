@@ -3,36 +3,26 @@ const mongoose = require("mongoose");
 const productModel = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, "Please enter product name"],
+    required: [true, "Please enter your product name!"],
   },
   description: {
     type: String,
-    required: [true, "Please enter product description"],
+    required: [true, "Please enter your product description!"],
   },
   category: {
     type: String,
-    required: [true, "Please enter product category"],
+    required: [true, "Please enter your product category!"],
   },
   tags: {
     type: String,
   },
-
   price: {
     type: Number,
-    required: [true, "Please enter product price"],
+    required: [true, "Please enter your product price!"],
   },
-  shopId: {
-    type: String,
-    required: true,
-  },
-  shop: {
-    type: Object,
-    required: true,
-  },
-
   stock: {
     type: Number,
-    required: [true, "Please enter product stock"],
+    required: [true, "Please enter your product stock!"],
   },
   images: [
     {
@@ -62,7 +52,14 @@ const productModel = new mongoose.Schema({
   ratings: {
     type: Number,
   },
-
+  shopId: {
+    type: String,
+    required: true,
+  },
+  shop: {
+    type: Object,
+    required: true,
+  },
   sold_out: {
     type: Number,
     default: 0,
