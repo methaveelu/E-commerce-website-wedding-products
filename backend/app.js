@@ -4,6 +4,7 @@ const app = express();
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const path = require("path");
 
 app.use(express.json());
 app.use(cookieParser());
@@ -32,6 +33,7 @@ const payment = require("./controller/paymentRoute");
 const order = require("./controller/orderRoute");
 const conversation = require("./controller/conversationRoute");
 const message = require("./controller/messageRoute");
+const withdraw = require("./controller/withdrawRoute");
 
 app.get("/", (req, res) => {
   res.send("backend is working");
@@ -44,6 +46,7 @@ app.use("/api/v2/order", order);
 app.use("/api/v2/shop", shop);
 app.use("/api/v2/product", product);
 app.use("/api/v2/payment", payment);
+app.use("/api/v2/withdraw", withdraw);
 
 // this is for handling errors
 app.use(ErrorHandler);

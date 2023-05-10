@@ -20,6 +20,7 @@ import {
 import { toast } from "react-toastify";
 
 const ProductDetails = ({ data }) => {
+  console.log(data);
   const { wishlist } = useSelector((state) => state.wishlist);
   const { cart } = useSelector((state) => state.cart);
   const { user, isAuthenticated } = useSelector((state) => state.user);
@@ -126,7 +127,7 @@ const ProductDetails = ({ data }) => {
                 <div className="w-full flex">
                   {data &&
                     data.images.map((i, index) => (
-                      <div
+                      <div key={index}
                         className={`${
                           select === 0 ? "border" : "null"
                         } cursor-pointer`}
