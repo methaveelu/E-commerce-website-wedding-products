@@ -1,21 +1,21 @@
-import { Button } from "@material-ui/core";
-import { DataGrid } from "@material-ui/data-grid";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { AiOutlineDelete } from "react-icons/ai";
-import { RxCross1 } from "react-icons/rx";
-import { useDispatch, useSelector } from "react-redux";
-import styles from "../../styles/styles";
+import axios from "axios";
 import Loader from "../Layout/Loader";
 import { server } from "../../server";
+import { useDispatch, useSelector } from "react-redux";
+import { Button } from "@material-ui/core";
+import { DataGrid } from "@material-ui/data-grid";
+import { AiOutlineDelete } from "react-icons/ai";
+import { RxCross1 } from "react-icons/rx";
 import { toast } from "react-toastify";
+import styles from "../../styles/styles";
 
 const AllCoupons = () => {
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [coupouns,setCoupouns] = useState([]);
-  const [minAmount, setMinAmout] = useState(null);
+  const [coupons, setCoupons] = useState([]);
+  const [minAmount, setMinAmount] = useState(null);
   const [maxAmount, setMaxAmount] = useState(null);
   const [selectedProducts, setSelectedProducts] = useState(null);
   const [value, setValue] = useState(null);
@@ -32,7 +32,7 @@ const AllCoupons = () => {
       })
       .then((res) => {
         setIsLoading(false);
-        setCoupouns(res.data.couponCodes);
+        setCoupons(res.data.couponCodes);
       })
       .catch((error) => {
         setIsLoading(false);
@@ -40,9 +40,11 @@ const AllCoupons = () => {
   }, [dispatch]);
 
   const handleDelete = async (id) => {
-    axios.delete(`${server}/coupon/delete-coupon/${id}`,{withCredentials: true}).then((res) => {
-      toast.success("Coupon code deleted succesfully!")
-    })
+    axios
+      .delete(`${server}/coupon/delete-coupon/${id}`, { withCredentials: true })
+      .then((res) => {
+        toast.success("Coupon code deleted successfully!");
+      });
     window.location.reload();
   };
 
@@ -63,9 +65,9 @@ const AllCoupons = () => {
         { withCredentials: true }
       )
       .then((res) => {
-       toast.success("Coupon code created successfully!");
-       setOpen(false);
-       window.location.reload();
+        toast.success("Coupon code created successfully!");
+        setOpen(false);
+        window.location.reload();
       })
       .catch((error) => {
         toast.error(error.response.data.message);
@@ -107,8 +109,8 @@ const AllCoupons = () => {
 
   const row = [];
 
-  coupouns &&
-  coupouns.forEach((item) => {
+  coupons &&
+    coupons.forEach((item) => {
       row.push({
         id: item._id,
         name: item.name,
@@ -151,7 +153,7 @@ const AllCoupons = () => {
                 <h5 className="text-[30px] font-Poppins text-center">
                   Create Coupon code
                 </h5>
-                {/* create coupoun code */}
+                {/* create coupon code */}
                 <form onSubmit={handleSubmit} aria-required={true}>
                   <br />
                   <div>
@@ -171,7 +173,7 @@ const AllCoupons = () => {
                   <br />
                   <div>
                     <label className="pb-2">
-                      Discount Percentenge{" "}
+                      Discount Percentage {" "}
                       <span className="text-red-500">*</span>
                     </label>
                     <input
@@ -192,7 +194,7 @@ const AllCoupons = () => {
                       name="value"
                       value={minAmount}
                       className="mt-2 appearance-none block w-full px-3 h-[35px] border border-gray-300 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                      onChange={(e) => setMinAmout(e.target.value)}
+                      onChange={(e) => setMinAmount(e.target.value)}
                       placeholder="Enter your coupon code min amount..."
                     />
                   </div>

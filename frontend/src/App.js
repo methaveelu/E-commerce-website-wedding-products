@@ -1,6 +1,19 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
+import axios from "axios";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { server } from "./server";
+import Store from "./redux/store";
+import { loadSeller, loadUser } from "./redux/actions/userActions";
+import { getAllProducts } from "./redux/actions/productActions";
+import { getAllEvents } from "./redux/actions/eventActions";
+import ProtectedRoute from "./routes/ProtectedRoute";
+import ProtectedAdminRoute from "./routes/ProtectedAdminRoute";
+import SellerProtectedRoute from "./routes/SellerProtectedRoute";
 import {
   LoginPage,
   SignupPage,
@@ -45,21 +58,8 @@ import {
   AdminDashboardOrders,
   AdminDashboardProducts,
   AdminDashboardEvents,
-  AdminDashboardWithdraw
+  AdminDashboardWithdraw,
 } from "./routes/AdminRoutes";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import Store from "./redux/store";
-import { loadSeller, loadUser } from "./redux/actions/userActions";
-import ProtectedRoute from "./routes/ProtectedRoute";
-import ProtectedAdminRoute from "./routes/ProtectedAdminRoute";
-import SellerProtectedRoute from "./routes/SellerProtectedRoute";
-import { getAllProducts } from "./redux/actions/productActions";
-import { getAllEvents } from "./redux/actions/eventActions";
-import axios from "axios";
-import { server } from "./server";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
 
 const App = () => {
   const [stripeApikey, setStripeApiKey] = useState("");
@@ -292,7 +292,7 @@ const App = () => {
             </ProtectedAdminRoute>
           }
         />
-         <Route
+        <Route
           path="/admin-products"
           element={
             <ProtectedAdminRoute>
@@ -300,7 +300,7 @@ const App = () => {
             </ProtectedAdminRoute>
           }
         />
-         <Route
+        <Route
           path="/admin-events"
           element={
             <ProtectedAdminRoute>
@@ -308,7 +308,7 @@ const App = () => {
             </ProtectedAdminRoute>
           }
         />
-         <Route
+        <Route
           path="/admin-withdraw-request"
           element={
             <ProtectedAdminRoute>

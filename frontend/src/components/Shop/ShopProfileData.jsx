@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import ProductCard from "../Route/ProductCard/ProductCard";
+import Ratings from "../Products/Ratings";
+import { backend_url } from "../../server";
 import { Link, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllEventsShop } from "../../redux/actions/eventActions";
 import { getAllProductsShop } from "../../redux/actions/productActions";
 import styles from "../../styles/styles";
-import ProductCard from "../Route/ProductCard/ProductCard";
-import { backend_url } from "../../server";
-import Ratings from "../Products/Ratings";
-import { getAllEventsShop } from "../../redux/actions/eventActions";
 
 const ShopProfileData = ({ isOwner }) => {
   const { products } = useSelector((state) => state.products);
@@ -43,7 +43,7 @@ const ShopProfileData = ({ isOwner }) => {
                 active === 2 ? "text-red-500" : "text-[#333]"
               } cursor-pointer pr-[20px]`}
             >
-              Running Events
+              Ongoing Events
             </h5>
           </div>
 
@@ -62,7 +62,7 @@ const ShopProfileData = ({ isOwner }) => {
             <div>
               <Link to="/dashboard">
                 <div className={`${styles.button} !rounded-[4px] h-[42px]`}>
-                  <span className="text-[#fff]">Go Dashboard</span>
+                  <span className="text-[#fff]">Go to Dashboard</span>
                 </div>
               </Link>
             </div>
@@ -95,7 +95,7 @@ const ShopProfileData = ({ isOwner }) => {
           </div>
           {events && events.length === 0 && (
             <h5 className="w-full text-center py-5 text-[18px]">
-              No Events have for this shop!
+              No events for this shop yet!
             </h5>
           )}
         </div>
@@ -123,7 +123,7 @@ const ShopProfileData = ({ isOwner }) => {
             ))}
           {allReviews && allReviews.length === 0 && (
             <h5 className="w-full text-center py-5 text-[18px]">
-              No Reviews have for this shop!
+              No reviews for this shop yet!
             </h5>
           )}
         </div>

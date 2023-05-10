@@ -1,10 +1,10 @@
 import { React, useState } from "react";
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import styles from "../../styles/styles";
-import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { server } from "../../server";
+import { Link, useNavigate } from "react-router-dom";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { toast } from "react-toastify";
+import styles from "../../styles/styles";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -25,9 +25,9 @@ const Login = () => {
         { withCredentials: true }
       )
       .then((res) => {
-        toast.success("Login Success!");
+        toast.success("User login successful!");
         navigate("/");
-        window.location.reload(true); 
+        window.location.reload(true);
       })
       .catch((err) => {
         toast.error(err.response.data.message);
@@ -128,7 +128,7 @@ const Login = () => {
               </button>
             </div>
             <div className={`${styles.normalFlex} w-full`}>
-              <h4>Not have any account?</h4>
+              <h4>Not an existing user?</h4>
               <Link to="/sign-up" className="text-blue-600 pl-2">
                 Sign Up
               </Link>

@@ -32,7 +32,7 @@ const getUser = (receiverId) => {
   return users.find((user) => user.userId === receiverId);
 };
 
-// Define a message object with a seen property
+// define a message object with a seen property
 const createMessage = ({ senderId, receiverId, text, images }) => ({
   senderId,
   receiverId,
@@ -42,7 +42,7 @@ const createMessage = ({ senderId, receiverId, text, images }) => ({
 });
 
 io.on("connection", (socket) => {
-  // when connect
+  // when connected
   console.log(`a user is connected`);
 
   // take userId and socketId from user
@@ -51,15 +51,15 @@ io.on("connection", (socket) => {
     io.emit("getUsers", users);
   });
 
-  // send and get message
-  const messages = {}; // Object to track messages sent to each user
+  // send and get messages
+  const messages = {}; // create empty object to track messages sent to each user
 
   socket.on("sendMessage", ({ senderId, receiverId, text, images }) => {
     const message = createMessage({ senderId, receiverId, text, images });
 
     const user = getUser(receiverId);
 
-    // Store the messages in the `messages` object
+    // store the messages in the messages object
     if (!messages[receiverId]) {
       messages[receiverId] = [message];
     } else {
@@ -100,7 +100,7 @@ io.on("connection", (socket) => {
     });
   });
 
-  //when disconnect
+  // when disconnected
   socket.on("disconnect", () => {
     console.log(`a user disconnected!`);
     removeUser(socket.id);

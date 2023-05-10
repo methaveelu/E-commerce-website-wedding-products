@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { getAllUsers } from "../../redux/actions/userActions";
-import { DataGrid } from "@material-ui/data-grid";
-import { AiOutlineDelete } from "react-icons/ai";
-import { Button } from "@material-ui/core";
-import styles from "../../styles/styles";
-import { RxCross1 } from "react-icons/rx";
 import axios from "axios";
 import { server } from "../../server";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllUsers } from "../../redux/actions/userActions";
+import { Button } from "@material-ui/core";
+import { DataGrid } from "@material-ui/data-grid";
+import { AiOutlineDelete } from "react-icons/ai";
+import { RxCross1 } from "react-icons/rx";
 import { toast } from "react-toastify";
+import styles from "../../styles/styles";
 
 const AllUsers = () => {
   const dispatch = useDispatch();
@@ -23,12 +22,12 @@ const AllUsers = () => {
 
   const handleDelete = async (id) => {
     await axios
-    .delete(`${server}/user/delete-user/${id}`, { withCredentials: true })
-    .then((res) => {
-      toast.success(res.data.message);
-    });
+      .delete(`${server}/user/delete-user/${id}`, { withCredentials: true })
+      .then((res) => {
+        toast.success(res.data.message);
+      });
 
-  dispatch(getAllUsers());
+    dispatch(getAllUsers());
   };
 
   const columns = [
@@ -114,7 +113,7 @@ const AllUsers = () => {
                 <RxCross1 size={25} onClick={() => setOpen(false)} />
               </div>
               <h3 className="text-[25px] text-center py-5 font-Poppins text-[#000000cb]">
-                Are you sure you wanna delete this user?
+                Are you sure you want to delete this user?
               </h3>
               <div className="w-full flex items-center justify-center">
                 <div
@@ -125,7 +124,7 @@ const AllUsers = () => {
                 </div>
                 <div
                   className={`${styles.button} text-white text-[18px] !h-[42px] ml-4`}
-                  onClick={() =>  setOpen(false) || handleDelete(userId)}
+                  onClick={() => setOpen(false) || handleDelete(userId)}
                 >
                   confirm
                 </div>

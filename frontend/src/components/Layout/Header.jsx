@@ -1,22 +1,22 @@
 import React, { useState } from "react";
+import Cart from "../Cart/Cart";
+import DropDown from "./DropDown";
+import Navbar from "./Navbar";
+import Wishlist from "../Wishlist/Wishlist";
 import { Link } from "react-router-dom";
-import styles from "../../styles/styles";
-import { categoriesData, productData } from "../../static/data";
+import { backend_url } from "../../server";
+import { useSelector } from "react-redux";
+import { categoriesData } from "../../static/data";
 import {
   AiOutlineHeart,
   AiOutlineSearch,
   AiOutlineShoppingCart,
 } from "react-icons/ai";
-import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 import { BiMenuAltLeft } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
-import DropDown from "./DropDown";
-import Navbar from "./Navbar";
-import { useSelector } from "react-redux";
-import { backend_url } from "../../server";
-import Cart from "../Cart/Cart";
-import Wishlist from "../Wishlist/Wishlist";
+import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 import { RxCross1 } from "react-icons/rx";
+import styles from "../../styles/styles";
 
 const Header = ({ activeHeading }) => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -59,7 +59,7 @@ const Header = ({ activeHeading }) => {
           <div>
             <Link to="/">
               <img
-                src="https://shopo.quomodothemes.website/assets/images/logo.svg"
+                src=""
                 alt=""
               />
             </Link>
@@ -101,7 +101,7 @@ const Header = ({ activeHeading }) => {
           <div className={`${styles.button}`}>
             <Link to={`${isSeller ? "/dashboard" : "/shop-create"}`}>
               <h1 className="text-[#fff] flex items-center">
-                {isSeller ? "Go Dashboard" : "Become Seller"}{" "}
+                {isSeller ? "Go to Seller Dashboard" : "Login or Sign Up as a Seller"}{" "}
                 <IoIosArrowForward className="ml-1" />
               </h1>
             </Link>
@@ -218,7 +218,7 @@ const Header = ({ activeHeading }) => {
           <div>
             <Link to="/">
               <img
-                src="https://shopo.quomodothemes.website/assets/images/logo.svg"
+                src=""
                 alt=""
                 className="mt-3 cursor-pointer"
               />

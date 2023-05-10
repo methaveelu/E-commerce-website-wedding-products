@@ -1,17 +1,9 @@
-import React, { useState } from "react";
-import {
-  AiOutlineArrowRight,
-  AiOutlineCamera,
-  AiOutlineDelete,
-} from "react-icons/ai";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { backend_url, server } from "../../server";
-import styles from "../../styles/styles";
-import { DataGrid } from "@material-ui/data-grid";
-import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import { MdTrackChanges } from "react-icons/md";
-import { RxCross1 } from "react-icons/rx";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllOrdersOfUser } from "../../redux/actions/orderActions";
 import {
   deleteUserAddress,
   loadUser,
@@ -19,10 +11,17 @@ import {
   updateUserInformation,
 } from "../../redux/actions/userActions";
 import { Country, State } from "country-state-city";
-import { useEffect } from "react";
+import {
+  AiOutlineArrowRight,
+  AiOutlineCamera,
+  AiOutlineDelete,
+} from "react-icons/ai";
+import { Button } from "@material-ui/core";
+import { DataGrid } from "@material-ui/data-grid";
+import { MdTrackChanges } from "react-icons/md";
+import { RxCross1 } from "react-icons/rx";
 import { toast } from "react-toastify";
-import axios from "axios";
-import { getAllOrdersOfUser } from "../../redux/actions/orderActions";
+import styles from "../../styles/styles";
 
 const ProfileContent = ({ active }) => {
   const { user, error, successMessage } = useSelector((state) => state.user);
@@ -65,8 +64,8 @@ const ProfileContent = ({ active }) => {
         withCredentials: true,
       })
       .then((response) => {
-         dispatch(loadUser());
-         toast.success("avatar updated successfully!");
+        dispatch(loadUser());
+        toast.success("Avatar updated successfully!");
       })
       .catch((error) => {
         toast.error(error);
@@ -291,7 +290,8 @@ const AllRefundOrders = () => {
     dispatch(getAllOrdersOfUser(user._id));
   }, []);
 
-  const eligibleOrders = orders && orders.filter((item) => item.status === "Processing refund");
+  const eligibleOrders =
+    orders && orders.filter((item) => item.status === "Processing refund");
 
   const columns = [
     { field: "id", headerName: "Order ID", minWidth: 150, flex: 0.7 },
@@ -347,11 +347,11 @@ const AllRefundOrders = () => {
   const row = [];
 
   eligibleOrders &&
-   eligibleOrders.forEach((item) => {
+    eligibleOrders.forEach((item) => {
       row.push({
         id: item._id,
         itemsQty: item.cart.length,
-        total: "US$ " + item.totalPrice,
+        total: "$" + item.totalPrice,
         status: item.status,
       });
     });
@@ -436,7 +436,7 @@ const TrackOrder = () => {
       row.push({
         id: item._id,
         itemsQty: item.cart.length,
-        total: "US$ " + item.totalPrice,
+        total: "$" + item.totalPrice,
         status: item.status,
       });
     });
@@ -510,7 +510,7 @@ const ChangePassword = () => {
             />
           </div>
           <div className=" w-[100%] 800px:w-[50%] mt-2">
-            <label className="block pb-2">Enter your confirm password</label>
+            <label className="block pb-2">Confirm your new password</label>
             <input
               type="password"
               className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
@@ -558,7 +558,7 @@ const Address = () => {
     e.preventDefault();
 
     if (addressType === "" || country === "" || city === "") {
-      toast.error("Please fill all the fields!");
+      toast.error("Please fill in all the required fields!");
     } else {
       dispatch(
         updateUserAddress(
@@ -613,7 +613,7 @@ const Address = () => {
                       className="w-[95%] border h-[40px] rounded-[5px]"
                     >
                       <option value="" className="block border pb-2">
-                        choose your country
+                        Choose your country
                       </option>
                       {Country &&
                         Country.getAllCountries().map((item) => (
@@ -629,7 +629,7 @@ const Address = () => {
                   </div>
 
                   <div className="w-full pb-2">
-                    <label className="block pb-2">Choose your City</label>
+                    <label className="block pb-2">Choose your city</label>
                     <select
                       name=""
                       id=""
@@ -767,7 +767,7 @@ const Address = () => {
 
       {user && user.addresses.length === 0 && (
         <h5 className="text-center pt-8 text-[18px]">
-          You not have any saved address!
+          You do not have any saved address!
         </h5>
       )}
     </div>

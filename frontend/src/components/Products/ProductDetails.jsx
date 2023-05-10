@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { backend_url, server } from "../../server";
+import Ratings from "./Ratings";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../../redux/actions/cartActions";
+import { getAllProductsShop } from "../../redux/actions/productActions";
+import {
+  addToWishlist,
+  removeFromWishlist,
+} from "../../redux/actions/wishlistActions";
 import {
   AiFillHeart,
   AiOutlineHeart,
   AiOutlineMessage,
   AiOutlineShoppingCart,
 } from "react-icons/ai";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { getAllProductsShop } from "../../redux/actions/productActions";
-import { backend_url, server } from "../../server";
-import styles from "../../styles/styles";
-import {
-  addToWishlist,
-  removeFromWishlist,
-} from "../../redux/actions/wishlistActions";
-import { addToCart } from "../../redux/actions/cartActions";
 import { toast } from "react-toastify";
-import Ratings from "./Ratings";
-import axios from "axios";
+import styles from "../../styles/styles";
 
 const ProductDetails = ({ data }) => {
   const { wishlist } = useSelector((state) => state.wishlist);
@@ -38,11 +38,11 @@ const ProductDetails = ({ data }) => {
     }
   }, [data, wishlist]);
 
-  const incrementCount = () => {
+  const increaseCount = () => {
     setCount(count + 1);
   };
 
-  const decrementCount = () => {
+  const decreaseCount = () => {
     if (count > 1) {
       setCount(count - 1);
     }
@@ -85,10 +85,9 @@ const ProductDetails = ({ data }) => {
       0
     );
 
-  const avg =  totalRatings / totalReviewsLength || 0;
+  const avg = totalRatings / totalReviewsLength || 0;
 
   const averageRating = avg.toFixed(2);
-
 
   const handleMessageSubmit = async () => {
     if (isAuthenticated) {
@@ -152,10 +151,10 @@ const ProductDetails = ({ data }) => {
                 <p>{data.description}</p>
                 <div className="flex pt-3">
                   <h4 className={`${styles.productDiscountPrice}`}>
-                    {data.discountPrice}$
+                    ${data.discountPrice}
                   </h4>
                   <h3 className={`${styles.price}`}>
-                    {data.originalPrice ? data.originalPrice + "$" : null}
+                    ${data.originalPrice ? data.originalPrice : null}
                   </h3>
                 </div>
 
@@ -163,7 +162,7 @@ const ProductDetails = ({ data }) => {
                   <div>
                     <button
                       className="bg-gradient-to-r from-teal-400 to-teal-500 text-white font-bold rounded-l px-4 py-2 shadow-lg hover:opacity-75 transition duration-300 ease-in-out"
-                      onClick={decrementCount}
+                      onClick={decreaseCount}
                     >
                       -
                     </button>
@@ -172,7 +171,7 @@ const ProductDetails = ({ data }) => {
                     </span>
                     <button
                       className="bg-gradient-to-r from-teal-400 to-teal-500 text-white font-bold rounded-l px-4 py-2 shadow-lg hover:opacity-75 transition duration-300 ease-in-out"
-                      onClick={incrementCount}
+                      onClick={increaseCount}
                     >
                       +
                     </button>
@@ -330,7 +329,7 @@ const ProductDetailsInfo = ({
 
           <div className="w-full flex justify-center">
             {data && data.reviews.length === 0 && (
-              <h5>No Reviews have for this product!</h5>
+              <h5>No reviews for this product yet!</h5>
             )}
           </div>
         </div>
@@ -359,7 +358,7 @@ const ProductDetailsInfo = ({
           <div className="w-full 800px:w-[50%] mt-5 800px:mt-0 800px:flex flex-col items-end">
             <div className="text-left">
               <h5 className="font-[600]">
-                Joined on:{" "}
+                Joined On:{" "}
                 <span className="font-[500]">
                   {data.shop?.createdAt?.slice(0, 10)}
                 </span>

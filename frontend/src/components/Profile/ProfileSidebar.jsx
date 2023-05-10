@@ -1,23 +1,22 @@
 import React from "react";
+import axios from "axios";
+import { server } from "../../server";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { AiOutlineLogin, AiOutlineMessage } from "react-icons/ai";
-import { RiLockPasswordLine } from "react-icons/ri";
 import { HiOutlineReceiptRefund, HiOutlineShoppingBag } from "react-icons/hi";
 import {
   MdOutlineAdminPanelSettings,
-  MdOutlinePassword,
   MdOutlineTrackChanges,
 } from "react-icons/md";
-import { TbAddressBook } from "react-icons/tb";
+import { RiLockPasswordLine } from "react-icons/ri";
 import { RxPerson } from "react-icons/rx";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import { server } from "../../server";
+import { TbAddressBook } from "react-icons/tb";
 import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
 
 const ProfileSidebar = ({ setActive, active }) => {
   const navigate = useNavigate();
- const {user} = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.user);
   const logoutHandler = () => {
     axios
       .get(`${server}/user/logout`, { withCredentials: true })
