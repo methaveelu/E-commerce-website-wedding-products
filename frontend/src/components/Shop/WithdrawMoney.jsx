@@ -7,7 +7,7 @@ import { loadSeller } from "../../redux/actions/userActions";
 import { AiOutlineDelete } from "react-icons/ai";
 import { RxCross1 } from "react-icons/rx";
 import { toast } from "react-toastify";
-import styles from "../../styles/styles";
+import styles from "../../styles";
 
 const WithdrawMoney = () => {
   const [open, setOpen] = useState(false);

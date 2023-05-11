@@ -5,7 +5,7 @@ import { backend_url, server } from "../../server";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProductsShop } from "../../redux/actions/productActions";
-import styles from "../../styles/styles";
+import styles from "../../styles";
 
 const ShopInfo = ({ isOwner }) => {
   const [data, setData] = useState({});

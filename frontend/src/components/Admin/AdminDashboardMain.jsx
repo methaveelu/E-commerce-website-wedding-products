@@ -7,7 +7,7 @@ import { getAllSellers } from "../../redux/actions/sellerActions";
 import { DataGrid } from "@material-ui/data-grid";
 import { AiOutlineMoneyCollect } from "react-icons/ai";
 import { MdBorderClear } from "react-icons/md";
-import styles from "../../styles/styles";
+import styles from "../../styles";
 
 const AdminDashboardMain = () => {
   const dispatch = useDispatch();

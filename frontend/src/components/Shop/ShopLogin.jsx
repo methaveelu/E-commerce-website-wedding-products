@@ -4,7 +4,7 @@ import { server } from "../../server";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { toast } from "react-toastify";
-import styles from "../../styles/styles";
+import styles from "../../styles";
 
 const ShopLogin = () => {
   const navigate = useNavigate();

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { navItems } from "../../static/data";
-import styles from "../../styles/styles";
+import { navItems } from "../../staticData";
+import styles from "../../styles";
 
 const Navbar = ({ active }) => {
   return (

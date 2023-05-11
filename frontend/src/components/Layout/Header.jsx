@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import Cart from "../Cart/Cart";
+import Cart from "../Cart";
 import DropDown from "./DropDown";
 import Navbar from "./Navbar";
-import Wishlist from "../Wishlist/Wishlist";
+import Wishlist from "../Wishlist";
 import { Link } from "react-router-dom";
 import { backend_url } from "../../server";
 import { useSelector } from "react-redux";
-import { categoriesData } from "../../static/data";
+import { categoriesData } from "../../staticData";
 import {
   AiOutlineHeart,
   AiOutlineSearch,
@@ -16,7 +16,7 @@ import { BiMenuAltLeft } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
 import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 import { RxCross1 } from "react-icons/rx";
-import styles from "../../styles/styles";
+import styles from "../../styles";
 
 const Header = ({ activeHeading }) => {
   const { isAuthenticated, user } = useSelector((state) => state.user);

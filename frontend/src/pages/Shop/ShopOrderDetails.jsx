@@ -1,12 +1,12 @@
 import React from "react";
 import OrderDetails from "../../components/Shop/OrderDetails";
 import Footer from "../../components/Layout/Footer";
-import DashboardHeader from "../../components/Shop/Layout/DashboardHeader";
+import ShopDashboardHeader from "../../components/Shop/Layout/ShopDashboardHeader";
 
 const ShopOrderDetails = () => {
   return (
     <div>
-      <DashboardHeader />
+      <ShopDashboardHeader />
       <OrderDetails />
       <Footer />
     </div>

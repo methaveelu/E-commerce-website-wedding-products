@@ -8,7 +8,7 @@ import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { BsFillBagFill } from "react-icons/bs";
 import { RxCross1 } from "react-icons/rx";
 import { toast } from "react-toastify";
-import styles from "../styles/styles";
+import styles from "../styles";
 
 const UserOrderDetails = () => {
   const { orders } = useSelector((state) => state.order);

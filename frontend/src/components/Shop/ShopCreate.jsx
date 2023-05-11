@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { RxAvatar } from "react-icons/rx";
 import { toast } from "react-toastify";
-import styles from "../../styles/styles";
+import styles from "../../styles";
 
 const ShopCreate = () => {
   const navigate = useNavigate();
