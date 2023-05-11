@@ -168,7 +168,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                   className={`${styles.button} mt-6 rounded-[4px] h-11 flex items-center`}
                   onClick={() => addToCartHandler(data._id)}
                 >
-                  <span className="text-[#fff] flex items-center">
+                  <span className="text-[#080505] flex items-center">
                     Add to cart <AiOutlineShoppingCart className="ml-1" />
                   </span>
                 </div>
