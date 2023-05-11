@@ -14,10 +14,11 @@ import {
 
 const Footer = () => {
   return (
-    <div className="bg-[#000] text-white">
-      <div className="md:flex md:justify-between md:items-center sm:px-12 px-4 bg-[#342ac8] py-7">
+    <div className="bg-black text-white">
+      <div className="md:flex md:justify-between md:items-center sm:px-12 px-4 bg-indigo-900 py-7">
         <h1 className="lg:text-4xl text-3xl md:mb-0 mb-6 lg:leading-normal font-semibold md:w-2/5">
-          <span className="text-[#56d879]">Subscribe</span> for get news, events and offers!
+          <span className="text-[#56d879]">Subscribe</span> for get news, events
+          and offers!
         </h1>
         <div>
           <input
@@ -32,13 +33,9 @@ const Footer = () => {
           </button>
         </div>
       </div>
-      <div className="grid grid-cols-1 sm:gird-cols-3 lg:grid-cols-4 gap-6 sm:px-8 px-5 py-16 sm:text-center">
+      <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6 sm:px-8 px-5 py-16 sm:text-center">
         <ul className="px-5 text-center sm:text-start flex sm:block flex-col items-center">
-          <img
-            src=""
-            alt=""
-            style={{ filter: "brightness(0) invert(1)" }}
-          />
+          <img src="" alt="" style={{ filter: "brightness(0) invert(1)" }} />
           <br />
           <p>All the products you need for a perfect wedding!</p>
           <div className="flex items-center mt-[15px]">
@@ -59,7 +56,7 @@ const Footer = () => {
         </ul>
 
         <ul className="text-center sm:text-start">
-          <h1 className="mb-1 font-semibold">Company</h1>
+          <h1 className="mb-1 font-semibold">Explore</h1>
           {footerProductLinks.map((link, index) => (
             <li key={index}>
               <Link
@@ -104,17 +101,11 @@ const Footer = () => {
         </ul>
       </div>
 
-      <div
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10
-         text-center pt-2 text-gray-400 text-sm pb-8"
-      >
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 text-center pt-2 text-gray-400 text-sm pb-8">
         <span>© 2023 YMB. All rights reserved.</span>
         <span>Terms · Privacy Policy</span>
         <div className="sm:block flex items-center justify-center w-full">
-          <img
-            src=""
-            alt=""
-          />
+          <img src="" alt="" />
         </div>
       </div>
     </div>
