@@ -12,17 +12,11 @@ import { RxDashboard } from "react-icons/rx";
 import { VscNewFile } from "react-icons/vsc";
 
 const DashboardSidebar = ({ active }) => {
-  const logoutHandler = () => {
-    axios
-      .get(`${server}/shop/logout`, { withCredentials: true })
-      .then((res) => {
-        toast.success(res.data.message);
-        window.location.reload(true);
-        navigate("/shop-login");
-      })
-      .catch((error) => {
-        console.log(error.response.data.message);
-      });
+  const logoutHandler = async () => {
+    axios.get(`${server}/shop/logout-shop`, {
+      withCredentials: true,
+    });
+    window.location.reload();
   };
   return (
     <div className="w-full h-[90vh] bg-white shadow-sm overflow-y-scroll sticky top-0 left-0 z-10">

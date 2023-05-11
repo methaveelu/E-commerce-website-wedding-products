@@ -166,9 +166,9 @@ router.get(
   })
 );
 
-// log out from shop
+// logout from shop
 router.get(
-  "/logout",
+  "/logout-shop",
   catchAsyncErrors(async (req, res, next) => {
     try {
       res.cookie("seller_token", null, {
