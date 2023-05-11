@@ -22,7 +22,8 @@ const styles = {
   faqButtonIcon: "h-6 w-6 text-gray-500",
   faqButtonText: "text-lg font-medium text-gray-900",
   faqAnswer: "mt-4",
-  faqText: "text-base text-gray-500"
+  faqText: "text-base text-gray-500",
+  dashboardHeaderFiIcons: "mx-5 cursor-pointer",
 };
 
 export default styles;

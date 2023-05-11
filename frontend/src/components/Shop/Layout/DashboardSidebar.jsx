@@ -163,7 +163,7 @@ const DashboardSidebar = ({ active }) => {
               active === 9 ? "text-[crimson]" : "text-[#555]"
             }`}
           >
-            Discount Codes
+            Coupon Codes
           </h5>
         </Link>
       </div>
