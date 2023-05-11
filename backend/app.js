@@ -38,7 +38,7 @@ const user = require("./controller/userRoute");
 const withdraw = require("./controller/withdrawRoute");
 
 app.get("/", (req, res) => {
-  res.send("backend is working");
+  res.send("Backend is working!");
 });
 
 app.use("/api/v2/conversation", conversation);

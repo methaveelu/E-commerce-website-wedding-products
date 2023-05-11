@@ -151,7 +151,6 @@ const App = () => {
           }
         />
         <Route path="/shop/preview/:id" element={<ShopPreviewPage />} />
-        {/* shop Routes */}
         <Route path="/shop-create" element={<ShopCreatePage />} />
         <Route path="/shop-login" element={<ShopLoginPage />} />
         <Route
@@ -259,9 +258,9 @@ const App = () => {
             </SellerProtectedRoute>
           }
         />
-        {/* Admin Routes */}
+
         <Route
-          path="/admin/dashboard"
+          path="/admin-dashboard"
           element={
             <ProtectedAdminRoute>
               <AdminDashboardPage />
