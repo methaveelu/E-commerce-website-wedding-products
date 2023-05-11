@@ -1,15 +1,15 @@
 import React from "react";
 import AllOrders from "../../components/Shop/AllOrders";
-import DashboardHeader from "../../components/Shop/Layout/DashboardHeader";
-import DashboardSidebar from "../../components/Shop/Layout/DashboardSidebar";
+import ShopDashboardHeader from "../../components/Shop/Layout/ShopDashboardHeader";
+import ShopDashboardSidebar from "../../components/Shop/Layout/ShopDashboardSidebar";
 
 const ShopAllOrders = () => {
   return (
     <div>
-      <DashboardHeader />
+      <ShopDashboardHeader />
       <div className="flex justify-between w-full">
         <div className="w-[80px] 800px:w-[330px]">
-          <DashboardSidebar active={2} />
+          <ShopDashboardSidebar active={2} />
         </div>
         <div className="w-full justify-center flex">
           <AllOrders />

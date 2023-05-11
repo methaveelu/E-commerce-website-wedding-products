@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { categoriesData } from "../../static/data";
+import { categoriesData } from "../../staticData";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createProduct } from "../../redux/actions/productActions";

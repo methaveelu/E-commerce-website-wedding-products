@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadSeller } from "../../redux/actions/userActions";
 import { AiOutlineCamera } from "react-icons/ai";
 import { toast } from "react-toastify";
-import styles from "../../styles/styles";
+import styles from "../../styles";
 
 const ShopSettings = () => {
   const { seller } = useSelector((state) => state.seller);

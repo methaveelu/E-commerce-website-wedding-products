@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Country, State } from "country-state-city";
 import { toast } from "react-toastify";
-import styles from "../../styles/styles";
+import styles from "../../styles";
 
 const Checkout = () => {
   const { user } = useSelector((state) => state.user);

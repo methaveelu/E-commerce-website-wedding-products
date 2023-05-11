@@ -10,7 +10,7 @@ import {
   footerCompanyLinks,
   footerProductLinks,
   footerSupportLinks,
-} from "../../static/data";
+} from "../../staticData";
 
 const Footer = () => {
   return (

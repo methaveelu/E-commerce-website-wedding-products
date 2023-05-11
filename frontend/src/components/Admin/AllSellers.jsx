@@ -9,7 +9,7 @@ import { AiOutlineDelete, AiOutlineEye } from "react-icons/ai";
 import { RxCross1 } from "react-icons/rx";
 import axios from "axios";
 import { toast } from "react-toastify";
-import styles from "../../styles/styles";
+import styles from "../../styles";
 
 const AllSellers = () => {
   const dispatch = useDispatch();

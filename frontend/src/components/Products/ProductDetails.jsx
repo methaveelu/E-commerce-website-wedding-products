@@ -17,7 +17,7 @@ import {
   AiOutlineShoppingCart,
 } from "react-icons/ai";
 import { toast } from "react-toastify";
-import styles from "../../styles/styles";
+import styles from "../../styles";
 
 const ProductDetails = ({ data }) => {
   const { wishlist } = useSelector((state) => state.wishlist);

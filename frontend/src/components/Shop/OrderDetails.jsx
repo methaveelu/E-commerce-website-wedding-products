@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllOrdersOfShop } from "../../redux/actions/orderActions";
 import { BsFillBagFill } from "react-icons/bs";
 import { toast } from "react-toastify";
-import styles from "../../styles/styles";
+import styles from "../../styles";
 
 const OrderDetails = () => {
   const { orders, isLoading } = useSelector((state) => state.order);
