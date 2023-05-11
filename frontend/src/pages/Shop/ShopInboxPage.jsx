@@ -12,7 +12,7 @@ const ShopInboxPage = () => {
           <ShopDashboardSidebar active={8} />
         </div>
         <ShopDashboardMessages />
-      </div>Layout/
+      </div>
     </div>
   );
 };

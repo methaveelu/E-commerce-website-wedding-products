@@ -418,7 +418,7 @@ const SellerInbox = ({
             className="hidden"
             onChange={handleImageUpload}
           />
-          {/* user send imges */}
+          {/* user send images */}
           <label htmlFor="image">
             <TfiGallery className="cursor-pointer" size={20} />
           </label>

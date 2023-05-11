@@ -23,7 +23,7 @@ router.post(
       messageData.sender = req.body.sender;
       messageData.text = req.body.text;
 
-      const message = new Messages({
+      const message = new Message({
         conversationId: messageData.conversationId,
         text: messageData.text,
         sender: messageData.sender,
