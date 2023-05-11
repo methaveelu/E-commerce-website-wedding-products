@@ -42,6 +42,7 @@ const DashboardMessages = () => {
       setMessages((prev) => [...prev, arrivalMessage]);
   }, [arrivalMessage, currentChat]);
 
+  //
   useEffect(() => {
     const getConversation = async () => {
       try {
@@ -206,6 +207,7 @@ const DashboardMessages = () => {
 
   return (
     <div className="w-[90%] bg-white m-5 h-[85vh] overflow-y-scroll rounded">
+      {/* if specific convo not opened list  all convos */}
       {!open && (
         <>
           <h1 className="text-center text-[30px] py-3 font-Poppins">
@@ -249,6 +251,7 @@ const DashboardMessages = () => {
   );
 };
 
+// list of  messages from users
 const MessageList = ({
   data,
   index,
@@ -295,6 +298,7 @@ const MessageList = ({
         setActiveStatus(online)
       }
     >
+    {/* user avatar */}
       <div className="relative">
         <img
           src={`${backend_url}${user?.avatar}`}
@@ -414,6 +418,7 @@ const SellerInbox = ({
             className="hidden"
             onChange={handleImageUpload}
           />
+          {/* user send imges */}
           <label htmlFor="image">
             <TfiGallery className="cursor-pointer" size={20} />
           </label>

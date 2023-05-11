@@ -89,6 +89,7 @@ const ProductDetails = ({ data }) => {
 
   const averageRating = avg.toFixed(2);
 
+  ///to start sending msg (kick start convo)
   const handleMessageSubmit = async () => {
     if (isAuthenticated) {
       const groupTitle = data._id + user._id;
