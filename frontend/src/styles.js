@@ -1,8 +1,8 @@
 const styles = {
   container: "container mx-auto px-4",
   heading: "text-3xl font-bold text-center pt-10 font-serif",
-  section: "w-full bg-[#E2BE9F] py-4 px-8",
-  sectionHeading: "text-2xl font-bold text-center mb-6",
+  section: "w-full bg-gradient-to-r from-purple-500 to-pink-500 py-4 px-8",
+  sectionHeading: "text-2xl font-bold text-center mb-6 bg-pink",
   productTitle: "text-xl font-semibold text-gray-800 mb-4",
   price: "font-medium text-lg text-pink-600 pl-3 mt--4px",
   shopName: "text-xl text-red-700 font-bold pb-4",
