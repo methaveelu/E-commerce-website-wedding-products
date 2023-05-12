@@ -6,7 +6,7 @@ const Backdrop = () => {
   return (
     <div className="relative w-full">
       <div
-        className="absolute inset-0 z-[-1] bg-cover bg-center"
+        className=" absolute inset-0 z-[-1] bg-cover bg-center "
         style={{
           backgroundImage:
             "url(https://www.monti.sg/wp-content/uploads/2022/11/Monti-258-1.jpg)",
@@ -20,7 +20,10 @@ const Backdrop = () => {
         }}
       >
         <div
-          className="relative flex flex-col backdrop-blur-sm items-center justify-center h-full px-4 text-center"
+
+          className="relative flex flex-col items-center justify-center h-full px-4 text-center"
+          style={{ backdropFilter: "blur(3px)" }}
+
         >
           <h1
             className={`text-3xl md:text-5xl text-[#553555] font-semibold uppercase tracking-wide mb-10`}
