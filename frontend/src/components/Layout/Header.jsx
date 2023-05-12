@@ -24,7 +24,6 @@ const Header = ({ activeHeading }) => {
   const { wishlist } = useSelector((state) => state.wishlist);
   const { cart } = useSelector((state) => state.cart);
   const { allProducts } = useSelector((state) => state.products);
-
   const [searchTerm, setSearchTerm] = useState("");
   const [searchData, setSearchData] = useState(null);
   const [active, setActive] = useState(false);
@@ -59,10 +58,7 @@ const Header = ({ activeHeading }) => {
         <div className="hidden 800px:h-[50px] 800px:my-[20px] 800px:flex items-center justify-between">
           <div>
             <Link to="/">
-              <img
-                src=""
-                alt=""
-              />
+              <img src="" alt="" />
             </Link>
           </div>
           {/* search box */}
@@ -218,11 +214,7 @@ const Header = ({ activeHeading }) => {
           </div>
           <div>
             <Link to="/">
-              <img
-                src=""
-                alt=""
-                className="mt-3 cursor-pointer"
-              />
+              <img src="" alt="" className="mt-3 cursor-pointer" />
             </Link>
           </div>
           <div>

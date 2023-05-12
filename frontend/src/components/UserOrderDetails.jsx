@@ -202,7 +202,7 @@ const UserOrderDetails = () => {
 
       <div className="border-t w-full text-right">
         <h5 className="pt-3 text-[18px]">
-          Total Price: <strong>US${data?.totalPrice}</strong>
+          Total Price: <strong>${data?.totalPrice}</strong>
         </h5>
       </div>
       <br />
@@ -231,7 +231,7 @@ const UserOrderDetails = () => {
               className={`${styles.button} text-white`}
               onClick={refundHandler}
             >
-              Give a Refund
+              Request for a refund
             </div>
           )}
         </div>

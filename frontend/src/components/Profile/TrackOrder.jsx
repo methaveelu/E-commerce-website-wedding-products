@@ -32,12 +32,11 @@ const TrackOrder = () => {
           </h1>
         ) : data?.status === "Received" ? (
           <h1 className="text-[20px]">
-            Your order has arrived in your city and our delivery partner has received it!
+            Your order has arrived in your city and our delivery partner has
+            received it!
           </h1>
         ) : data?.status === "On the way" ? (
-          <h1 className="text-[20px]">
-            Our delivery partner is on the way!
-          </h1>
+          <h1 className="text-[20px]">Our delivery partner is on the way!</h1>
         ) : data?.status === "Delivered" ? (
           <h1 className="text-[20px]">Your order has been delivered!</h1>
         ) : data?.status === "Processing refund" ? (
