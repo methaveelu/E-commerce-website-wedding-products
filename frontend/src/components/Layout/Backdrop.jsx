@@ -21,7 +21,6 @@ const Backdrop = () => {
       >
         <div
           className="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center"
-          style={{ backdropFilter: "blur(3px)" }}
         >
           <h1
             className={`text-3xl md:text-5xl text-[#553555] font-semibold uppercase tracking-wide mb-10`}
