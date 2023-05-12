@@ -14,7 +14,7 @@ const WithdrawMoney = () => {
   const dispatch = useDispatch();
   const { seller } = useSelector((state) => state.seller);
   const [paymentMethod, setPaymentMethod] = useState(false);
-  const [withdrawAmount, setWithdrawAmount] = useState(50);
+  const [withdrawAmount, setWithdrawAmount] = useState(20);
   const [bankInfo, setBankInfo] = useState({
     bankName: "",
     bankCountry: "",
@@ -83,7 +83,7 @@ const WithdrawMoney = () => {
   };
 
   const withdrawHandler = async () => {
-    if (withdrawAmount < 50 || withdrawAmount > availableBalance) {
+    if (withdrawAmount < 1 || withdrawAmount > availableBalance) {
       toast.error("You cannot withdraw this amount!");
     } else {
       const amount = withdrawAmount;
@@ -108,8 +108,8 @@ const WithdrawMoney = () => {
           Available Balance: ${availableBalance}
         </h5>
         <div
-          className={`${styles.button} text-white !h-[42px] !rounded`}
-          onClick={() => (availableBalance < 50 ? error() : setOpen(true))}
+          className={`${styles.button} text-black !h-[42px] !rounded`}
+          onClick={() => (availableBalance < 1 ? error() : setOpen(true))}
         >
           Withdraw
         </div>
@@ -257,7 +257,7 @@ const WithdrawMoney = () => {
 
                   <button
                     type="submit"
-                    className={`${styles.button} mb-3 text-white`}
+                    className={`${styles.button} mb-3 text-black`}
                   >
                     Add
                   </button>
@@ -302,7 +302,7 @@ const WithdrawMoney = () => {
                         className="800px:w-[100px] w-[full] border 800px:mr-3 p-1 rounded"
                       />
                       <div
-                        className={`${styles.button} !h-[42px] text-white`}
+                        className={`${styles.button} !h-[42px] text-black`}
                         onClick={withdrawHandler}
                       >
                         Withdraw
