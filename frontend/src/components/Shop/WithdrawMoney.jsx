@@ -94,7 +94,7 @@ const WithdrawMoney = () => {
           { withCredentials: true }
         )
         .then((res) => {
-          toast.success("Withdraw money request is successful!");
+          toast.success("Withdraw request is successful!");
         });
     }
   };
@@ -147,7 +147,7 @@ const WithdrawMoney = () => {
                         setBankInfo({ ...bankInfo, bankName: e.target.value })
                       }
                       id=""
-                      placeholder="Enter your bank name!"
+                      placeholder="Enter bank name!"
                       className={`${styles.input} mt-2`}
                     />
                   </div>
@@ -167,7 +167,7 @@ const WithdrawMoney = () => {
                       }
                       id=""
                       required
-                      placeholder="Enter your bank country!"
+                      placeholder="Enter country of bank!"
                       className={`${styles.input} mt-2`}
                     />
                   </div>
@@ -187,7 +187,7 @@ const WithdrawMoney = () => {
                           bankSwiftCode: e.target.value,
                         })
                       }
-                      placeholder="Enter your bank Swift Code!"
+                      placeholder="Enter bank's Swift Code!"
                       className={`${styles.input} mt-2`}
                     />
                   </div>
@@ -209,7 +209,7 @@ const WithdrawMoney = () => {
                         })
                       }
                       required
-                      placeholder="Enter your bank account number!"
+                      placeholder="Enter bank account number!"
                       className={`${styles.input} mt-2`}
                     />
                   </div>
@@ -229,7 +229,7 @@ const WithdrawMoney = () => {
                         })
                       }
                       id=""
-                      placeholder="Enter your bank account holder name!"
+                      placeholder="Enter bank account holder name!"
                       className={`${styles.input} mt-2`}
                     />
                   </div>
@@ -250,7 +250,7 @@ const WithdrawMoney = () => {
                           bankAddress: e.target.value,
                         })
                       }
-                      placeholder="Enter your bank address!"
+                      placeholder="Enter bank address!"
                       className={`${styles.input} mt-2`}
                     />
                   </div>
