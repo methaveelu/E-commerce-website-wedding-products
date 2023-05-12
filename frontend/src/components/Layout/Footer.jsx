@@ -14,10 +14,10 @@ import {
 
 const Footer = () => {
   return (
-    <div className="bg-black text-white">
-      <div className="md:flex md:justify-between md:items-center sm:px-12 px-4 bg-indigo-900 py-7">
+    <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white">
+      <div className="md:flex md:justify-between md:items-center sm:px-12 px-4 bg-gradient-to-r from-purple-500 to-pink-500 py-7">
         <h1 className="lg:text-4xl text-3xl md:mb-0 mb-6 lg:leading-normal font-semibold md:w-2/5">
-          <span className="text-[#56d879]">Subscribe</span> for get news, events
+          <span className="text-[#56d879]">Subscribe</span> for more news, events
           and offers!
         </h1>
         <div>

@@ -14,32 +14,56 @@ const ShopDashboardHeader = () => {
     <div className="w-full h-[80px] bg-white shadow sticky top-0 left-0 z-30 flex items-center justify-between px-4">
       <div>
         <Link to="/">
-          <FiHome color="#555" size={30} className={`${styles.ShopDashboardHeaderFiIcons}`} />
+          <FiHome
+            color="#555"
+            size={30}
+            className={`${styles.ShopDashboardHeaderFiIcons}`}
+          />
         </Link>
       </div>
       <div className="flex items-center">
         <div className="flex items-center mr-4">
           <Link to="/dashboard">
-            <FiList color="#555" size={30} className={`${styles.ShopDashboardHeaderFiIcons}`} />
+            <FiList
+              color="#555"
+              size={30}
+              className={`${styles.ShopDashboardHeaderFiIcons}`}
+            />
           </Link>
 
           <Link to="/dashboard-coupons" className="800px:block hidden">
-            <AiOutlineGift color="#555" size={30} className={`${styles.ShopDashboardHeaderFiIcons}`}
+            <AiOutlineGift
+              color="#555"
+              size={30}
+              className={`${styles.ShopDashboardHeaderFiIcons}`}
             />
           </Link>
           <Link to="/dashboard-events" className="800px:block hidden">
-            <MdOutlineLocalOffer color="#555" size={30} className={`${styles.ShopDashboardHeaderFiIcons}`}
+            <MdOutlineLocalOffer
+              color="#555"
+              size={30}
+              className={`${styles.ShopDashboardHeaderFiIcons}`}
             />
           </Link>
           <Link to="/dashboard-products" className="800px:block hidden">
-            <FiShoppingBag color="#555" size={30} className={`${styles.ShopDashboardHeaderFiIcons}`}
+            <FiShoppingBag
+              color="#555"
+              size={30}
+              className={`${styles.ShopDashboardHeaderFiIcons}`}
             />
           </Link>
           <Link to="/dashboard-orders" className="800px:block hidden">
-            <FiPackage color="#555" size={30} className={`${styles.ShopDashboardHeaderFiIcons}`} />
+            <FiPackage
+              color="#555"
+              size={30}
+              className={`${styles.ShopDashboardHeaderFiIcons}`}
+            />
           </Link>
           <Link to="/dashboard-messages" className="800px:block hidden">
-            <BiMessageSquareDetail color="#555" size={30} className={`${styles.ShopDashboardHeaderFiIcons}`}
+            <BiMessageSquareDetail
+              color="#555"
+              size={30}
+              className={`${styles.ShopDashboardHeaderFiIcons}`}
             />
           </Link>
           <Link to={`/shop/${seller._id}`}>

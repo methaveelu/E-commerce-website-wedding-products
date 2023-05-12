@@ -298,7 +298,7 @@ const MessageList = ({
         setActiveStatus(online)
       }
     >
-    {/* user avatar */}
+      {/* user avatar */}
       <div className="relative">
         <img
           src={`${backend_url}${user?.avatar}`}
