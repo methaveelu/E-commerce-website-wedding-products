@@ -7,7 +7,7 @@ const styles = {
   price: "font-medium text-lg text-pink-600 pl-3 mt--4px",
   shopName: "text-xl text-red-700 font-bold pb-4",
   activeIndicator: "absolute bottom--27% left-0 h-3 w-full bg-pink-500",
-  button: "w-50 h-30 flex items-center justify-center rounded-md bg-[#BC9D6F] text-left pt-1 font-serif",
+  button: "w-40 h-12 flex items-center text-center justify-center rounded-md bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl text-white text-lg font-semibold",
   cartButton: "px-4 h-10 rounded-lg bg-pink-200 flex items-center justify-center cursor-pointer relative",
   cartButtonIcon: "w-6 h-6 bg-pink-500 absolute -left-5 rounded-full flex items-center justify-center text-white",
   cartButtonText: "text-pink-600 text-sm font-semibold",

@@ -20,15 +20,17 @@ const Backdrop = () => {
         }}
       >
         <div
+
           className="relative flex flex-col items-center justify-center h-full px-4 text-center"
           style={{ backdropFilter: "blur(3px)" }}
+
         >
           <h1
             className={`text-3xl md:text-5xl text-[#553555] font-semibold uppercase tracking-wide mb-10`}
           >
             The Best Collection of Wedding-Related Products!
           </h1>
-          <p className="text-lg md:text-xl text-[#332f36] mb-10 bg-gray-50 bg-opacity-80">
+          <p className="text-lg md:text-xl text-[#332f36] mb-10 bg-opacity-80">
             Discover a wide range of elegant and exquisite products to make your wedding day truly memorable.
           </p>
           <Link to="/products" className="inline-block">
