@@ -3,6 +3,7 @@ const router = express.Router();
 const { isSeller, isAuthenticated } = require("../middleware/auth");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const Conversation = require("../models/conversationModel");
+
 const ErrorHandler = require("../utilities/ErrorHandler");
 
 // create a new conversation
