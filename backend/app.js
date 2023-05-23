@@ -36,6 +36,7 @@ const product = require("./controller/productRoute");
 const shop = require("./controller/shopRoute");
 const user = require("./controller/userRoute");
 const withdraw = require("./controller/withdrawRoute");
+const ErrorHandler = require("./utilities/ErrorHandler");
 
 app.get("/", (req, res) => {
   res.send("Backend is working!");
