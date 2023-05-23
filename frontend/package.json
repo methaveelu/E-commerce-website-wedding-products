@@ -5,7 +5,7 @@
   "main": "tailwind.config.js",
   "scripts": {
     "start": "react-scripts start",
-    "build": "npm install --force",
+    "build": "react-scripts build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
