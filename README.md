@@ -49,7 +49,7 @@ As a seller, I want to be able to:
 *Best Selling Products Page
 <img width="899" alt="image" src="https://github.com/methaveelu/E-commerce-website-wedding-products/assets/110245885/ee037598-5b4c-4ac7-9c58-e974ddf1b6b7">
 
-## Technologies and dependencies used
+## Technologies used
 ### Frontend
 * react
 * react-router-dom
@@ -77,18 +77,18 @@ As a seller, I want to be able to:
 * connect-multiparty
 * multer
 
-| CRUD | Method | Endpoint |  Description |
-| -------- | -------- | -------- | -------- |
-|  C,R  |  POST, GET  |  "/api/v2/coupon"  |    |
-|  C,R,D  |  POST, GET, DELETE  |  "/api/v2/event"  |    |
-|  C,R,U  |  POST, GET, PUT  |  "/api/v2/order"  |    |
-|  C,R  |  POST, GET  |  "/api/v2/payment"  |    |
-|  C,R,U,D  |  POST, GET, DELETE, PUT  |  "/api/v2/product"  |    |
-|  C,R,U,D  |  POST, GET, DELETE, PUT  |  "/api/v2/shop"  |    |
-|  C,R,U,D  |  POST, GET, DELETE, PUT  |  "/api/v2/user"  |    |
-|  C,R,U  |  POST, GET, PUT  |  "/api/v2/withdraw"  |    |
-|  C,R  |  POST, GET  |  "/api/v2/message"  |    |
-|  C,R,U  |  POST, GET, PUT  |  "/api/v2/conversation"  |    |
+| CRUD | Method | Endpoint |  
+| -------- | -------- | -------- |
+|  C,R  |  POST, GET  |  "/api/v2/coupon"  |    
+|  C,R,D  |  POST, GET, DELETE  |  "/api/v2/event"  |    
+|  C,R,U  |  POST, GET, PUT  |  "/api/v2/order"  |    
+|  C,R  |  POST, GET  |  "/api/v2/payment"  |    
+|  C,R,U,D  |  POST, GET, DELETE, PUT  |  "/api/v2/product"  |    
+|  C,R,U,D  |  POST, GET, DELETE, PUT  |  "/api/v2/shop"  |    
+|  C,R,U,D  |  POST, GET, DELETE, PUT  |  "/api/v2/user"  |    
+|  C,R,U  |  POST, GET, PUT  |  "/api/v2/withdraw"  |    
+|  C,R  |  POST, GET  |  "/api/v2/message"  |    
+|  C,R,U  |  POST, GET, PUT  |  "/api/v2/conversation"  |    
 
 
 ## Bugs / Fixes
