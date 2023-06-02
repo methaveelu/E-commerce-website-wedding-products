@@ -77,8 +77,19 @@ As a seller, I want to be able to:
 * connect-multiparty
 * multer
 
+| CRUD | Method | Endpoint |  Description |
+| -------- | -------- | -------- | -------- |
+|  C,R  |  POST, GET  |  "/api/v2/coupon"  |    |
+|  C,R,D  |  POST, GET, DELETE  |  "/api/v2/event"  |    |
+|  C,R,U  |  POST, GET, PUT  |  "/api/v2/order"  |    |
+|  C,R  |  POST, GET  |  "/api/v2/payment"  |    |
+|  C,R,U,D  |  POST, GET, DELETE, PUT  |  "/api/v2/product"  |    |
+|  C,R,U,D  |  POST, GET, DELETE, PUT  |  "/api/v2/shop"  |    |
+|  C,R,U,D  |  POST, GET, DELETE, PUT  |  "/api/v2/user"  |    |
+|  C,R,U  |  POST, GET, PUT  |  "/api/v2/withdraw"  |    |
+|  C,R  |  POST, GET  |  "/api/v2/message"  |    |
+|  C,R,U  |  POST, GET, PUT  |  "/api/v2/conversation"  |    |
 
-## Wireframes / Screenshots
 
 ## Bugs / Fixes
 
