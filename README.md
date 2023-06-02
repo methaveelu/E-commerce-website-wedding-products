@@ -4,33 +4,11 @@ This app was created by [Yu Jiapeng](https://github.com/YJP1989), [Ben Tan](http
 ## How to use the app
 Open this [link]() in a browser.
 
-## Technologies and dependencies used
-### Frontend
-* react
-* react-router-dom
-* axios
-* react-icons, react-toastify
-* redux, react-redux, redux-thunk, redux-toolkit
-* material-ui core, datagrid
-* timeago
-* country-state-city
-* stripe
-* socket.io-client
-* tailwindcss
+## E-Commerce (Weddingproducts)
+A MERN stack web-based application for young couples to purchase wedding essentials to facilitate their wedding preparations e.g. wedding gown, suits, high heels etc.
+Leveraged on RESTful APIs to communicate via HTTP request from the client end to perform CRUD functions such as 'add to cart', 'add new products as seller' and more.
 
-### Backend
-* express
-* mongoose, mongodb
-* dotenv
-* cors
-* jsonwebtoken
-* nodemailer
-* path
-* stripe
-* cookie-parser
-* bcryptjs
-* connect-multiparty
-* multer
+<img width="1265" alt="image" src="https://github.com/methaveelu/E-commerce-website-wedding-products/assets/110245885/df26e8aa-c6f7-4f90-804a-6b3688b050e7">
 
 ## Description of App
 ### User Stories
@@ -63,6 +41,36 @@ As a seller, I want to be able to:
 - [x] create a special coupon code for users to get a discount on selected products
 - [x] communicate with users via chat
 - [x] check my current balance (e.g. net earnings from all orders) and withdraw from the balance to my bank account
+
+
+## Technologies and dependencies used
+### Frontend
+* react
+* react-router-dom
+* axios
+* react-icons, react-toastify
+* redux, react-redux, redux-thunk, redux-toolkit
+* material-ui core, datagrid
+* timeago
+* country-state-city
+* stripe
+* socket.io-client
+* tailwindcss
+
+### Backend
+* express
+* mongoose, mongodb
+* dotenv
+* cors
+* jsonwebtoken
+* nodemailer
+* path
+* stripe
+* cookie-parser
+* bcryptjs
+* connect-multiparty
+* multer
+
 
 ## Wireframes / Screenshots
 
