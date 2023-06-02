@@ -43,9 +43,10 @@ As a seller, I want to be able to:
 - [x] check my current balance (e.g. net earnings from all orders) and withdraw from the balance to my bank account
 
 ## Wireframes
-
+*Seller Dashboard Page
 <img width="868" alt="image" src="https://github.com/methaveelu/E-commerce-website-wedding-products/assets/110245885/6e0bdfc7-494d-45bd-87ab-8dc21018eb9f">
 
+*Best Selling Products Page
 <img width="899" alt="image" src="https://github.com/methaveelu/E-commerce-website-wedding-products/assets/110245885/ee037598-5b4c-4ac7-9c58-e974ddf1b6b7">
 
 ## Technologies and dependencies used
