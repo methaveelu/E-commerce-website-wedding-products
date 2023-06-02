@@ -24,21 +24,24 @@ const OrderDetails = () => {
   const data = orders && orders.find((item) => item._id === id);
 
   const orderUpdateHandler = async (e) => {
-    await axios
-      .put(
+    try {
+      await axios.put(
         `${server}/order/update-order-status/${id}`,
         {
           status,
         },
         { withCredentials: true }
-      )
-      .then((res) => {
-        toast.success("Order updated!");
-        navigate("/dashboard-orders");
-      })
-      .catch((error) => {
+      );
+  
+      toast.success("Order updated!");
+      navigate("/dashboard-orders");
+    } catch (error) {
+      if (error.response && error.response.data && error.response.data.message) {
         toast.error(error.response.data.message);
-      });
+      } else {
+        toast.error("An error occurred while updating the order.");
+      }
+    }
   };
 
   const refundOrderUpdateHandler = async (e) => {
