@@ -91,6 +91,9 @@ As a seller, I want to be able to:
 |  C,R,U  |  POST, GET, PUT  |  "/api/v2/conversation"  |    
 
 
-## Bugs / Fixes
+## Challenges
+* The key challenge was the transition from rendering static data to accessing of individual components' state through Redux state management library. Admittedly, the configuration of redux is much more tedious than the useContext hook. However, having read through the forums that its especially useful for larger, complex applications with multiple data sources and complex data flow, the team took on the challenge and encountered a couple of hurdles. The challenges include understanding the flow of the state changes from (Client-->Actions dispatcher-->Reducer function-->Redux Store). 
+
+
 
 ## Possible Extensions
